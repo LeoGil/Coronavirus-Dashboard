@@ -53,16 +53,16 @@ export default class Main extends Component {
                             <article className="pais-article shadow" key={product.ourid}>
                                 <div class="row">
                                     <div class="col"><img className="bandeira" src={"https://www.countryflags.io/" + product.code + "/flat/64.png"} /></div>
-                                    <div class="col font-weight-bold">Pais</div>
-                                    <div class="col font-weight-bold">Casos</div>
-                                    <div class="col font-weight-bold">Mortes</div>
-                                    <div class="col font-weight-bold">Recuperados</div>
+                                    <div class="col font-weight-bold"><div class="text-center">Pais</div></div>
+                                    <div class="col font-weight-bold"><div class="text-center">Casos</div></div>
+                                    <div class="col font-weight-bold"><div class="text-center">Mortes</div></div>
+                                    <div class="col font-weight-bold"><div class="text-center">Recuperados</div></div>
                                     <div class="w-100"></div>
                                     <div class="col">{}</div>
-                                    <div class="col">{product.title}</div>
-                                    <div class="col">{product.total_cases}</div>
-                                    <div class="col">{product.total_deaths}</div>
-                                    <div class="col">{product.total_recovered}</div>
+                                    <div class="col"><div class="text-center">{product.title}</div></div>
+                                    <div class="col"><div class="text-center">{product.total_cases}</div></div>
+                                    <div class="col"><div class="text-center">{product.total_deaths}</div></div>
+                                    <div class="col"><div class="text-center">{product.total_recovered}</div></div>
                                 </div>
                             </article>
                         </div >
