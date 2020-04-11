@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import api from '../../services/api'
 import { Link } from 'react-router-dom'
 
-import Header from '../../components/Header'
+import GlobalData from '../../components/Global'
 
 import './styles.css'
 
@@ -13,7 +13,7 @@ export default class Main extends Component {
 
     componentDidMount() {
         this.loadProducts()
-        this.interval = setInterval(() => { this.loadProducts() }, 5000);
+        this.interval = setInterval(() => { this.loadProducts(); console.log('atualizado') }, 5000);
     }
 
     componentWillUnmount() {
@@ -45,31 +45,30 @@ export default class Main extends Component {
         const { products } = this.state
 
         return (
-            <div className="product-list">
-                {products.map(product => (
-                    <article key={product.ourid}>
-                        <img className="bandeira" src={"https://www.countryflags.io/" + product.code + "/flat/64.png"} />
-                        <strong>{product.title}</strong>
-                        <p>Total de casos:</p>
-                        <p>{product.total_cases}</p>
-
-                        <p>Total de mortes:</p>
-                        <p>{product.total_deaths}</p>
-
-                        <p>Total recuperados:</p>
-                        <p>{product.total_recovered}</p>
-
-                        <p>Total ativos:</p>
-                        <p>{product.total_active_cases}</p>
-
-                        <p>Quantidade casos diarios:</p>
-                        <p>{product.total_new_cases_today}</p>
-
-                        <p>Quantidade mortes diarios:</p>
-                        <p>{product.total_new_deaths_today}</p>
-                    </article>
-                ))
-                }
+            <div class="container-fluid">
+                <GlobalData />
+                <div class="row justify-content-md-center">
+                    {products.map(product => (
+                        <div class="col-lg-4">
+                            <article className="pais-article shadow" key={product.ourid}>
+                                <div class="row">
+                                    <div class="col"><img className="bandeira" src={"https://www.countryflags.io/" + product.code + "/flat/64.png"} /></div>
+                                    <div class="col font-weight-bold">Pais</div>
+                                    <div class="col font-weight-bold">Casos</div>
+                                    <div class="col font-weight-bold">Mortes</div>
+                                    <div class="col font-weight-bold">Recuperados</div>
+                                    <div class="w-100"></div>
+                                    <div class="col">{}</div>
+                                    <div class="col">{product.title}</div>
+                                    <div class="col">{product.total_cases}</div>
+                                    <div class="col">{product.total_deaths}</div>
+                                    <div class="col">{product.total_recovered}</div>
+                                </div>
+                            </article>
+                        </div >
+                    ))
+                    }
+                </div >
             </div >
         )
     }

@@ -1,5 +1,5 @@
 .product-list {
-    max-width: 700px;
+    /* max-width: 700px; */
     margin: 20px auto 0;
     padding: 0 20px;
 }
@@ -68,6 +68,27 @@
 
 .product-list .actions button[disabled]:hover {
     opacity: 0.5;
+}
+
+.pais-article {
+    /* max-width: 700px; */
+    margin: 20px auto 0;
+    padding: 0 20px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.titulo-dado {
+    display: flex;
+    justify-content: space-between;
+}
+
+.dados {
+    display: flex;
+    justify-content: space-between;
 }
 
 .bandeira {
