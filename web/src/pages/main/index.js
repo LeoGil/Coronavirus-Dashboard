@@ -52,17 +52,17 @@ export default class Main extends Component {
                         <div class="col-lg-4">
                             <article className="pais-article shadow" key={product.ourid}>
                                 <div class="row">
-                                    <div class="col"><img className="bandeira" src={"https://www.countryflags.io/" + product.code + "/flat/64.png"} /></div>
-                                    <div class="col font-weight-bold"><div class="text-center">Pais</div></div>
-                                    <div class="col font-weight-bold"><div class="text-center">Casos</div></div>
-                                    <div class="col font-weight-bold"><div class="text-center">Mortes</div></div>
-                                    <div class="col font-weight-bold"><div class="text-center">Recuperados</div></div>
+                                    <div class="col text-center"><img className="bandeira" src={"https://www.countryflags.io/" + product.code + "/flat/64.png"} /></div>
+                                    <div class="col font-weight-bold text-center">Pais</div>
+                                    <div class="col font-weight-bold text-center">Casos</div>
+                                    <div class="col font-weight-bold text-center">Mortes</div>
+                                    <div class="col font-weight-bold text-center">Recuperados</div>
                                     <div class="w-100"></div>
-                                    <div class="col">{}</div>
-                                    <div class="col"><div class="text-center">{product.title}</div></div>
-                                    <div class="col"><div class="text-center">{product.total_cases}</div></div>
-                                    <div class="col"><div class="text-center">{product.total_deaths}</div></div>
-                                    <div class="col"><div class="text-center">{product.total_recovered}</div></div>
+                                    <div class="col text-center">{}</div>
+                                    <div class="col text-center">{product.title}</div>
+                                    <div class="col text-center">{product.total_cases}</div>
+                                    <div class="col text-center">{product.total_deaths}</div>
+                                    <div class="col text-center">{product.total_recovered}</div>
                                 </div>
                             </article>
                         </div >
