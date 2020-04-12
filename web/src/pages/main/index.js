@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import api from '../../services/api'
-import { Link } from 'react-router-dom'
+//import { Link } from 'react-router-dom'
 
 import GlobalData from '../../components/Global'
 
@@ -13,7 +13,7 @@ export default class Main extends Component {
 
     componentDidMount() {
         this.loadProducts()
-        this.interval = setInterval(() => { this.loadProducts(true) }, 5000);
+        //this.interval = setInterval(() => { this.loadProducts(true) }, 5000);
     }
 
     componentWillUnmount() {
@@ -86,10 +86,10 @@ export default class Main extends Component {
             function comparer(otherArray) {
                 return function (current) {
                     return otherArray.filter(function (other) {
-                        return other.total_cases == current.total_cases &&
-                            other.total_recovered == current.total_recovered &&
-                            other.total_deaths == current.total_deaths
-                    }).length == 0;
+                        return other.total_cases === current.total_cases &&
+                            other.total_recovered === current.total_recovered &&
+                            other.total_deaths === current.total_deaths
+                    }).length === 0;
                 }
             }
 
@@ -121,17 +121,28 @@ export default class Main extends Component {
                     {products.map(product => (
                         <div className="col-lg-4">
                             <article className="pais-article shadow" key={product.ourid}>
-                                <div className="row">
-                                    <div className="col text-center"><img className="bandeira" src={"https://www.countryflags.io/" + product.code + "/flat/64.png"} /></div>
-                                    {/* <div className="col font-weight-bold text-center">Pais</div> */}
-                                    <div className="col font-weight-bold text-center">Casos</div>
-                                    <div className="col font-weight-bold text-center">Mortes</div>
-                                    <div className="col font-weight-bold text-center">Recuperados</div>
-                                    <div className="w-100"></div>
-                                    <div className="col font-weight-bold text-center">{product.title}</div>
-                                    <div className="col text-center">{product.total_cases}</div>
-                                    <div className="col text-center">{product.total_deaths}</div>
-                                    <div className="col text-center">{product.total_recovered}</div>
+                                <div className="row justify-content-center">
+                                    <div className="col-2">
+                                        <div className="row">
+                                            <div className="col my-auto">
+                                                <img className="bandeira" src={"https://www.countryflags.io/" + product.code + "/flat/64.png"} alt={"Bandeira " + product.title} />
+                                                <div className="font-weight-bold text-center">{product.title}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col my-auto">
+                                        <div className="row">
+                                            {/* <div className="col font-weight-bold text-center">Pais</div> */}
+                                            <div className="col font-weight-bold text-center">Casos</div>
+                                            <div className="col font-weight-bold text-center">Mortes</div>
+                                            <div className="col font-weight-bold text-center">Recuperados</div>
+                                        </div>
+                                        <div className="row">
+                                            <div className="col text-center">{product.total_cases}</div>
+                                            <div className="col text-center">{product.total_deaths}</div>
+                                            <div className="col text-center">{product.total_recovered}</div>
+                                        </div>
+                                    </div>
                                 </div>
                             </article>
                         </div >

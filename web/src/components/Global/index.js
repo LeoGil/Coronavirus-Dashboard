@@ -27,7 +27,7 @@ export default class GlobalData extends Component {
                 case 'warning':
                     NotificationManager.warning('Warning message', 'Close after 3000ms', 0);
                     break;
-                case 'error':
+                default:
                     NotificationManager.error('Error message', 'Click me!', 0, () => {
                         alert('callback');
                     });
