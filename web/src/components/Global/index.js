@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import api from '../../services/api'
-import { NotificationContainer, NotificationManager } from 'react-notifications';
-import '../../../node_modules/react-notifications/lib/notifications.css';
+
 
 import './styles.css'
 
@@ -15,32 +14,9 @@ export default class GlobalData extends Component {
         this.interval = setInterval(() => { this.loadGlobalData() }, 5000);
     }
 
-    createNotification = (type) => {
-        return () => {
-            switch (type) {
-                case 'info':
-                    NotificationManager.info('Atualizado global', null, 1000);
-                    break;
-                case 'success':
-                    NotificationManager.success('Success message', 'Title here', 1000);
-                    break;
-                case 'warning':
-                    NotificationManager.warning('Warning message', 'Close after 3000ms', 0);
-                    break;
-                default:
-                    NotificationManager.error('Error message', 'Click me!', 0, () => {
-                        alert('callback');
-                    });
-                    break;
-            }
-        };
-    };
-
     componentWillUnmount() {
         clearInterval(this.interval)
-        this.createNotification('success')
     }
-
 
     loadGlobalData = async () => {
         const response = await api.get(`/free-api?global=stats`)
@@ -80,8 +56,6 @@ export default class GlobalData extends Component {
                     <button className='btn btn-warning' onClick={this.createNotification('warning')}>Warning</button>
                     <hr />
                     <button className='btn btn-danger' onClick={this.createNotification('error')}>Error</button> */}
-
-                    <NotificationContainer />
                 </div>
             </article>
 

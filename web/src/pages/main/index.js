@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import api from '../../services/api'
+import { NotificationContainer, NotificationManager } from 'react-notifications';
+import '../../../node_modules/react-notifications/lib/notifications.css';
 //import { Link } from 'react-router-dom'
 
 import GlobalData from '../../components/Global'
@@ -13,41 +15,15 @@ export default class Main extends Component {
 
     componentDidMount() {
         this.loadProducts()
-        //this.interval = setInterval(() => { this.loadProducts(true) }, 5000);
+        this.interval = setInterval(() => { this.loadProducts(true, this.state.products) }, 5000);
     }
 
     componentWillUnmount() {
         clearInterval(this.interval);
     }
 
-    // compareObjects = (contryReturn = null) => {
 
-
-    //     if (contryReturn != null) {
-    //         var countryChecker = this.state.products
-    //         var countryReturnTest = contryReturn
-
-    //         function comparer(otherArray) {
-    //             return function (current) {
-    //                 return otherArray.filter(function (other) {
-    //                     return other.total_cases == current.total_cases &&
-    //                         other.total_recovered == current.total_recovered &&
-    //                         other.total_deaths == current.total_deaths
-    //                 }).length == 0;
-    //             }
-    //         }
-
-    //         var onlyInA = countryChecker.filter(comparer(countryReturnTest));
-    //         var onlyInB = countryReturnTest.filter(comparer(countryChecker));
-
-    //         var result = onlyInA.concat(onlyInB);
-
-    //         console.log(result);
-    //     }
-    // }
-
-
-    loadProducts = async (verificar) => {
+    loadProducts = async (verificar, stateAtual) => {
         const response = await api.get(`/free-api?countryTotals=ALL`)
         const { countryitems } = response.data
 
@@ -64,23 +40,11 @@ export default class Main extends Component {
             return comparison;
         }
 
-        countryitems[0][83] = {
-            "ourid": 1,
-            "title": "Afghanistan",
-            "code": "AF",
-            "source": "https://thevirustracker.com/afghanistan-coronavirus-information-af",
-            "total_cases": 600,
-            "total_recovered": 32,
-            "total_unresolved": 0,
-            "total_deaths": 18,
-            "total_new_cases_today": 34,
-            "total_new_deaths_today": 3,
-            "total_active_cases": 505,
-            "total_serious_cases": 0
-        }
+        // this.createNotification('warning')
+        // NotificationManager.warning('Warning message', 'Close after 3000ms', 0);
 
-        function compareObjects() {
-            var countryChecker = this.state.products
+        function compareObjects(stateAtual) {
+            var countryChecker = stateAtual
             var countryReturnTest = Object.values(countryitems[0]).sort(compare)
 
             function comparer(otherArray) {
@@ -98,11 +62,45 @@ export default class Main extends Component {
 
             var result = onlyInA.concat(onlyInB);
 
-            console.log(result);
+            function createNotification(type, code, body = null) {
+                switch (type) {
+                    case 'info':
+                        NotificationManager.info('Atualizado global', null, 1000);
+                        break;
+                    case 'success':
+                        NotificationManager.success('Success message', 'Title here', 1000);
+                        break;
+                    case 'warning':
+                        NotificationManager.warning('te', "<img src='https://www.countryflags.io/" + code + "/flat/64.png' />", 0);
+                        break;
+                    default:
+                        NotificationManager.error('Error message', 'Click me!', 0, () => {
+                            alert('callback');
+                        });
+                        break;
+                }
+            };
+
+            // console.log(countryChecker[1].total_cases)
+            // createNotification('warning', countryChecker[1].code)
+            console.log(result)
+
+            // OUTRO MODO DE FAZER
+            // const result1 = countryChecker.filter(
+            //     ({ value: value1, display: display1 }) => !countryReturnTest.some(({ value: value2, display: display2 }) => value2 === value1 && display2 === display1)
+            // ); 
+
+            // const result2 = countryReturnTest.filter(
+            //     ({ value: value1, display: display1 }) => !countryChecker.some(({ value: value2, display: display2 }) => value2 === value1 && display2 === display1)
+            // );
+
+            // var results = result1.concat(result2);
+            // console.log(results);
+
         }
 
         if (verificar === true) {
-            compareObjects()
+            compareObjects(stateAtual)
         }
 
 
@@ -114,6 +112,7 @@ export default class Main extends Component {
 
         return (
             <div className="container-fluid">
+                <NotificationContainer />
                 <div className="container">
                     <GlobalData />
                 </div>
@@ -122,10 +121,12 @@ export default class Main extends Component {
                         <div className="col-lg-4">
                             <article className="pais-article shadow" key={product.ourid}>
                                 <div className="row justify-content-center">
-                                    <div className="col-2">
+                                    <div className="col-3">
                                         <div className="row">
                                             <div className="col my-auto">
-                                                <img className="bandeira" src={"https://www.countryflags.io/" + product.code + "/flat/64.png"} alt={"Bandeira " + product.title} />
+                                                <div className="bandeira text-center">
+                                                    <img src={"https://www.countryflags.io/" + product.code + "/flat/64.png"} alt={"Bandeira " + product.title} />
+                                                </div>
                                                 <div className="font-weight-bold text-center">{product.title}</div>
                                             </div>
                                         </div>
