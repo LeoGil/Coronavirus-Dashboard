@@ -10,3 +10,7 @@ body {
     background: #323232!important;
     color: #333;
 }
+
+.notification {
+    box-shadow: none!important;
+}

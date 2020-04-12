@@ -13,15 +13,41 @@ export default class Main extends Component {
 
     componentDidMount() {
         this.loadProducts()
-        this.interval = setInterval(() => { this.loadProducts(); console.log('atualizado') }, 5000);
+        this.interval = setInterval(() => { this.loadProducts(true) }, 5000);
     }
 
     componentWillUnmount() {
         clearInterval(this.interval);
     }
 
+    // compareObjects = (contryReturn = null) => {
 
-    loadProducts = async () => {
+
+    //     if (contryReturn != null) {
+    //         var countryChecker = this.state.products
+    //         var countryReturnTest = contryReturn
+
+    //         function comparer(otherArray) {
+    //             return function (current) {
+    //                 return otherArray.filter(function (other) {
+    //                     return other.total_cases == current.total_cases &&
+    //                         other.total_recovered == current.total_recovered &&
+    //                         other.total_deaths == current.total_deaths
+    //                 }).length == 0;
+    //             }
+    //         }
+
+    //         var onlyInA = countryChecker.filter(comparer(countryReturnTest));
+    //         var onlyInB = countryReturnTest.filter(comparer(countryChecker));
+
+    //         var result = onlyInA.concat(onlyInB);
+
+    //         console.log(result);
+    //     }
+    // }
+
+
+    loadProducts = async (verificar) => {
         const response = await api.get(`/free-api?countryTotals=ALL`)
         const { countryitems } = response.data
 
@@ -38,6 +64,48 @@ export default class Main extends Component {
             return comparison;
         }
 
+        countryitems[0][83] = {
+            "ourid": 1,
+            "title": "Afghanistan",
+            "code": "AF",
+            "source": "https://thevirustracker.com/afghanistan-coronavirus-information-af",
+            "total_cases": 600,
+            "total_recovered": 32,
+            "total_unresolved": 0,
+            "total_deaths": 18,
+            "total_new_cases_today": 34,
+            "total_new_deaths_today": 3,
+            "total_active_cases": 505,
+            "total_serious_cases": 0
+        }
+
+        function compareObjects() {
+            var countryChecker = this.state.products
+            var countryReturnTest = Object.values(countryitems[0]).sort(compare)
+
+            function comparer(otherArray) {
+                return function (current) {
+                    return otherArray.filter(function (other) {
+                        return other.total_cases == current.total_cases &&
+                            other.total_recovered == current.total_recovered &&
+                            other.total_deaths == current.total_deaths
+                    }).length == 0;
+                }
+            }
+
+            var onlyInA = countryChecker.filter(comparer(countryReturnTest));
+            var onlyInB = countryReturnTest.filter(comparer(countryChecker));
+
+            var result = onlyInA.concat(onlyInB);
+
+            console.log(result);
+        }
+
+        if (verificar === true) {
+            compareObjects()
+        }
+
+
         this.setState({ products: Object.values(countryitems[0]).sort(compare) })
     }
 
@@ -45,24 +113,25 @@ export default class Main extends Component {
         const { products } = this.state
 
         return (
-            <div class="container-fluid">
-                <GlobalData />
-                <div class="row justify-content-md-center">
+            <div className="container-fluid">
+                <div className="container">
+                    <GlobalData />
+                </div>
+                <div className="row justify-content-md-center">
                     {products.map(product => (
-                        <div class="col-lg-4">
+                        <div className="col-lg-4">
                             <article className="pais-article shadow" key={product.ourid}>
-                                <div class="row">
-                                    <div class="col text-center"><img className="bandeira" src={"https://www.countryflags.io/" + product.code + "/flat/64.png"} /></div>
-                                    <div class="col font-weight-bold text-center">Pais</div>
-                                    <div class="col font-weight-bold text-center">Casos</div>
-                                    <div class="col font-weight-bold text-center">Mortes</div>
-                                    <div class="col font-weight-bold text-center">Recuperados</div>
-                                    <div class="w-100"></div>
-                                    <div class="col text-center">{}</div>
-                                    <div class="col text-center">{product.title}</div>
-                                    <div class="col text-center">{product.total_cases}</div>
-                                    <div class="col text-center">{product.total_deaths}</div>
-                                    <div class="col text-center">{product.total_recovered}</div>
+                                <div className="row">
+                                    <div className="col text-center"><img className="bandeira" src={"https://www.countryflags.io/" + product.code + "/flat/64.png"} /></div>
+                                    {/* <div className="col font-weight-bold text-center">Pais</div> */}
+                                    <div className="col font-weight-bold text-center">Casos</div>
+                                    <div className="col font-weight-bold text-center">Mortes</div>
+                                    <div className="col font-weight-bold text-center">Recuperados</div>
+                                    <div className="w-100"></div>
+                                    <div className="col font-weight-bold text-center">{product.title}</div>
+                                    <div className="col text-center">{product.total_cases}</div>
+                                    <div className="col text-center">{product.total_deaths}</div>
+                                    <div className="col text-center">{product.total_recovered}</div>
                                 </div>
                             </article>
                         </div >

@@ -3,7 +3,7 @@ import './styles.css'
 
 
 const Header = () => (
-    <header id="main-header">JsHunt</header>
+    <header id="main-header">DASHBOARD</header>
 )
 
 export default Header
