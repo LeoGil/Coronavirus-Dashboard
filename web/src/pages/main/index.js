@@ -62,7 +62,7 @@ export default class Main extends Component {
 
             var result = onlyInA.concat(onlyInB);
 
-            function createNotification(type, code, body = null) {
+            function createNotification(type, code, title, body = null) {
                 switch (type) {
                     case 'info':
                         NotificationManager.info('Atualizado global', null, 1000);
@@ -71,7 +71,7 @@ export default class Main extends Component {
                         NotificationManager.success('Success message', 'Title here', 1000);
                         break;
                     case 'warning':
-                        NotificationManager.warning('te', "<img src='https://www.countryflags.io/" + code + "/flat/64.png' />", 0);
+                        NotificationManager.warning(<img src={'https://www.countryflags.io/' + code + '/flat/64.png'} />, title , 0);
                         break;
                     default:
                         NotificationManager.error('Error message', 'Click me!', 0, () => {
@@ -97,6 +97,7 @@ export default class Main extends Component {
             // var results = result1.concat(result2);
             // console.log(results);
 
+            createNotification('warning', 'US', 'USA');
         }
 
         if (verificar === true) {
