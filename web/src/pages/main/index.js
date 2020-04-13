@@ -44,6 +44,25 @@ export default class Main extends Component {
         // NotificationManager.warning('Warning message', 'Close after 3000ms', 0);
 
         function compareObjects(stateAtual) {
+            function createNotification(type, code, title, body = null) {
+                switch (type) {
+                    case 'info':
+                        NotificationManager.info('Atualizado global', null, 1000);
+                        break;
+                    case 'success':
+                        NotificationManager.success('Success message', 'Title here', 1000);
+                        break;
+                    case 'warning':
+                        NotificationManager.warning(<img src={'https://www.countryflags.io/' + code + '/flat/64.png'} />, title, 0);
+                        break;
+                    default:
+                        NotificationManager.error('Error message', 'Click me!', 0, () => {
+                            alert('callback');
+                        });
+                        break;
+                }
+            };
+
             var countryChecker = stateAtual
             var countryReturnTest = Object.values(countryitems[0]).sort(compare)
 
@@ -62,24 +81,10 @@ export default class Main extends Component {
 
             var result = onlyInA.concat(onlyInB);
 
-            function createNotification(type, code, title, body = null) {
-                switch (type) {
-                    case 'info':
-                        NotificationManager.info('Atualizado global', null, 1000);
-                        break;
-                    case 'success':
-                        NotificationManager.success('Success message', 'Title here', 1000);
-                        break;
-                    case 'warning':
-                        NotificationManager.warning(<img src={'https://www.countryflags.io/' + code + '/flat/64.png'} />, title , 0);
-                        break;
-                    default:
-                        NotificationManager.error('Error message', 'Click me!', 0, () => {
-                            alert('callback');
-                        });
-                        break;
-                }
-            };
+            //Verifica se teve alguma modificação
+            if (Object.keys(result).length !== 0 && result.constructor === Array) {
+                createNotification('warning', 'US', 'USA');
+            }
 
             // console.log(countryChecker[1].total_cases)
             // createNotification('warning', countryChecker[1].code)
@@ -96,8 +101,6 @@ export default class Main extends Component {
 
             // var results = result1.concat(result2);
             // console.log(results);
-
-            createNotification('warning', 'US', 'USA');
         }
 
         if (verificar === true) {
