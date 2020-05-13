@@ -1,6 +1,6 @@
 {
-  "short_name": "Covid Dashboard",
-  "name": "Covid-19 Dashboard made in React",
+  "short_name": "React App",
+  "name": "Create React App Sample",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +20,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#323232",
-  "background_color": "#333"
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
 }
