@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d7c31c1aea0a231d55cd8c8650f94ce7",
+    "revision": "5831f7beeab30e9e2342512dc3ce1b66",
     "url": "/Coronavirus-Dashboard/index.html"
   },
   {
-    "revision": "731c3d7687c6e98a099a",
+    "revision": "d29185a6b4271f7ee109",
     "url": "/Coronavirus-Dashboard/static/css/2.ecd5ced7.chunk.css"
   },
   {
-    "revision": "5d87df14ec9e8170f5c2",
+    "revision": "82251af40e6fd0f51cb5",
     "url": "/Coronavirus-Dashboard/static/css/main.8176d16a.chunk.css"
   },
   {
-    "revision": "731c3d7687c6e98a099a",
-    "url": "/Coronavirus-Dashboard/static/js/2.49bc7a4d.chunk.js"
+    "revision": "d29185a6b4271f7ee109",
+    "url": "/Coronavirus-Dashboard/static/js/2.23c42fd8.chunk.js"
   },
   {
     "revision": "3453b8997016469371284a28c0e873e2",
-    "url": "/Coronavirus-Dashboard/static/js/2.49bc7a4d.chunk.js.LICENSE.txt"
+    "url": "/Coronavirus-Dashboard/static/js/2.23c42fd8.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "5d87df14ec9e8170f5c2",
-    "url": "/Coronavirus-Dashboard/static/js/main.74606133.chunk.js"
+    "revision": "82251af40e6fd0f51cb5",
+    "url": "/Coronavirus-Dashboard/static/js/main.672b3526.chunk.js"
   },
   {
     "revision": "c71146338746c5244f67",
