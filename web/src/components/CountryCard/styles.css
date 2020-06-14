@@ -11,7 +11,7 @@
 }
 
 .pais-article:hover {
-    transform: scale(1.07);
+    transform: scale(1.06);
     cursor: pointer;
 }
 
@@ -19,4 +19,9 @@
     border-radius: 40%;
     width: 100%;
     height: 64px;
+}
+
+.unstyled-link {
+    color: var(--dark)!important;
+    text-decoration: none!important;
 }
