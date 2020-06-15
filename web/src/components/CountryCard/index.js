@@ -9,7 +9,7 @@ export default function CountryCard(props) {
     country.code = (country.code === 'DP' ? 'JP' : country.code);
 
     return (
-        <div className="col-lg-3">
+        <div className="col-lg-4">
             <Link to={`/Coronavirus-Dashboard/${country.code}`} className="unstyled-link">
                 <article className="pais-article shadow">
                     <div className="row justify-content-center">
