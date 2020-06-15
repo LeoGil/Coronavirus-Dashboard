@@ -11,11 +11,11 @@ const countriesController = new CountriesController()
 const globalController = new GlobalController()
 
 //Rotas do CONTRY
-//routes.get('/contry/:code', contryController.show)
+routes.get('/country/:id', contryController.show)
 
 //Rotas do CONTRIES
 routes.get('/countries', countriesController.index)
 
 //Rotas do GLOBAL
-//routes.get('/global', globalController.index)
+routes.get('/global', globalController.show)
 export default routes;

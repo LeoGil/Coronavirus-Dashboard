@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import api from '../../services/api'
-import { NotificationContainer, NotificationManager } from 'react-notifications';
+import { NotificationContainer } from 'react-notifications';
+//NotificationManager
 import 'react-notifications/lib/notifications.css';
 
 import GlobalData from '../../components/Global'
@@ -23,26 +24,19 @@ export default class Main extends Component {
     }
 
 
-    loadCountryData = async (executa, stateAtual) => {
+    loadCountryData = async () => {
         const response = await api.get(`/countries`)
-        const countryitems = response.data
-
-
-        this.setState({ countries: countryitems });
+        this.setState({ countries: response.data });
     }
 
     loadGlobalData = async () => {
-        const response = await api.get(`/free-api?global=stats`);
-        const { results } = response.data;
-
-
-        this.setState({ globaldata: results[0] });
+        const response = await api.get(`/global`);
+        this.setState({ globaldata: response.data });
     }
 
     render() {
         const { countries, globaldata } = this.state;
-        console.log(countries)
-
+        console.log('Testando quantas vezes essa porra executa');
         return (
             <div className="container-fluid">
                 <NotificationContainer />
