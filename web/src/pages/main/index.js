@@ -4,7 +4,7 @@ import { NotificationContainer } from 'react-notifications';
 //NotificationManager
 import 'react-notifications/lib/notifications.css';
 
-import GlobalData from '../../components/Global'
+import GlobalCard from '../../components/GlobalCard'
 import CountryCard from '../../components/CountryCard'
 
 export default function Main() {
@@ -36,7 +36,7 @@ export default function Main() {
         <div className="container-fluid">
             <NotificationContainer />
             <div className="container">
-                <GlobalData globaldata={globalData} />
+                <GlobalCard globaldata={globalData} />
             </div>
             <div className="row justify-content-md-center">
                 {countries.map(data_map => (
