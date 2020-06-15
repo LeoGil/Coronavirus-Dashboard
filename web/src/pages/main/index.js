@@ -16,7 +16,6 @@ export default function Main() {
         const loadCountryData = async () => {
             const response = await api.get(`/countries`);
             setCountries(response.data);
-    
         }
     
         const loadGlobalData = async () => {
@@ -25,12 +24,14 @@ export default function Main() {
         }
         loadCountryData()
         loadGlobalData()
-        const interval = setInterval(() => { loadCountryData(); loadGlobalData() }, 10000);
+        const interval = setInterval(() => { 
+            loadCountryData();
+             loadGlobalData()
+        }, 10000);
         clearInterval(interval);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    console.log('Testando quantas vezes essa porra executa');
     return (
         <div className="container-fluid">
             <NotificationContainer />
