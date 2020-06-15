@@ -1,22 +1,22 @@
-import { Request, Response } from 'express'
-import api from '../services/api';
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _api = require('../services/api'); var _api2 = _interopRequireDefault(_api);
 
-interface Country {
-    ourid: number;
-    title: string;
-    code: string;
-    total_cases: number;
-    total_recovered: number;
-    total_deaths: number;
-}
+
+
+
+
+
+
+
+
 
 class ContriesController {
-    async index(request: Request, response: Response) {
-        const responseData = await api.get(`/free-api?countryTotals=ALL`)
+    async index(request, response) {
+        const responseData = await _api2.default.get(`/free-api?countryTotals=ALL`)
         const { countryitems } = responseData.data
-        let countries: Country[] = countryitems[0]
+        let countries = countryitems[0]
 
-        function sortCountries(a: Country, b: Country) {
+        function sortCountries(a, b) {
             const totalCasesA = a.total_cases
             const totalCasesB = b.total_cases
 
@@ -35,4 +35,4 @@ class ContriesController {
     }
 }
 
-export default ContriesController
+exports. default = ContriesController
