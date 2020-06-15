@@ -21,6 +21,11 @@
     height: 64px;
 }
 
+.bandeira-img {
+    border-radius: 10px;
+    width: 67px;
+}
+
 .unstyled-link {
     color: var(--dark)!important;
     text-decoration: none!important;

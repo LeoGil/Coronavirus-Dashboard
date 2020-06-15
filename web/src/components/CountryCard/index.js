@@ -17,7 +17,8 @@ export default function CountryCard(props) {
                             <div className="row">
                                 <div className="col my-auto">
                                     <div className="bandeira text-center">
-                                        <img src={"https://www.countryflags.io/" + country.code + "/flat/64.png"} alt={"Bandeira " + country.title} />
+                                        {/* <img src={"https://www.countryflags.io/" + country.code + "/flat/64.png"} alt={"Bandeira " + country.title} /> */}
+                                        <img className="bandeira-img" src={"https://cdn.u21.io/flags/4x3/" + (country.code).toLowerCase() + ".svg"} alt={"Bandeira " + country.title} />
                                     </div>
                                     <div className="font-weight-bold text-center">{country.title}</div>
                                 </div>
