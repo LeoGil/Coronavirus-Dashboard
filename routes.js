@@ -13,7 +13,7 @@ const globalController = new (0, _GlobalController2.default)()
 //Mensagem de boas vindas
 routes.get('/', (request, response) => {
   return response.json({
-    message: 'yay Coronavirus-Dashboard Server API: https://leogil.github.io/Coronavirus-Dashboard'
+    message: 'Coronavirus-Dashboard Server API: https://leogil.github.io/Coronavirus-Dashboard'
 
   })
 })
