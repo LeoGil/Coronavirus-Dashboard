@@ -12,21 +12,21 @@ export default function Main() {
     const [globalData, setGlobalData] = useState([]);
 
     //Get Country Data
-    useEffect(()=>{
+    useEffect(() => {
         const loadCountryData = async () => {
             const response = await api.get(`/countries`);
             setCountries(response.data);
         }
-    
+
         const loadGlobalData = async () => {
             const response = await api.get(`/global`);
             setGlobalData(response.data);
         }
         loadCountryData()
         loadGlobalData()
-        const interval = setInterval(() => { 
+        const interval = setInterval(() => {
             loadCountryData();
-             loadGlobalData()
+            loadGlobalData()
         }, 10000);
         clearInterval(interval);
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -35,9 +35,9 @@ export default function Main() {
     return (
         <div className="container-fluid">
             <NotificationContainer />
-            <div className="container">
-                <GlobalCard globaldata={globalData} />
-            </div>
+            {/* <div className="container-fluid"> */}
+            <GlobalCard globaldata={globalData} />
+            {/* </div> */}
             <div className="row justify-content-md-center">
                 {countries.map(data_map => (
                     <CountryCard

@@ -2,10 +2,17 @@
     /* max-width: 700px; */
     margin: 20px auto 0;
     padding: 0 20px;
-    background: #ccc;
-    border: 1px solid #ddd;
+    background: #29344a;
     border-radius: 5px;
     padding: 20px;
     margin-bottom: 20px;
     /* display: flex; */
+}
+
+.global-data-title {
+    font-size: 30px;
+}
+
+.global-data-numbers {
+    font-size: 55px;
 }

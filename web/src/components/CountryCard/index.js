@@ -20,21 +20,21 @@ export default function CountryCard(props) {
                                         {/* <img src={"https://www.countryflags.io/" + country.code + "/flat/64.png"} alt={"Bandeira " + country.title} /> */}
                                         <img className="bandeira-img" src={"https://cdn.u21.io/flags/4x3/" + (country.code).toLowerCase() + ".svg"} alt={"Bandeira " + country.title} />
                                     </div>
-                                    <div className="font-weight-bold text-center">{country.title}</div>
+                                    <div className="font-weight-bold text-center text-light">{country.title}</div>
                                 </div>
                             </div>
                         </div>
                         <div className="col my-auto">
-                            <div className="row">
+                            <div className="row text-light">
                                 {/* <div className="col font-weight-bold text-center">Pais</div> */}
                                 <div className="col font-weight-bold text-center">Casos</div>
                                 <div className="col font-weight-bold text-center">Mortes</div>
                                 <div className="col font-weight-bold text-center">Recuperados</div>
                             </div>
                             <div className="row">
-                                <div className="col text-center">{nf.format(country.total_cases)}</div>
-                                <div className="col text-center">{nf.format(country.total_deaths)}</div>
-                                <div className="col text-center">{nf.format(country.total_recovered)}</div>
+                                <div className="col text-center color-cases">{nf.format(country.total_cases)}</div>
+                                <div className="col text-center color-death">{nf.format(country.total_deaths)}</div>
+                                <div className="col text-center color-recovered">{nf.format(country.total_recovered)}</div>
                             </div>
                         </div>
                     </div>

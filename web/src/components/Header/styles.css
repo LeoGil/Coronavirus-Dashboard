@@ -1,7 +1,19 @@
-header#main-header {
+/* header#main-header {
     height: 60px;
     width: 100%;
-    background: #da552f;
+    background: #222c45;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+#main-header {
+    height: 60px;
+    width: 100%;
+    background: #222c45;
     font-size: 18px;
     font-weight: bold;
     color: #fff;

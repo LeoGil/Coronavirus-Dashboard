@@ -1,13 +1,12 @@
 .pais-article {
-    /* max-width: 700px; */
     margin: 20px auto 0;
-    padding: 0 20px;
-    background: #ccc;
-    border: 1px solid #ddd;
+    background: #29344a;
     border-radius: 5px;
     padding: 20px;
     margin-bottom: 20px;
     transition: all 0.2s;
+    font-weight: 700;
+    font-size: 18px;
 }
 
 .pais-article:hover {
