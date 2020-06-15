@@ -10,6 +10,14 @@ const contryController = new (0, _ContryController2.default)()
 const countriesController = new (0, _CountriesController2.default)()
 const globalController = new (0, _GlobalController2.default)()
 
+//Mensagem de boas vindas
+routes.get('/', (request, response) => {
+  return response.json({
+    message: 'Coronavirus-Dashboard Server API: https://leogil.github.io/Coronavirus-Dashboard'
+
+  })
+})
+
 //Rotas do CONTRY
 routes.get('/country/:id', contryController.show)
 
