@@ -7,7 +7,7 @@ const Header = () => (
     <div id="main-header" class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 shadow-sm">
         <h5 class="my-0 mr-md-auto font-weight-normal ">
             <div class="blobs-container">
-                <span>DASHBOARD</span>
+                <span className="mt-2">DASHBOARD</span>
                 <div class="blob red"></div>
             </div>
         </h5>
