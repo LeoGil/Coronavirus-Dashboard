@@ -3,12 +3,16 @@ import { BrowserRouter, Route } from 'react-router-dom'
 
 import Main from './pages/main'
 import Country from './pages/country'
+import Header from './components/Header'
 
-const Routes = () => (
+import rootpath from './services/getRootPath';
+
+export default function Routes() {
+  return (
     <BrowserRouter>
-            <Route exact path="/Coronavirus-Dashboard" component={Main} />
-            <Route exact path="/Coronavirus-Dashboard/:code" component={Country} />
+      <Route path={rootpath} component={Header} />
+      <Route exact path={rootpath} component={Main} />
+      <Route exact path={`${rootpath}:code`} component={Country} />
     </BrowserRouter>
-)
-
-export default Routes
+  )
+}

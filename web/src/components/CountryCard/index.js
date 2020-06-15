@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './styles.css'
+import rootpath from '../../services/getRootPath';
 
 export default function CountryCard(props) {
     const nf = new Intl.NumberFormat();
@@ -10,7 +11,7 @@ export default function CountryCard(props) {
 
     return (
         <div className="col-lg-4">
-            <Link to={`/Coronavirus-Dashboard/${country.code}`} className="unstyled-link">
+            <Link to={`${rootpath}${country.code}`} className="unstyled-link">
                 <article className="pais-article shadow">
                     <div className="row justify-content-center">
                         <div className="col-3">

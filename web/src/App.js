@@ -4,11 +4,9 @@ import Routes from './routes'
 import './styles.css'
 import "bootstrap/dist/css/bootstrap.css";
 
-import Header from './components/Header'
 
 const App = () => (
   <div className="App">
-    <Header />
     <Routes />
   </div >
 )
