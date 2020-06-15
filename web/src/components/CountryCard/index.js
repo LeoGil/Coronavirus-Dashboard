@@ -27,9 +27,9 @@ export default function CountryCard(props) {
                         <div className="col my-auto">
                             <div className="row text-light">
                                 {/* <div className="col font-weight-bold text-center">Pais</div> */}
-                                <div className="col font-weight-bold text-center">Casos</div>
-                                <div className="col font-weight-bold text-center">Mortes</div>
-                                <div className="col font-weight-bold text-center">Recuperados</div>
+                                <div className="col font-weight-bold text-center">Cases</div>
+                                <div className="col font-weight-bold text-center">Deaths</div>
+                                <div className="col font-weight-bold text-center">Recovered</div>
                             </div>
                             <div className="row">
                                 <div className="col text-center color-cases">{nf.format(country.total_cases)}</div>

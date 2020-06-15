@@ -13,12 +13,12 @@ export default function GlobalData(props) {
             <article className="global-article shadow">
 
                 <div className="row">
-                    <div className="col font-weight-bold text-center global-data-title text-light">Casos</div>
-                    <div className="col font-weight-bold text-center global-data-title text-light">Mortes</div>
-                    <div className="col font-weight-bold text-center global-data-title text-light">Recuperados</div>
-                    <div className="col font-weight-bold text-center global-data-title text-light">Casos ativos</div>
-                    <div className="col font-weight-bold text-center global-data-title text-light">Novos casos hoje</div>
-                    <div className="col font-weight-bold text-center global-data-title text-light">Mortes hoje</div>
+                    <div className="col font-weight-bold text-center global-data-title text-light">Cases</div>
+                    <div className="col font-weight-bold text-center global-data-title text-light">Deaths</div>
+                    <div className="col font-weight-bold text-center global-data-title text-light">Recovered</div>
+                    <div className="col font-weight-bold text-center global-data-title text-light">Active cases</div>
+                    <div className="col font-weight-bold text-center global-data-title text-light">New cases today</div>
+                    <div className="col font-weight-bold text-center global-data-title text-light">New deaths today</div>
                     <div className="w-100"></div>
                     <div className="col text-center global-data-numbers color-cases">{nf.format(globaldata.total_cases)}</div>
                     <div className="col text-center global-data-numbers color-death">{nf.format(globaldata.total_deaths)}</div>
