@@ -18,6 +18,11 @@ body {
     box-shadow: none!important;
 }
 
+.title-components {
+    font-weight: 800!important;
+    font-size: 55px;
+}
+
 .color-cases {
     color: #0ee9cb;
 }

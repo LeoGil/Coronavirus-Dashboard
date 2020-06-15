@@ -39,6 +39,9 @@ export default function Main() {
             <GlobalCard globaldata={globalData} />
             {/* </div> */}
             <div className="row justify-content-md-center">
+                <div className="col-12">
+                    <p class="text-center text-white title-components">Countries Data</p>
+                </div>
                 {countries.map(data_map => (
                     <CountryCard
                         key={data_map.ourid}
