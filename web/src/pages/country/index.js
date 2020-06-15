@@ -26,7 +26,7 @@ export default function Country() {
         document.body.appendChild(script);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-
+    console.log(country.code); //TODO tirar console.log de country
     return (
         <div className="row justify-content-center text-white align-items-center vh-100">
             <div

@@ -2,6 +2,7 @@ import React from 'react';
 import Routes from './routes'
 
 import './styles.css'
+import "bootstrap/dist/css/bootstrap.css";
 
 import Header from './components/Header'
 
