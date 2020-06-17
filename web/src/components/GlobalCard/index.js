@@ -9,7 +9,7 @@ export default function GlobalData(props) {
     const active = (globaldata.total_cases - globaldata.total_deaths - globaldata.total_recovered)
     return (
         <div>
-            <p class="text-center text-white title-components">Global Data</p>
+            <p className="text-center text-white title-components">Global Data</p>
             <article className="global-article shadow">
 
                 <div className="row">

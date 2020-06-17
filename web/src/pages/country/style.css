@@ -1,3 +1,6 @@
-.class-teste {
-    min-height: 87vh
+.chart-div {
+    background: #29344a;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
 }

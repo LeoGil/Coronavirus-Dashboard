@@ -12,7 +12,7 @@ export default function Routes() {
     <BrowserRouter>
       <Route path={rootpath} component={Header} />
       <Route exact path={rootpath} component={Main} />
-      <Route exact path={`${rootpath}:code`} component={Country} />
+      <Route exact path={`${rootpath}:country_code`} component={Country} />
     </BrowserRouter>
   )
 }
