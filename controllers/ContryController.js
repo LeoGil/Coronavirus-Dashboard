@@ -17,6 +17,17 @@ class ContryController {
 
         return response.json(country);
     }
+
+    async timeline(request, response) {
+        const { id } = request.params
+
+        const responseData = await _api2.default.get(`/free-api?countryTimeline=${id}`)
+
+        const { timelineitems } = responseData.data;
+        delete timelineitems[0]['stat']
+
+        return response.json(timelineitems);
+    }
 }
 
 exports. default = ContryController
