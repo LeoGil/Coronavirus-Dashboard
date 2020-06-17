@@ -2,13 +2,12 @@
   "name": "covid_api",
   "version": "1.2.0",
   "description": "A simple handler api for https://api.thevirustracker.com/ json",
-  "main": "src/index.ts",
+  "main": "src/server.ts",
   "scripts": {
-    "start": "node",
     "build": "sucrase ./src -d ./dist --transforms typescript,imports",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "ts-node-dev --transpileOnly --ignore-watch node_modules src/index.ts",
-    "predeploy": "sucrase ./src -d ./dist --transforms typescript,imports",
+    "dev": "ts-node-dev --transpileOnly --ignore-watch node_modules src/server.ts",
+    "predeploy" : "sucrase ./src -d ./dist --transforms typescript,imports && cp ./src/package.json ./dist",
     "deploy": "gh-pages -d ./dist -b heroku_api && rm -rf ./dist"
   },
   "keywords": [],
