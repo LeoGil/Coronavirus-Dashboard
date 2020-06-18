@@ -313,7 +313,7 @@ export default function Country() {
                     <div className="col-8">
                         <section className=" chart-div">
                             <h2>Timeline Cases and Deaths</h2>
-                            <canvas className="mt-4" id={`cav_cases_${country_code}`} ></canvas>
+                            <canvas className="mt-4" height='164px' id={`cav_cases_${country_code}`} ></canvas>
                         </section>
                     </div>
                     <div className="col-4">
