@@ -46,3 +46,19 @@ body {
 .color-new-death{
     color: #af1c1c;
 }
+
+.color-new-recoveries{
+    color: #2a8e3c;
+}
+
+.color-tests{
+    color: #6bfb31;
+}
+
+.color-critical{
+    color: #dc3b1f;
+}
+
+.color-affected{
+    color: #da8213;
+}

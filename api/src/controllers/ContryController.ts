@@ -1,32 +1,56 @@
 import { Request, Response } from 'express'
-import api from '../services/api';
+import { api, api_timeline_global } from '../services/api';
 
 class ContryController {
+    // async show(request: Request, response: Response) {
+    //     const { id } = request.params
+
+    //     const responseData = await api.get(`/free-api?countryTotal=${id}`)
+
+    //     const { countrydata } = responseData.data;
+    //     const { info } = countrydata[0];
+    //     const country = {
+    //         ...info,
+    //         ...countrydata[0]
+    //     }
+    //     delete country.info
+
+    //     return response.json(country);
+    // }
+
     async show(request: Request, response: Response) {
         const { id } = request.params
 
-        const responseData = await api.get(`/free-api?countryTotal=${id}`)
+        const responseData = await api_timeline_global.get(`/countries/${id}`)
 
-        const { countrydata } = responseData.data;
-        const { info } = countrydata[0];
+        const countrydata = responseData.data;
+        const { countryInfo } = countrydata;
         const country = {
-            ...info,
-            ...countrydata[0]
+            ...countryInfo,
+            ...countrydata
         }
-        delete country.info
+        delete country.countryInfo
 
         return response.json(country);
     }
 
+    // async timeline(request: Request, response: Response) {
+    //     const { id } = request.params
+
+    //     const responseData = await api.get(`/free-api?countryTimeline=${id}`)
+
+    //     const { timelineitems } = responseData.data;
+    //     delete timelineitems[0]['stat']
+
+    //     return response.json(timelineitems);
+    // }
+
     async timeline(request: Request, response: Response) {
         const { id } = request.params
 
-        const responseData = await api.get(`/free-api?countryTimeline=${id}`)
+        const responseData = await api_timeline_global.get(`/historical/${id}?lastdays=all`)
 
-        const { timelineitems } = responseData.data;
-        delete timelineitems[0]['stat']
-
-        return response.json(timelineitems);
+        return response.json(responseData.data);
     }
 }
 
