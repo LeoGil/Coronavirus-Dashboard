@@ -27,4 +27,5 @@ routes.get('/countries', countriesController.index)
 
 //Rotas do GLOBAL
 routes.get('/global', globalController.show)
+routes.get('/global_timeline', globalController.timeline)
 exports. default = routes;
