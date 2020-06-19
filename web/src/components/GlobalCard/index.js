@@ -2,9 +2,8 @@ import React from 'react';
 
 import './styles.css';
 
-export default function GlobalData(props) {
+export default function GlobalData({globaldata}) {
     const nf = new Intl.NumberFormat();
-    const { globaldata } = props;
 
     return (
         <div>

@@ -3,9 +3,8 @@ import { Link } from 'react-router-dom';
 import './styles.css'
 import rootpath from '../../services/getRootPath';
 
-export default function CountryCard(props) {
+export default function CountryCard({ country }) {
     const nf = new Intl.NumberFormat();
-    let { country } = props;
 
     country.iso2 = (country.country === 'MS Zaandam' ? 'US' : country.iso2)
     country.iso2 = (country.country === 'Diamond Princess' ? 'US' : country.iso2)
