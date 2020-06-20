@@ -1,0 +1,32 @@
+.global-article {
+  margin: 20px auto 20px;
+  padding: 0 20px;
+  background: #29344a;
+  border-radius: 5px;
+  padding: 20px;
+  width: 100%;
+  font-weight: 800;
+  .cases {
+    display: flex;
+    flex-wrap: wrap;
+    div {
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+    .global-data-title {
+      font-size: 1.5rem;
+      @media(max-width:499px) {
+        font-size:1rem;
+      }
+    }
+    .global-data-numbers {
+      font-size: 3rem;
+      @media(max-width:499px) {
+        font-size:1.7rem;
+      }
+      font-weight: 800;
+    }
+  }
+}

@@ -257,7 +257,7 @@ export default function Main() {
 
                 <div className="row justify-content-md-center">
                     <div className="col-12">
-                        <p className="text-center text-white title-components">Countries Data</p>
+                        <h1 className="text-center text-white title-components">Countries Data</h1>
                     </div>
                     {countries.map(data_map => (
                         <CountryCard

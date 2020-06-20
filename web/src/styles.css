@@ -35,7 +35,7 @@ body {
     font-family: 'Open Sans', -apple-system, Helvetica, sans-serif;
     font-weight: 600;
     background: var(--background)!important;
-    color: var(--main-text);
+    color: var(--main-text) !important;
     overflow-x: hidden!important;
 }
 

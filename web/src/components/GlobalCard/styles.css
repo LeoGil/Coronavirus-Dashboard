@@ -1,20 +1,53 @@
 .global-article {
-    /* max-width: 700px; */
-    margin: 20px auto 0;
-    padding: 0 20px;
-    background: #29344a;
-    border-radius: 5px;
-    padding: 20px;
-    margin-bottom: 20px;
-    width: 100%;
-    /* display: flex; */
+  margin: 20px auto 20px;
+  padding: 0 20px;
+  background: #29344a;
+  border-radius: 5px;
+  padding: 20px;
+  width: 100%;
+  font-weight: 800;
 }
 
-.global-data-title {
-    font-size: 1.2rem;
+.global-article .cases {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
-.global-data-numbers {
-    font-size: 3rem;
-    font-weight: 800;
+.global-article .cases div {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
 }
+
+.global-article .cases .global-data-title {
+  font-size: 1.5rem;
+}
+
+@media (max-width: 499px) {
+  .global-article .cases .global-data-title {
+    font-size: 1rem;
+  }
+}
+
+.global-article .cases .global-data-numbers {
+  font-size: 3rem;
+  font-weight: 800;
+}
+
+@media (max-width: 499px) {
+  .global-article .cases .global-data-numbers {
+    font-size: 1.7rem;
+  }
+}
+/*# sourceMappingURL=styles.css.map */
