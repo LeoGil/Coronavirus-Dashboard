@@ -12,6 +12,10 @@
 
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 
+.logo{
+	width: 32px;
+	height: 32px;
+}
 
 
 .blobs-container {

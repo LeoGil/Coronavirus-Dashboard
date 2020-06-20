@@ -14,7 +14,6 @@ const globalController = new GlobalController()
 routes.get('/', (request, response) => {
   return response.json({
     message: 'Coronavirus-Dashboard Server API: https://leogil.github.io/Coronavirus-Dashboard'
-
   })
 })
 
