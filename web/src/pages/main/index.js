@@ -260,8 +260,6 @@ export default function Main() {
                         <p className="text-center text-white title-components">Countries Data</p>
                     </div>
                     {countries.map(data_map => (
-                        (data_map.iso2 = (data_map.country === 'MS Zaandam' ? 'US' : data_map.iso2)),
-                        (data_map.iso2 = (data_map.country === 'Diamond Princess' ? 'US' : data_map.iso2)),
                         <CountryCard
                             key={data_map.country}
                             country={data_map} />

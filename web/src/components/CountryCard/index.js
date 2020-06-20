@@ -12,35 +12,28 @@ export default function CountryCard({ country }) {
         <div className="col-lg-4">
             <Link to={`${rootpath}${country.iso2}`} className="unstyled-link">
                 <article className="pais-article shadow">
-                    <div className="row align-items-center">
-                        <aside className="col-3">
-                            <div className="row">
-                                <figure className="col my-auto">
-                                    <div className="bandeira text-center">
-                                        {/* <img src={"https://www.countryflags.io/" + country.code + "/flat/64.png"} alt={"Bandeira " + country.title} /> */}
-                                        <img className="bandeira-img" src={"https://cdn.u21.io/flags/4x3/" + (country.iso2).toLowerCase() + ".svg"} alt={"Bandeira " + country.country} />
-                                    </div>
-                                    <figcaption className="text-bold font-smaller text-center text-white">{country.country}</figcaption>
-                                </figure>
+                    <figure className="bandeira">
+                        <img src={"https://cdn.u21.io/flags/4x3/" + (country.iso2).toLowerCase() + ".svg"} alt={"Bandeira " + country.country} />
+                        <figcaption className="text-bold font-smaller text-center text-white">{country.country}</figcaption>
+                    </figure>
+                    <section className="cases">
+                            <div>
+                                Cases
+                                <span className="color-cases">{nf.format(country.cases)}</span>
                             </div>
-                        </aside>
-                        <div className="col">
-                            <section className="cases">
-                                <div>
-                                    Cases
-                                    <div className="color-cases">{nf.format(country.cases)}</div>
-                                </div>
-                                <div>
-                                    Deaths
-                                    <div className="color-death">{nf.format(country.deaths)}</div>
-                                </div>
-                                <div>
-                                    Recovered
-                                    <div className="color-recovered">{nf.format(country.recovered)}</div>
-                                </div>
-                            </section>
-                        </div>
-                    </div>
+                            <div>
+                                Deaths
+                                <span className="color-death">{nf.format(country.deaths)}</span>
+                            </div>
+                            <div>
+                                Recovered
+                                <span className="color-recovered">{nf.format(country.recovered)}</span>
+                            </div>
+                            <div>
+                                Active Cases
+                                <span className="color-active">{nf.format(country.active)}</span>
+                            </div>
+                    </section>
                 </article>
             </Link>
         </div >

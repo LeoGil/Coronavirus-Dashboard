@@ -4,3 +4,7 @@
     padding: 20px;
     margin-bottom: 20px;
 }
+img {
+    height: 48px;
+    border-radius: 20%;
+}
