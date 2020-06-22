@@ -1,8 +1,7 @@
 .global-article {
   margin: 20px auto 20px;
   padding: 0 20px;
-  background: #29344a;
-  border-radius: 5px;
+  border-radius: 0.5rem;
   padding: 20px;
   width: 100%;
   font-weight: 800;
@@ -18,7 +17,33 @@
   text-align: center;
 }
 .global-article .cases .global-data-title {
+  border: 3px solid #29344a;
+  margin: 1rem;
+  border-radius: 0.5rem;
+  background: #29344a;
   font-size: 1.5rem;
+}
+.global-article .cases .global-data-title.t1 {
+  border-top: 1rem solid var(--color-new-cases);
+}
+.global-article .cases .global-data-title.t2 {
+  border-top: 1rem solid var(--color-death);
+}
+.global-article .cases .global-data-title.t3 {
+  border-top: 1rem solid var(--color-new-recoveries);
+}
+.global-article .cases .global-data-title.t4 {
+  border-top: 1rem solid var(--color-tests);
+}
+.global-article .cases .global-data-title.t5 {
+  border-top: 1rem solid var(--color-critical);
+}
+.global-article .cases .global-data-title:hover {
+  filter: brightness(1.2);
+  transition: all 0.2s;
+  position: relative;
+  top: 0;
+  border: 3px solid var(--color-tests);
 }
 @media (max-width: 320px) {
   .global-article .cases .global-data-title {

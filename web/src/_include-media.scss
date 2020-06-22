@@ -579,3 +579,15 @@ $im-no-media-expressions: ('screen', 'portrait', 'landscape') !default;
   padding-top: $value;
   padding-bottom: $value;
 }
+@mixin card-border-radius{
+  border-radius: .5rem;
+}
+@mixin card-hover($hover-color, $top-position:-10px){
+  &:hover {
+    filter: brightness(1.2);
+    transition: all 0.2s;
+    position: relative;
+    top: $top-position;
+    border: 3px solid $hover-color;
+  }
+}

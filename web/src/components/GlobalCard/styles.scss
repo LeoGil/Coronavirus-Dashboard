@@ -1,13 +1,22 @@
-@import '../../include-media';
+@import "../../include-media";
+$background: #29344a;
+$hover-border: var(--color-tests);
+$top-border-colors: (
+  t1: var(--color-new-cases),
+  t2: var(--color-death),
+  t3: var(--color-new-recoveries),
+  t4: var(--color-tests),
+  t5: var(--color-critical),
+);
 
 .global-article {
   margin: 20px auto 20px;
   padding: 0 20px;
-  background: #29344a;
-  border-radius: 5px;
+  @include card-border-radius();
   padding: 20px;
   width: 100%;
   font-weight: 800;
+
   .cases {
     display: flex;
     flex-wrap: wrap;
@@ -17,16 +26,27 @@
       flex-direction: column;
       text-align: center;
     }
+
     .global-data-title {
+      border: 3px solid $background;
+      @each $class, $color in $top-border-colors {
+        &.#{$class} {
+          border-top: 1rem solid $color;
+        }
+      }
+      @include card-hover($hover-border, 0);
+      margin: 1rem;
+      border-radius: 0.5rem;
+      background: $background;
       font-size: 1.5rem;
-      @include media('<=phone') {
-        font-size:1rem;
+      @include media("<=phone") {
+        font-size: 1rem;
       }
     }
     .global-data-numbers {
       font-size: 3rem;
-      @include media('<=phone'){
-        font-size:1.7rem;
+      @include media("<=phone") {
+        font-size: 1.7rem;
       }
       font-weight: 800;
     }
