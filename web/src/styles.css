@@ -1,6 +1,8 @@
 :root {
     --background: #161e2c;
     
+    --bg-active: #222c45;
+    
     --main-text: #eee;
 
     --color-cases: #0ee9cb;
