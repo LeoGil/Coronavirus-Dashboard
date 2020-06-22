@@ -10,6 +10,8 @@ import * as Chart from 'chart.js'
 import GlobalCard from '../../components/GlobalCard'
 import CountryCard from '../../components/CountryCard'
 
+import './style.css';
+
 export default function Main() {
     const [countries, setCountries] = useState([]);
     const [globalData, setGlobalData] = useState([]);

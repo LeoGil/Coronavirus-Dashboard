@@ -1,5 +1,6 @@
 @import "../../include-media";
-$background: #29344a;
+
+$background: var(--bg-active);
 $hover-border: var(--color-tests);
 $top-border-colors: (
   t1: var(--color-new-cases),
@@ -11,15 +12,17 @@ $top-border-colors: (
 
 .global-article {
   margin: 20px auto 20px;
-  padding: 0 20px;
+  @include media('>phone'){padding: 0 20px;}
   @include card-border-radius();
-  padding: 20px;
   width: 100%;
   font-weight: 800;
 
   .cases {
     display: flex;
     flex-wrap: wrap;
+    @include media('<=phone'){
+      flex-direction: column;
+    }
     div {
       flex: 1 1 auto;
       display: flex;
@@ -35,7 +38,10 @@ $top-border-colors: (
         }
       }
       @include card-hover($hover-border, 0);
-      margin: 1rem;
+      margin: .5rem .3rem;
+      @include media('>phone'){
+        margin: 1rem;
+      }
       border-radius: 0.5rem;
       background: $background;
       font-size: 1.5rem;

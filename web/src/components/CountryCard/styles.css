@@ -1,12 +1,11 @@
 .pais-article {
-  margin: 20px auto 0;
-  background: #29344a;
-  border-radius: 0.5rem;
+  margin: 20px auto 20px;
   padding: 20px;
-  margin-bottom: 20px;
+  border-radius: 0.5rem;
+  background: var(--bg-active);
   font-weight: 800;
   font-size: 18px;
-  border: 3px solid #29344a;
+  border: 3px solid var(--bg-active);
 }
 .pais-article:hover {
   filter: brightness(1.2);

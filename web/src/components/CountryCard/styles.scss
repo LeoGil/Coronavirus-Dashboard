@@ -1,14 +1,13 @@
 @import '../../include-media';
 
-$background: #29344a;
+$background: var(--bg-active);
 $hover-border: var(--color-tests);
 
 .pais-article {
-  margin: 20px auto 0;
-  background: $background;
-  @include card-border-radius;
+  margin: 20px auto 20px;
   padding: 20px;
-  margin-bottom: 20px;
+  @include card-border-radius;
+  background: $background;
   font-weight: 800;
   font-size: 18px;
   border: 3px solid $background;
