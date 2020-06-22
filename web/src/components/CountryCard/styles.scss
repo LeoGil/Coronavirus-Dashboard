@@ -4,7 +4,7 @@ $background: var(--bg-active);
 $hover-border: var(--color-tests);
 
 .pais-article {
-  margin: 20px auto 20px;
+  margin: 20px auto 10px;
   padding: 20px;
   @include card-border-radius;
   background: $background;

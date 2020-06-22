@@ -1,76 +1,105 @@
 .global-article {
   margin: 20px auto 20px;
-  border-radius: 0.5rem;
+  border-radius: .5rem;
   width: 100%;
   font-weight: 800;
 }
+
 @media (min-width: 500px) {
   .global-article {
     padding: 0 20px;
   }
 }
+
 .global-article .cases {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
+
 @media (max-width: 499px) {
   .global-article .cases {
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
 }
+
 .global-article .cases div {
-  flex: 1 1 auto;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   text-align: center;
 }
+
 .global-article .cases .global-data-title {
   border: 3px solid var(--bg-active);
-  margin: 0.5rem 0.3rem;
+  margin: .5rem .3rem;
   border-radius: 0.5rem;
   background: var(--bg-active);
   font-size: 1.5rem;
 }
+
 .global-article .cases .global-data-title.t1 {
   border-top: 1rem solid var(--color-new-cases);
 }
+
 .global-article .cases .global-data-title.t2 {
   border-top: 1rem solid var(--color-death);
 }
+
 .global-article .cases .global-data-title.t3 {
   border-top: 1rem solid var(--color-new-recoveries);
 }
+
 .global-article .cases .global-data-title.t4 {
   border-top: 1rem solid var(--color-tests);
 }
+
 .global-article .cases .global-data-title.t5 {
   border-top: 1rem solid var(--color-critical);
 }
+
 .global-article .cases .global-data-title:hover {
-  filter: brightness(1.2);
+  -webkit-filter: brightness(1.2);
+          filter: brightness(1.2);
+  -webkit-transition: all 0.2s;
   transition: all 0.2s;
   position: relative;
   top: 0;
   border: 3px solid var(--color-tests);
 }
+
 @media (min-width: 500px) {
   .global-article .cases .global-data-title {
     margin: 1rem;
   }
 }
+
 @media (max-width: 499px) {
   .global-article .cases .global-data-title {
     font-size: 1rem;
   }
 }
+
 .global-article .cases .global-data-numbers {
   font-size: 3rem;
   font-weight: 800;
 }
+
 @media (max-width: 499px) {
   .global-article .cases .global-data-numbers {
     font-size: 1.7rem;
   }
 }
-
 /*# sourceMappingURL=styles.css.map */

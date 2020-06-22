@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 import api from '../../services/api';
 import Loading from 'react-loading';
-import * as chart from 'chart.js'
+import * as chart from 'chart.js';
 
-import './style.css'
+import CountryData from '../../components/CountryDetailsCard';
+
+import './style.css';
 
 export default function Country() {
     const { country_code } = useParams();
@@ -13,7 +15,6 @@ export default function Country() {
     const [country, setCountry] = useState([]);
     const [countryTimeline, setCountryTimeline] = useState([]);
 
-    const nf = new Intl.NumberFormat();
     //Get Country Timeline
     useEffect(() => {
         const loadCountryTimeLine = async () => {
@@ -266,7 +267,7 @@ export default function Country() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isPageLoaded, isTimeLineDataLoaded]);
 
-    return isPageLoaded === false
+    return !isPageLoaded
         ? (
             <div className="loading">
                 <Loading type={"bars"} color={"#eee"} />
@@ -274,41 +275,9 @@ export default function Country() {
         )
         : (
             <div className="container-fluid">
-                <div className="row text-white">
+                <div className="row">
                     <div className="col-12">
-                        <img className="float-left bandeira-img" src={"https://cdn.u21.io/flags/4x3/" + (country_code).toLowerCase() + ".svg"} alt={"Bandeira " + country.country} />
-                        <h2 className="float-left ml-4 mt-2">{country.country}</h2>
-                        <article className="float-left global-article shadow">
-
-                            <div className="row">
-                                <div className="col font-weight-bold text-center global-data-title text-light">Cases</div>
-                                <div className="col font-weight-bold text-center global-data-title text-light">Deaths</div>
-                                <div className="col font-weight-bold text-center global-data-title text-light">Recovered</div>
-                                <div className="col font-weight-bold text-center global-data-title text-light">Active cases</div>
-                                <div className="col font-weight-bold text-center global-data-title text-light">Population</div>
-                                <div className="w-100"></div>
-                                <div className="col text-center global-data-numbers color-cases">{nf.format(country.cases)}</div>
-                                <div className="col text-center global-data-numbers color-death">{nf.format(country.deaths)}</div>
-                                <div className="col text-center global-data-numbers color-recovered">{nf.format(country.recovered)}</div>
-                                <div className="col text-center global-data-numbers color-active">{nf.format(country.active)}</div>
-                                <div className="col text-center global-data-numbers color-affected">{nf.format(country.population)}</div>
-
-                            </div>
-                            <div className="row mt-3">
-                                <div className="col font-weight-bold text-center global-data-title text-light">New cases today</div>
-                                <div className="col font-weight-bold text-center global-data-title text-light">New deaths today</div>
-                                <div className="col font-weight-bold text-center global-data-title text-light">New recoveries today</div>
-                                <div className="col font-weight-bold text-center global-data-title text-light">Tests</div>
-                                <div className="col font-weight-bold text-center global-data-title text-light">Criticals</div>
-                                <div className="w-100"></div>
-                                <div className="col text-center global-data-numbers color-new-case">{nf.format(country.todayCases)}</div>
-                                <div className="col text-center global-data-numbers color-new-death">{nf.format(country.todayDeaths)}</div>
-                                <div className="col text-center global-data-numbers color-new-recoveries">{nf.format(country.todayRecovered)}</div>
-                                <div className="col text-center global-data-numbers color-tests">{nf.format(country.tests)}</div>
-                                <div className="col text-center global-data-numbers color-critical">{nf.format(country.critical)}</div>
-
-                            </div>
-                        </article>
+                        <CountryData country={country}/>
                     </div>
                     <div className="col-8">
                         <section className=" chart-div">

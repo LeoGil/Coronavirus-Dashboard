@@ -1,1 +1,10 @@
-{"version":3,"sourceRoot":"","sources":["../../_include-media.scss","style.sass"],"names":[],"mappings":"AA6iBI;EC3iBJ;IAEI","file":"style.css"}
+{
+    "version": 3,
+    "mappings": "AC6iBI,MAAM,EAAE,SAAS,EAAE,KAAK;ED3iB5B,AAAA,UAAU,CAAC;IAEP,OAAO,EAAE,eAAe;GAAK",
+    "sources": [
+        "style.sass",
+        "../../_include-media.scss"
+    ],
+    "names": [],
+    "file": "style.css"
+}

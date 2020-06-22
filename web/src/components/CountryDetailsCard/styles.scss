@@ -1,0 +1,56 @@
+@import '../../include-media';
+
+$background: var(--bg-active);
+$hover-border: var(--color-tests);
+
+.pais-details-article {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+  font-weight: 800;
+  font-size: 18px;
+
+  .bandeira {
+    display: flex;
+    font-size: x-large;
+    align-items: center;
+    @include media('<=phone'){
+      justify-content: center;
+    }
+    img {
+      height: 48px;
+      border-radius: 20%;
+    }
+    figcaption {
+      margin-left: 1rem;
+    }
+  }
+
+  .cases {
+    display: flex;
+    flex-wrap: wrap;
+    @include media('>phone'){
+      background: $background;
+      @include card-border-radius;
+    }
+    div {
+      @include media('<=phone'){
+        background: $background;
+        @include card-border-radius;
+      }
+      margin: .5rem;
+      padding: .5rem;
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      .country-data-numbers {
+        font-size: 2.5rem;
+        @include media("<=phone") {
+          font-size: 1.7rem;
+        }
+        font-weight: 800;
+      }
+    }
+  }
+}

@@ -14,7 +14,7 @@ export default function CountryCard({ country }) {
                 <article className="pais-article shadow">
                     <figure className="bandeira">
                         <img src={"https://cdn.u21.io/flags/4x3/" + (country.iso2).toLowerCase() + ".svg"} alt={"Bandeira " + country.country} />
-                        <figcaption className="text-bold font-smaller text-center text-white">{country.country}</figcaption>
+                        <figcaption className="text-bold font-smaller text-center">{country.country}</figcaption>
                     </figure>
                     <section className="cases">
                             <div>
