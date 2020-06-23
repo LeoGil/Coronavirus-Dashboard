@@ -37,11 +37,12 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .pais-article .bandeira {
   display: -ms-grid;
+  margin-right: 55px;
   display: grid;
   -ms-grid-columns: 1fr 5fr;
       grid-template-columns: 1fr 5fr;
@@ -54,5 +55,10 @@
 .pais-article .bandeira img {
   height: 48px;
   border-radius: 20%;
+}
+
+.pais-article .new-today {
+  font-size: 12px;
+  margin-top: -5px;
 }
 /*# sourceMappingURL=styles.css.map */
