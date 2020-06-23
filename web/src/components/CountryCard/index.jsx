@@ -10,7 +10,7 @@ export default function CountryCard({ country }) {
   country.iso2 = country.country === 'Diamond Princess' ? 'US' : country.iso2;
 
   return (
-    <div className="col-lg-4">
+    <div className="col-lg-3">
       <Link to={`${rootpath}${country.iso2}`} className="unstyled-link">
         <article className="pais-article">
           <figure className="flag">
