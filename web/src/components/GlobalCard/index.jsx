@@ -10,7 +10,7 @@ export default function GlobalData({ globaldata }) {
       <h1 className="text-center title-components">Global Data</h1>
       <article className="global-article">
         <section className="cases">
-          <div className="global-data-title t1">
+          <div className="global-data-title top-color-1">
             Cases
             <span className="global-data-numbers color-cases">
               {nf.format(globaldata.cases)}
@@ -20,7 +20,7 @@ export default function GlobalData({ globaldata }) {
               {nf.format(globaldata.todayCases)}
             </span>
           </div>
-          <div className="global-data-title t2">
+          <div className="global-data-title top-color-2">
             Deaths
             <span className="global-data-numbers color-death">
               {nf.format(globaldata.deaths)}
@@ -30,7 +30,7 @@ export default function GlobalData({ globaldata }) {
               {nf.format(globaldata.todayDeaths)}
             </span>
           </div>
-          <div className="global-data-title t3">
+          <div className="global-data-title top-color-3">
             Recovered
             <span className="global-data-numbers color-recovered">
               {nf.format(globaldata.recovered)}
@@ -40,7 +40,7 @@ export default function GlobalData({ globaldata }) {
               {nf.format(globaldata.todayRecovered)}
             </span>
           </div>
-          <div className="global-data-title t4">
+          <div className="global-data-title top-color-4">
             Active cases
             <span className="global-data-numbers color-active">
               {nf.format(globaldata.active)}
@@ -49,7 +49,7 @@ export default function GlobalData({ globaldata }) {
               {nf.format(globaldata.tests)}
             </span>
           </div>
-          <div className="global-data-title t5">
+          <div className="global-data-title top-color-5">
             Countries affected
             <span className="global-data-numbers color-affected">
               {nf.format(globaldata.affectedCountries)}

@@ -9,10 +9,10 @@ export default function CountryDetailsCard({ country }) {
 
   return (
     <article className="pais-details-article">
-      <figure className="bandeira">
+      <figure className="flag">
         <img
           src={`https://cdn.u21.io/flags/4x3/${country.iso2.toLowerCase()}.svg`}
-          alt={`Bandeira ${country.country}`}
+          alt={`flag ${country.country}`}
         />
         <figcaption>{country.country}</figcaption>
       </figure>

@@ -591,3 +591,9 @@ $im-no-media-expressions: ('screen', 'portrait', 'landscape') !default;
     border: 3px solid $hover-color;
   }
 }
+@mixin card-shadow{
+  box-shadow: 0.2rem 1rem 0.65rem rgba(0, 0, 0, 0.342);
+}
+@mixin flag-shadow{
+  box-shadow: .31rem .29rem .65rem rgba(0, 0, 0, .342);
+}

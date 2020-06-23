@@ -3,16 +3,18 @@
 $background: var(--bg-active);
 $hover-border: var(--color-tests);
 $top-border-colors: (
-  t1: var(--color-new-cases),
-  t2: var(--color-death),
-  t3: var(--color-new-recoveries),
-  t4: var(--color-tests),
-  t5: var(--color-critical),
+  top-color-1: var(--color-new-cases),
+  top-color-2: var(--color-new-deaths),
+  top-color-3: var(--color-new-recoveries),
+  top-color-4: var(--color-tests),
+  top-color-5: var(--color-critical),
 );
 
 .global-article {
   margin: 20px auto 20px;
-  @include media('>phone'){padding: 0 20px;}
+  @include media(">phone") {
+    padding: 0 20px;
+  }
   @include card-border-radius();
   width: 100%;
   font-weight: 800;
@@ -20,7 +22,7 @@ $top-border-colors: (
   .cases {
     display: flex;
     flex-wrap: wrap;
-    @include media('<=phone'){
+    @include media("<=phone") {
       flex-direction: column;
     }
     div {
@@ -37,17 +39,18 @@ $top-border-colors: (
           border-top: 1rem solid $color;
         }
       }
-      @include card-hover($hover-border, 0);
-      margin: .5rem .3rem;
-      @include media('>phone'){
+      margin: 0.5rem 0.3rem;
+      @include media(">phone") {
         margin: 1rem;
       }
       border-radius: 0.5rem;
-      background: $background;
+      background-color: $background;
       font-size: 1.5rem;
       @include media("<=phone") {
         font-size: 1rem;
       }
+      @include card-hover($hover-border, 0);
+      @include card-shadow;
     }
     .global-data-numbers {
       font-size: 3rem;

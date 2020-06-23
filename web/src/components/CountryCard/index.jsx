@@ -12,12 +12,11 @@ export default function CountryCard({ country }) {
   return (
     <div className="col-lg-4">
       <Link to={`${rootpath}${country.iso2}`} className="unstyled-link">
-        <article className="pais-article shadow">
-          <figure className="bandeira">
+        <article className="pais-article">
+          <figure className="flag">
             <img
-              className="shadow"
               src={`https://cdn.u21.io/flags/4x3/${country.iso2.toLowerCase()}.svg`}
-              alt={`Bandeira ${country.country}`}
+              alt={`flag ${country.country}`}
             />
             <figcaption className="text-bold font-smaller text-center">
               {country.country}
