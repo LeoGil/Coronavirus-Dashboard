@@ -45,6 +45,7 @@ export default function GlobalData({ globaldata }) {
             <span className="global-data-numbers color-active">
               {nf.format(globaldata.active)}
             </span>
+            Tests
             <span className="global-data-numbers color-tests">
               {nf.format(globaldata.tests)}
             </span>
@@ -54,7 +55,7 @@ export default function GlobalData({ globaldata }) {
             <span className="global-data-numbers color-affected">
               {nf.format(globaldata.affectedCountries)}
             </span>
-            Criticals
+            Criticals cases
             <span className="global-data-numbers color-critical">
               {nf.format(globaldata.critical)}
             </span>
