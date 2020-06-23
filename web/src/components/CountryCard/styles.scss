@@ -13,18 +13,8 @@ $hover-border: var(--color-tests);
   border: 3px solid $background;
   @include card-hover($hover-border);
 
-  .cases {
-    display: flex;
-    flex-wrap: wrap;
-    div {
-      flex: 1 1 auto;
-      display: flex;
-      flex-direction: column;
-      text-align: center;
-    }
-  }
-
   .bandeira {
+    margin-right: 55px;
     display: grid;
     grid-template-columns: 1fr 5fr;
     font-size: x-large;
@@ -33,5 +23,21 @@ $hover-border: var(--color-tests);
       height: 48px;
       border-radius: 20%;
     }
+  }
+
+  .cases {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 67px;
+    div {
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .new-today {
+    font-size: 12px;
+    margin-top: -5px;
   }
 }

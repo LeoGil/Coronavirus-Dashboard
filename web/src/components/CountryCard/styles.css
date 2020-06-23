@@ -18,12 +18,30 @@
   border: 3px solid var(--color-tests);
 }
 
+.pais-article .bandeira {
+  margin-right: 55px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 5fr;
+      grid-template-columns: 1fr 5fr;
+  font-size: x-large;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.pais-article .bandeira img {
+  height: 48px;
+  border-radius: 20%;
+}
+
 .pais-article .cases {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  min-height: 67px;
 }
 
 .pais-article .cases div {
@@ -37,24 +55,6 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  /* text-align: center; */
-}
-
-.pais-article .bandeira {
-  display: -ms-grid;
-  margin-right: 55px;
-  display: grid;
-  -ms-grid-columns: 1fr 5fr;
-      grid-template-columns: 1fr 5fr;
-  font-size: x-large;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.pais-article .bandeira img {
-  height: 48px;
-  border-radius: 20%;
 }
 
 .pais-article .new-today {
