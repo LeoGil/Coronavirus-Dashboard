@@ -1,15 +1,19 @@
 import React from 'react';
-import './styles.css'
+import './styles.css';
+
 const nf = new Intl.NumberFormat();
 
 export default function CountryDetailsCard({ country }) {
-  country.iso2 = (country.country === 'MS Zaandam' ? 'US' : country.iso2)
-  country.iso2 = (country.country === 'Diamond Princess' ? 'US' : country.iso2)
+  country.iso2 = country.country === 'MS Zaandam' ? 'US' : country.iso2;
+  country.iso2 = country.country === 'Diamond Princess' ? 'US' : country.iso2;
 
   return (
     <article className="pais-details-article">
       <figure className="bandeira">
-        <img src={"https://cdn.u21.io/flags/4x3/" + (country.iso2).toLowerCase() + ".svg"} alt={"Bandeira " + country.country} />
+        <img
+          src={`https://cdn.u21.io/flags/4x3/${country.iso2.toLowerCase()}.svg`}
+          alt={`Bandeira ${country.country}`}
+        />
         <figcaption>{country.country}</figcaption>
       </figure>
       <section className="cases">
@@ -65,5 +69,5 @@ export default function CountryDetailsCard({ country }) {
         </div>
       </section>
     </article>
-  )
+  );
 }

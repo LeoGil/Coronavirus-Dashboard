@@ -1,14 +1,13 @@
 import React from 'react';
-import Routes from './routes'
+import Routes from './routes';
 
-import './styles.css'
-import "bootstrap/dist/css/bootstrap.css";
-
+import './styles.css';
+import 'bootstrap/dist/css/bootstrap.css';
 
 const App = () => (
   <div className="App">
     <Routes />
-  </div >
-)
+  </div>
+);
 
 export default App;
