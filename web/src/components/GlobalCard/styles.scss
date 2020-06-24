@@ -11,10 +11,9 @@ $top-border-colors: (
 );
 
 .global-article {
-  margin: 20px auto 20px;
-  @include media(">phone") {
-    padding: 0 20px;
-  }
+  // @include media(">phone") {
+  //   padding: 0 20px;
+  // }
   @include card-border-radius();
   width: 100%;
   font-weight: 800;
@@ -26,6 +25,7 @@ $top-border-colors: (
       flex-direction: column;
     }
     div {
+      min-width: 19rem;
       flex: 1 1 auto;
       display: flex;
       flex-direction: column;
@@ -39,9 +39,9 @@ $top-border-colors: (
           border-top: 1rem solid $color;
         }
       }
-      margin: 0.5rem 0.3rem;
-      @include media(">phone") {
-        margin: 1rem;
+      margin: 1rem;
+      @include media("<=phone") {
+        margin: 0.5rem 0.3rem;
       }
       border-radius: 0.5rem;
       background-color: $background;
