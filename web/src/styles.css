@@ -75,6 +75,18 @@ a {
     color: var(--color-affected);
 }
 
+.bg-active {
+    background-color: var(--color-active)!important;
+}
+
+.bg-recovered {
+    background-color: var(--color-recovered)!important;
+}
+
+.bg-death {
+    background-color: var(--color-death)!important;
+}
+
 :root {
     --background: #161e2c;
     
