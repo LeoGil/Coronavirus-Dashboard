@@ -9,6 +9,7 @@ import api from '../../services/api';
 import GlobalCard from '../../components/GlobalCard';
 import CountryCard from '../../components/CountryCard';
 import TimeLine from '../../components/TimeLine';
+import TimeLineCountries from '../../components/TimeLineCountries';
 import PieCases from '../../components/PieActiveDeathRecovered';
 
 import './style.css';
@@ -21,6 +22,7 @@ export default function Main() {
   const [updatePageCount, setUpdatePageCount] = useState(0);
   const [timelineGlobal, setTimelineGlobal] = useState();
   const [chartLoaded, setChartLoaded] = useState(false);
+  const [pieLoaded, setPieLoaded] = useState(false);
 
   // Get Country Data
   useEffect(() => {
@@ -37,6 +39,7 @@ export default function Main() {
       const response = await api.get(`/global`);
       setGlobalData(response.data);
       setChartLoaded(false);
+      setPieLoaded(true);
     };
     loadCountryData();
     loadGlobalData();
@@ -76,14 +79,19 @@ export default function Main() {
         <NotificationContainer />
 
         <div className="row">
-          <div className="col-8">
+          <div className="col-6">
             <section className="chart-div">
               <TimeLine timeline={timelineGlobal} timelineDataLoaded={chartLoaded} />
             </section>
           </div>
+          <div className="col-6">
+            <section className="chart-div">
+              <TimeLineCountries countries={countries} />
+            </section>
+          </div>
           <div className="col-4">
             <section className="chart-div">
-              <PieCases data={globalData} timelineDataLoaded={chartLoaded} pageLoaded={isPageLoaded} />
+              <PieCases data={globalData} timelineDataLoaded={pieLoaded} />
             </section>
           </div>
         </div>

@@ -10,6 +10,7 @@ export default function TimeLine({ timeline, timelineDataLoaded }) {
       const timelinedataCases = [];
       const timelinedataDeaths = [];
       const timelinedataRecovered = [];
+      const timelinedataActive = [];
 
       Object.keys(timeline.cases).forEach(key => {
         timelinedates.push(key);
@@ -22,6 +23,10 @@ export default function TimeLine({ timeline, timelineDataLoaded }) {
 
       Object.keys(timeline.recovered).forEach(key => {
         timelinedataRecovered.push(timeline.recovered[key]);
+      });
+      
+      Object.keys(timeline.cases).forEach(key => {
+        timelinedataActive.push(timeline.cases[key] - (timeline.deaths[key] + timeline.recovered[key]));
       });
 
       const cav = document
@@ -122,6 +127,27 @@ export default function TimeLine({ timeline, timelineDataLoaded }) {
               pointHitRadius: 2,
               data: timelinedataDeaths.map(item => item),
             },
+            {
+              label: 'Active cases',
+              fill: false,
+              lineTension: 0.1,
+              backgroundColor: 'rgba(255,193,55,0.4)',
+              borderColor: '#ffc137',
+              borderCapStyle: 'butt',
+              borderDash: [],
+              borderDashOffset: 0.0,
+              borderJoinStyle: 'miter',
+              pointBorderColor: '#ffc137',
+              pointBackgroundColor: '#ffc137',
+              pointBorderWidth: 1,
+              pointHoverRadius: 5,
+              pointHoverBackgroundColor: '#ffc137',
+              pointHoverBorderColor: 'rgba(220,220,220,1)',
+              pointHoverBorderWidth: 2,
+              pointRadius: 2,
+              pointHitRadius: 2,
+              data: timelinedataActive.map(item => item),
+            },
           ],
         },
       });
@@ -132,7 +158,7 @@ export default function TimeLine({ timeline, timelineDataLoaded }) {
 
   return (
     <>
-      <h2>Timeline Cases and Deaths</h2>
+      <h2>Timeline cases and deaths</h2>
       <canvas
         className="mt-4"
         height="164px"

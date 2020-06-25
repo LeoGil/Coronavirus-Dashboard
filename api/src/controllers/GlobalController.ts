@@ -23,6 +23,19 @@ class GlobalController {
 
     return response.json(responseData.data);
   }
+  
+  async topCountriesTimeline(request: Request, response: Response) {
+    const countriesIso = request.body
+
+    const responseData = await api_timeline_global.get(`/historical/${countriesIso}?lastdays=all`)
+
+    for (let index = 0; index < responseData.data.length; index++) {
+      delete responseData.data[index]['timeline']['deaths']
+      delete responseData.data[index]['timeline']['recovered']
+    }
+
+    return response.json(responseData.data);
+  }
 
 }
 
