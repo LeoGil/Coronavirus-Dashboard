@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
 
 class World {
-  final String updated;
-  final String cases;
-  final String todayCases;
-  final String deaths;
-  final String todayDeaths;
-  final String recovered;
-  final String todayRecovered;
-  final String active;
-  final String critical;
-  final String casesPerOneMillion;
-  final String deathsPerOneMillion;	
-  final String tests;
-  final String testsPerOneMillion;
-  final String population;
-  final String oneCasePerPeople;
-  final String oneDeathPerPeople;
-  final String oneTestPerPeople;
-  final String activePerOneMillion;
-  final String recoveredPerOneMillion;
-  final String criticalPerOneMillion;
-  final String affectedCountries;
+  final updated;
+  final cases;
+  final todayCases;
+  final deaths;
+  final todayDeaths;
+  final recovered;
+  final todayRecovered;
+  final active;
+  final critical;
+  final casesPerOneMillion;
+  final deathsPerOneMillion;	
+  final tests;
+  final testsPerOneMillion;
+  final population;
+  final oneCasePerPeople;
+  final oneDeathPerPeople;
+  final oneTestPerPeople;
+  final activePerOneMillion;
+  final recoveredPerOneMillion;
+  final criticalPerOneMillion;
+  final affectedCountries;
   
   World({
     @required this.updated,

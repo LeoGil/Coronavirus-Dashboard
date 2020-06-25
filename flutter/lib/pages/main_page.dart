@@ -1,8 +1,8 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'dart:convert';
-import '../services/api.dart' as api;
-import '../model/world.dart';
+import 'package:covid_dashboard/model/world.dart';
+import 'package:covid_dashboard/services/api.dart' as api;
 
 class MainPage extends StatefulWidget {
   @override
@@ -19,7 +19,7 @@ class _MainPageState extends State<MainPage> {
   }
 
   @override
- void initState() {
+  void initState() {
     super.initState();
     getData();
   }
@@ -27,38 +27,81 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(
-          "Covid Dashboard",
-          style: TextStyle(fontSize: 24),
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text(
+            "Covid Dashboard",
+            style: TextStyle(fontSize: 24),
+          ),
         ),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Center(
-            child: Text(
-              'Global Cases',
-              style: TextStyle(
-                fontSize: 48,
-                fontWeight: FontWeight.bold,
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Center(
+              child: Text(
+                'Global Data',
+                style: TextStyle(
+                  fontSize: 48,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
-          ),
-          Center(
-            child: Text(
-              "$_globaldata.cases",
-              style: TextStyle(
-                fontSize: 56,
-                fontWeight: FontWeight.bold,
-                color: Color(0x90F1F1F1)
+            Center(
+              child: Text(
+                'Cases',
+                style: TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
+            ),
+            Center(
+              child: Text(
+                "${_globaldata.cases}",
+                style: TextStyle(
+                    fontSize: 56,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0x90F1F1F1)),
               ),
-          ),
-        ],
-      ),
-    );
+            ),
+            Center(
+              child: Text(
+                'Death',
+                style: TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Center(
+              child: Text(
+                "${_globaldata.deaths}",
+                style: TextStyle(
+                    fontSize: 56,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0x90F1F1F1)),
+              ),
+            ),
+            Center(
+              child: Text(
+                'Recovered',
+                style: TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Center(
+              child: Text(
+                "${_globaldata.recovered}",
+                style: TextStyle(
+                    fontSize: 56,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0x90F1F1F1)),
+              ),
+            ),
+          ],
+        ));
   }
 }
