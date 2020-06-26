@@ -12,7 +12,7 @@ import TimeLine from '../../components/TimeLine';
 import TimeLineCountries from '../../components/TimeLineCountries';
 import PieCases from '../../components/PieActiveDeathRecovered';
 
-import './style.css';
+import { GlobalDataHeader, HiddenChartonMobile } from './styles';
 
 export default function Main() {
   const [countries, setCountries] = useState([]);
@@ -75,38 +75,41 @@ export default function Main() {
       <Loading type="bars" color="#eee" />
     </div>
   ) : (
-      <div className="container-fluid">
-        <NotificationContainer />
+    <div className="container-fluid">
+      <NotificationContainer />
+      <GlobalDataHeader>
+        <div className="global-data">
+          <GlobalCard globaldata={globalData} />
+        </div>
 
-        <div className="row">
-          <div className="col-6">
+        <div className="charts">
+          <HiddenChartonMobile>
             <section className="chart-div">
-              <TimeLine timeline={timelineGlobal} timelineDataLoaded={chartLoaded} />
+              <TimeLine
+                timeline={timelineGlobal}
+                timelineDataLoaded={chartLoaded}
+              />
             </section>
-          </div>
-          <div className="col-6">
             <section className="chart-div">
               <TimeLineCountries countries={countries} />
             </section>
-          </div>
-          <div className="col-4">
             <section className="chart-div">
               <PieCases data={globalData} timelineDataLoaded={pieLoaded} />
             </section>
-          </div>
+          </HiddenChartonMobile>
         </div>
-        <GlobalCard globaldata={globalData} />
+      </GlobalDataHeader>
 
-        <div className="row justify-content-md-center">
-          <div className="col-12">
-            <h1 className="text-center text-white title-components">
-              Countries Data
+      <div className="row justify-content-md-center">
+        <div className="col-12">
+          <h1 className="text-center text-white title-components">
+            Countries Data
           </h1>
-          </div>
-          {countries.map(dataMap => (
-            <CountryCard key={dataMap.country} country={dataMap} />
-          ))}
         </div>
+        {countries.map(dataMap => (
+          <CountryCard key={dataMap.country} country={dataMap} />
+        ))}
       </div>
-    );
+    </div>
+  );
 }

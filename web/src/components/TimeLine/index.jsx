@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import * as Chart from 'chart.js';
 
 export default function TimeLine({ timeline, timelineDataLoaded }) {
-
   // Mount graph cases
   useEffect(() => {
     if (timelineDataLoaded) {
@@ -24,14 +23,15 @@ export default function TimeLine({ timeline, timelineDataLoaded }) {
       Object.keys(timeline.recovered).forEach(key => {
         timelinedataRecovered.push(timeline.recovered[key]);
       });
-      
+
       Object.keys(timeline.cases).forEach(key => {
-        timelinedataActive.push(timeline.cases[key] - (timeline.deaths[key] + timeline.recovered[key]));
+        timelinedataActive.push(
+          timeline.cases[key] -
+            (timeline.deaths[key] + timeline.recovered[key]),
+        );
       });
 
-      const cav = document
-        .getElementById('cav_cases')
-        .getContext('2d');
+      const cav = document.getElementById('cav_cases').getContext('2d');
       new Chart(cav, {
         type: 'line',
         options: {
@@ -159,11 +159,7 @@ export default function TimeLine({ timeline, timelineDataLoaded }) {
   return (
     <>
       <h2>Timeline cases and deaths</h2>
-      <canvas
-        className="mt-4"
-        height="164px"
-        id={'cav_cases'}
-      />
+      <canvas className="mt-4" height="164px" id="cav_cases" />
     </>
   );
 }
