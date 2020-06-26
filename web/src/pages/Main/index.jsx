@@ -10,12 +10,16 @@ import GlobalCard from '../../components/GlobalCard';
 import CountryCard from '../../components/CountryCard';
 import TimeLine from '../../components/TimeLine';
 import TimeLineCountries from '../../components/TimeLineCountries';
+import RecentChange from '../../components/RecentChanges';
 import PieCases from '../../components/PieActiveDeathRecovered';
 
 import './style.css';
 
+
+
 export default function Main() {
   const [countries, setCountries] = useState([]);
+  const [oldCountries, setOldCountries] = useState([]);
   const [globalData, setGlobalData] = useState([]);
   const [isPageLoaded, setIsPageLoaded] = useState(false);
   const [lastUpdatedSeconds, setLastUpdatedSeconds] = useState(0);
@@ -24,14 +28,26 @@ export default function Main() {
   const [chartLoaded, setChartLoaded] = useState(false);
   const [pieLoaded, setPieLoaded] = useState(false);
 
+
+
   // Get Country Data
   useEffect(() => {
+
+
     const loadCountryData = async () => {
       const response = await api.get(`/countries`);
 
       response.data = Object.values(response.data);
 
-      setCountries(response.data);
+      response.data[1]['cases'] = 2213167 + Math.floor(Math.random() * 10);
+      response.data[1]['recovered'] = 749928 + Math.floor(Math.random() * 10);
+      response.data[0]['deaths'] = 316828 + Math.floor(Math.random() * 10);
+
+      if (countries[0] !== undefined) {
+        setOldCountries(countries)
+      }
+
+      setCountries(response.data)
       setChartLoaded(false);
     };
 
@@ -92,6 +108,11 @@ export default function Main() {
           <div className="col-4">
             <section className="chart-div">
               <PieCases data={globalData} timelineDataLoaded={pieLoaded} />
+            </section>
+          </div>
+          <div className="col-8">
+            <section className="chart-div">
+              <RecentChange stateAtual={oldCountries} stateNovo={countries} />
             </section>
           </div>
         </div>

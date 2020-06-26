@@ -11,28 +11,6 @@ interface Country {
 }
 
 class ContriesController {
-    // async index(request: Request, response: Response) {
-    //     const responseData = await api.get(`/free-api?countryTotals=ALL`)
-    //     const { countryitems } = responseData.data
-    //     let countries: Country[] = countryitems[0]
-
-    //     function sortCountries(a: Country, b: Country) {
-    //         const totalCasesA = a.total_cases
-    //         const totalCasesB = b.total_cases
-
-    //         let comparison = 0;
-    //         if (totalCasesA < totalCasesB) {
-    //             comparison = 1;
-    //         } else if (totalCasesA > totalCasesB) {
-    //             comparison = -1;
-    //         }
-    //         return comparison;
-    //     }
-    //     const data = Object.values(countries).sort(sortCountries);
-    //     data.pop();
-
-    //     return response.json(data);
-    // }
 
     async index(request: Request, response: Response) {
         const responseData = await api_timeline_global.get(`/countries?sort=cases`)
