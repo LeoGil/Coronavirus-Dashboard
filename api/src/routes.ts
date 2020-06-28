@@ -20,6 +20,7 @@ routes.get('/', (request, response) => {
 //Rotas do CONTRY
 routes.get('/country/:id', contryController.show)
 routes.get('/country_timeline/:id', contryController.timeline)
+routes.get('/country_timeline_new/:id', contryController.timelineNewPerDay)
 
 //Rotas do CONTRIES
 routes.get('/countries', countriesController.index)

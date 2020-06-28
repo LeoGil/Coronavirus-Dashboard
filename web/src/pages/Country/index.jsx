@@ -5,6 +5,7 @@ import api from '../../services/api';
 
 import CountryData from '../../components/CountryDetailsCard';
 import TimeLine from '../../components/TimeLine';
+import TimeLineDaily from '../../components/TimeLineDaily';
 import PieCases from '../../components/PieActiveDeathRecovered';
 import PieTests from '../../components/PieTests';
 
@@ -14,8 +15,10 @@ export default function Country() {
   const { country_code: countryCode } = useParams();
   const [isPageLoaded, setIsPageLoaded] = useState(false);
   const [isTimeLineDataLoaded, setIsTimeLineDataLoaded] = useState(false);
+  const [isTimeLineNewDataLoaded, setIsTimeLineNewDataLoaded] = useState(false);
   const [country, setCountry] = useState([]);
   const [countryTimeline, setCountryTimeline] = useState([]);
+  const [countryTimelineNew, setCountryTimelineNew] = useState([]);
 
   // Get Country Timeline
   useEffect(() => {
@@ -26,6 +29,20 @@ export default function Country() {
     };
 
     loadCountryTimeLine();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Get Country New Per Day Timeline
+  useEffect(() => {
+    const loadCountryTimeLineNew = async () => {
+      const response = await api.get(`/country_timeline_new/${countryCode}`);
+      setCountryTimelineNew(response.data.timeline);
+
+      setIsTimeLineNewDataLoaded(true);
+    };
+
+    loadCountryTimeLineNew();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -47,21 +64,28 @@ export default function Country() {
       <Loading type="bars" color="#eee" />
     </div>
   ) : (
-    <CountryStyles className="container-fluid">
-      <div className="row">
-        <div className="col-12">
-          <CountryData country={country} />
-        </div>
-        <div className="col-8">
-          <section className=" chart-div">
-            <TimeLine
-              timeline={countryTimeline}
-              timelineDataLoaded={isTimeLineDataLoaded}
-            />
-          </section>
-        </div>
-        <div className="col-4">
+      <CountryStyles className="container-fluid">
+        <div className="row">
           <div className="col-12">
+            <CountryData country={country} />
+          </div>
+          <div className="col-lg-6 col-md-12">
+            <section className=" chart-div">
+              <TimeLine
+                timeline={countryTimeline}
+                timelineDataLoaded={isTimeLineDataLoaded}
+              />
+            </section>
+          </div>
+          <div className="col-lg-6 col-md-12">
+            <section className=" chart-div">
+              <TimeLineDaily
+                timeline={countryTimelineNew}
+                timelineDataLoaded={isTimeLineNewDataLoaded}
+              />
+            </section>
+          </div>
+          <div className="col-lg-6 col-md-12">
             <section className="chart-div">
               <PieCases
                 data={country}
@@ -71,7 +95,7 @@ export default function Country() {
               />
             </section>
           </div>
-          <div className="col-12">
+          <div className="col-lg-6 col-md-12">
             <section className="chart-div">
               <PieTests
                 data={country}
@@ -80,7 +104,6 @@ export default function Country() {
             </section>
           </div>
         </div>
-      </div>
-    </CountryStyles>
-  );
+      </CountryStyles>
+    );
 }

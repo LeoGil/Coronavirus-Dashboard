@@ -44,9 +44,14 @@ export default function TimeLineCountries({ countries }) {
         timelineCountryNames.push(timelineCountries[index].country);
         timelineCountry.push(timelineCountries[index].timeline.cases);
 
-        const randColor = `#${Math.floor(Math.random() * 16777215).toString(
+        let randColor = `#${Math.floor(Math.random() * 16777215).toString(
           16,
         )}`;
+
+        if (randColor.length !== 7) {
+          randColor = randColor + '6'
+        }
+
         datasets.push({
           label: timelineCountryNames[index],
           fill: false,

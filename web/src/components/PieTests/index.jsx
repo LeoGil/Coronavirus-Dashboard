@@ -41,7 +41,7 @@ export default function PieCases({ data, timelineDataLoaded }) {
   return (
     <>
       <h2>{data.country} Population / Tests</h2>
-      <canvas className="mt-4" id="pie_tests" />
+      <canvas className="mt-4" height="110rem" id="pie_tests" />
     </>
   );
 }

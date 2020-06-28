@@ -22,6 +22,7 @@ export default function Main() {
   const [oldCountries, setOldCountries] = useState([]);
   const [globalData, setGlobalData] = useState([]);
   const [isPageLoaded, setIsPageLoaded] = useState(false);
+  const [globalDataLoaded, setGlobalDataLoaded] = useState(false);
   const [lastUpdatedSeconds, setLastUpdatedSeconds] = useState(0);
   const [updatePageCount, setUpdatePageCount] = useState(0);
   const [timelineGlobal, setTimelineGlobal] = useState();
@@ -39,9 +40,7 @@ export default function Main() {
 
       response.data = Object.values(response.data);
 
-      // response.data[1]['cases'] = 2213167 + Math.floor(Math.random() * 10);
-      // response.data[1]['recovered'] = 749928 + Math.floor(Math.random() * 10);
-      // response.data[0]['deaths'] = 316828 + Math.floor(Math.random() * 10);
+      setIsPageLoaded(true);
 
       if (countries[0] !== undefined) {
         setOldCountries(countries)
@@ -80,7 +79,7 @@ export default function Main() {
   useEffect(() => {
     api.get(`/global_timeline`).then(response => {
       setTimelineGlobal(response.data);
-      setIsPageLoaded(true);
+      setGlobalDataLoaded(true)
       setChartLoaded(true);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -98,7 +97,7 @@ export default function Main() {
           <section className="chart-div">
             <TimeLine
               timeline={timelineGlobal}
-              timelineDataLoaded={chartLoaded}
+              timelineDataLoaded={globalDataLoaded}
             />
           </section>
           <section className="chart-div">
