@@ -42,9 +42,9 @@ export default function Main() {
 
       setIsPageLoaded(true);
 
-      if (countries[0] !== undefined) {
-        setOldCountries(countries)
-      }
+      // if (countries[0] !== undefined) {
+      //   setOldCountries(countries)
+      // }
 
       setCountries(response.data)
       setChartLoaded(false);
