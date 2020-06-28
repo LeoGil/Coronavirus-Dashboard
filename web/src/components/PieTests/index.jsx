@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import * as Chart from 'chart.js';
 
 export default function PieCases({ data, timelineDataLoaded }) {
-
   // Mount pie tests
   useEffect(() => {
     if (timelineDataLoaded) {

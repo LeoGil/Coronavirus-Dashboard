@@ -1,7 +1,7 @@
 @import "../../include-media";
 
 $background: var(--bg-active);
-$hover-border: var(--color-tests);
+$hover-border: var(--color-hover);
 $top-border-colors: (
   top-color-1: var(--color-new-cases),
   top-color-2: var(--color-new-deaths),
@@ -25,7 +25,7 @@ $top-border-colors: (
       flex-direction: column;
     }
     div {
-      min-width: 19rem;
+      min-width: 23rem;
       flex: 1 1 auto;
       display: flex;
       flex-direction: column;

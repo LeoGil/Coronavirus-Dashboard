@@ -40,7 +40,7 @@ export default function GlobalData({ globaldata }) {
               {nf.format(globaldata.todayRecovered)}
             </span>
           </div>
-          <div className="global-data-title top-color-4">
+          {/* <div className="global-data-title top-color-4">
             Active cases
             <span className="global-data-numbers color-active">
               {nf.format(globaldata.active)}
@@ -59,7 +59,7 @@ export default function GlobalData({ globaldata }) {
             <span className="global-data-numbers color-critical">
               {nf.format(globaldata.critical)}
             </span>
-          </div>
+          </div> */}
         </section>
         {/* <section>
                     <button className='btn btn-info' onClick={this.createNotification('info')}>Info</button>

@@ -1,68 +1,45 @@
 .pais-article {
   margin: 20px auto 10px;
   padding: 20px;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   background: var(--bg-active);
   font-weight: 800;
   font-size: 18px;
   border: 3px solid var(--bg-active);
-  -webkit-box-shadow: 0.2rem 1rem 0.65rem rgba(0, 0, 0, 0.342);
-          box-shadow: 0.2rem 1rem 0.65rem rgba(0, 0, 0, 0.342);
+  box-shadow: 0.2rem 1rem 0.65rem rgba(0, 0, 0, 0.342);
 }
-
 .pais-article:hover {
-  -webkit-filter: brightness(1.2);
-          filter: brightness(1.2);
-  -webkit-transition: all 0.2s;
+  filter: brightness(1.2);
   transition: all 0.2s;
   position: relative;
   top: -10px;
-  border: 3px solid var(--color-tests);
+  border: 3px solid var(--color-hover);
 }
-
 .pais-article .flag {
   margin-right: 55px;
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 5fr;
-      grid-template-columns: 1fr 5fr;
+  grid-template-columns: 1fr 5fr;
   font-size: x-large;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
-
 .pais-article .flag img {
   height: 48px;
   border-radius: 20%;
-  -webkit-box-shadow: 0.31rem 0.29rem 0.65rem rgba(0, 0, 0, 0.342);
-          box-shadow: 0.31rem 0.29rem 0.65rem rgba(0, 0, 0, 0.342);
+  box-shadow: 0.31rem 0.29rem 0.65rem rgba(0, 0, 0, 0.342);
 }
-
 .pais-article .cases {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
   min-height: 67px;
 }
-
 .pais-article .cases div {
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  flex: 1 1 auto;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
-
 .pais-article .new-today {
   font-size: 12px;
   margin-top: -5px;
 }
+
 /*# sourceMappingURL=styles.css.map */

@@ -8,6 +8,7 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
+    "styled-components": "^5.1.1",
     "bootstrap": "^4.5.0",
     "chart.js": "^2.9.3",
     "jquery": "^3.5.1",
@@ -52,7 +53,6 @@
     "eslint-plugin-react-hooks": "^2.3.0",
     "gh-pages": "^2.2.0",
     "prettier": "^2.0.5",
-    "sass": "^1.26.8",
-    "styled-components": "^5.1.1"
+    "sass": "^1.26.8"
   }
 }

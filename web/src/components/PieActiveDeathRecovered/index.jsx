@@ -1,7 +1,11 @@
 import React, { useEffect } from 'react';
 import * as Chart from 'chart.js';
 
-export default function PieCases({ data, timelineDataLoaded, country = 'Global' }) {
+export default function PieCases({
+  data,
+  timelineDataLoaded,
+  country = 'Global',
+}) {
   // Mount pie cases
   useEffect(() => {
     if (timelineDataLoaded) {
@@ -16,23 +20,11 @@ export default function PieCases({ data, timelineDataLoaded, country = 'Global' 
           },
         },
         data: {
-          labels: [
-            'Active',
-            'Recovered',
-            'Death',
-          ],
+          labels: ['Active', 'Recovered', 'Death'],
           datasets: [
             {
-              backgroundColor: [
-                '#ffc137',
-                '#347fd5',
-                '#f35353',
-              ],
-              data: [
-                data.active,
-                data.recovered,
-                data.deaths,
-              ],
+              backgroundColor: ['#ffc137', '#347fd5', '#f35353'],
+              data: [data.active, data.recovered, data.deaths],
             },
           ],
         },

@@ -13,7 +13,7 @@ import TimeLineCountries from '../../components/TimeLineCountries';
 import RecentChange from '../../components/RecentChanges';
 import PieCases from '../../components/PieActiveDeathRecovered';
 
-import './style.css';
+import { ChartsStyle, GlobalDataHeader } from './styles';
 
 
 
@@ -39,9 +39,9 @@ export default function Main() {
 
       response.data = Object.values(response.data);
 
-      response.data[1]['cases'] = 2213167 + Math.floor(Math.random() * 10);
-      response.data[1]['recovered'] = 749928 + Math.floor(Math.random() * 10);
-      response.data[0]['deaths'] = 316828 + Math.floor(Math.random() * 10);
+      // response.data[1]['cases'] = 2213167 + Math.floor(Math.random() * 10);
+      // response.data[1]['recovered'] = 749928 + Math.floor(Math.random() * 10);
+      // response.data[0]['deaths'] = 316828 + Math.floor(Math.random() * 10);
 
       if (countries[0] !== undefined) {
         setOldCountries(countries)
@@ -94,40 +94,43 @@ export default function Main() {
       <div className="container-fluid">
         <NotificationContainer />
 
-        <div className="row">
-          <div className="col-6">
-            <section className="chart-div">
-              <TimeLine timeline={timelineGlobal} timelineDataLoaded={chartLoaded} />
-            </section>
-          </div>
-          <div className="col-6">
-            <section className="chart-div">
-              <TimeLineCountries countries={countries} />
-            </section>
-          </div>
-          <div className="col-4">
-            <section className="chart-div">
-              <PieCases data={globalData} timelineDataLoaded={pieLoaded} />
-            </section>
-          </div>
-          <div className="col-8">
-            <section className="chart-div">
-              <RecentChange stateAtual={oldCountries} stateNovo={countries} />
-            </section>
-          </div>
-        </div>
-        <GlobalCard globaldata={globalData} />
+        <ChartsStyle>
+          <section className="chart-div">
+            <TimeLine
+              timeline={timelineGlobal}
+              timelineDataLoaded={chartLoaded}
+            />
+          </section>
+          <section className="chart-div">
+            <TimeLineCountries countries={countries} />
+          </section>
+          <section className="chart-div">
+            <PieCases data={globalData} timelineDataLoaded={pieLoaded} />
+          </section>
+          <section className="chart-div recent-changes">
+            {/* {(oldCountries[0] !== undefined && console.log(`Old: ${oldCountries[0]['cases']} novo: ${countries[0]['cases']}`))} */}
+            <RecentChange stateAtual={oldCountries} stateNovo={countries} />
+          </section>
+        </ChartsStyle>
 
-        <div className="row justify-content-md-center">
-          <div className="col-12">
-            <h1 className="text-center text-white title-components">
-              Countries Data
-          </h1>
+        <GlobalDataHeader>
+          <div className="row">
+            <div className="col-xl-3 col-lg-12 global-data">
+              <GlobalCard globaldata={globalData} />
+            </div>
+            <div className="col-xl-9 col-lg-12 countries-data">
+              <h1 className="col-12 title-components">
+                Countries Data
+              </h1>
+              <div className="countries-panel">
+
+                {countries.map(dataMap => (
+                  <CountryCard key={dataMap.country} country={dataMap} />
+                ))}
+              </div>
+            </div>
           </div>
-          {countries.map(dataMap => (
-            <CountryCard key={dataMap.country} country={dataMap} />
-          ))}
-        </div>
-      </div>
+        </GlobalDataHeader>
+      </div >
     );
 }

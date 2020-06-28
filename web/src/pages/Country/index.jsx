@@ -47,29 +47,40 @@ export default function Country() {
       <Loading type="bars" color="#eee" />
     </div>
   ) : (
-      <div className="container-fluid">
-        <div className="row">
+    <div className="container-fluid">
+      <div className="row">
+        <div className="col-12">
+          <CountryData country={country} />
+        </div>
+        <div className="col-8">
+          <section className=" chart-div">
+            <TimeLine
+              timeline={countryTimeline}
+              timelineDataLoaded={isTimeLineDataLoaded}
+            />
+          </section>
+        </div>
+        <div className="col-4">
           <div className="col-12">
-            <CountryData country={country} />
-          </div>
-          <div className="col-8">
-            <section className=" chart-div">
-              <TimeLine timeline={countryTimeline} timelineDataLoaded={isTimeLineDataLoaded} />
+            <section className="chart-div">
+              <PieCases
+                data={country}
+                timelineDataLoaded={isTimeLineDataLoaded}
+                country={country.country}
+                pageLoaded={isPageLoaded}
+              />
             </section>
           </div>
-          <div className="col-4">
-            <div className="col-12">
-              <section className="chart-div">
-                <PieCases data={country} timelineDataLoaded={isTimeLineDataLoaded} country={country.country} pageLoaded={isPageLoaded} />
-              </section>
-            </div>
-            <div className="col-12">
-              <section className="chart-div">
-                <PieTests data={country} timelineDataLoaded={isTimeLineDataLoaded} />
-              </section>
-            </div>
+          <div className="col-12">
+            <section className="chart-div">
+              <PieTests
+                data={country}
+                timelineDataLoaded={isTimeLineDataLoaded}
+              />
+            </section>
           </div>
         </div>
       </div>
-    );
+    </div>
+  );
 }

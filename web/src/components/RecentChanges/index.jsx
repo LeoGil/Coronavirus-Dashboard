@@ -1,26 +1,30 @@
 import React, { useEffect, useState } from 'react';
 
-export default function RecentChange({ stateAtual, stateNovo }) {
+export default function RecentChange(stateAtual, stateNovo) {
   const [textReturn, setTextReturn] = useState([]);
   let textToState = []
 
+
+
   // Mount recent changes
   useEffect(() => {
+    // ((stateAtual[0] !== undefined && stateNovo[0] !== undefined) && console.log(stateAtual[0], stateNovo[0]))
+    // console.log(stateAtual, stateNovo)
     // const [executou, setExecutou] = useState(false);
 
     // console.log(stateAtual)
     if (stateAtual[0] !== undefined) {
       function compareObjects() {
+        let countriesAtual = stateAtual
+        let countriesNovo = stateNovo
 
-        var countriesAtual = stateAtual
-        var countriesNovo = stateNovo
+        // console.log(`Atual1: ${countriesAtual[0]['cases']}`)
+        // console.log(`Novo1: ${countriesNovo[0]['cases']}`)
 
-        // countiesAtual[1]['cases'] = 1213167
-        // countiesAtual[1]['recovered'] = 449928
-        // countiesAtual[0]['deaths'] = 116828
+        // countriesAtual[0]['cases'] = countriesAtual[0]['cases'] - 1
 
-        // console.log(countriesAtual[0]['deaths'], countriesNovo[0]['deaths'])
-        // return
+        // console.log(`Atual2: ${countriesAtual[0]['cases']}`)
+        // console.log(`Novo2: ${countriesNovo[0]['cases']}`)
 
         function comparer(otherArray) {
           return function (current) {
@@ -53,39 +57,60 @@ export default function RecentChange({ stateAtual, stateNovo }) {
           result = result.sort(compare)
 
 
-          for (let index = 0; index < result.length; index++) {
-            if (index !== 0) {
-              if (result[index]['iso2'] === result[index - 1]['iso2']) {
-                if (result[index]['cases'] > result[index - 1]['cases']) {
-                  textToState[index] = { text: `${result[index]['country']}: +${result[index]['cases'] - result[index - 1]['cases']} cases `, iso2: result[index]['iso2'] }
-                  // console.log(`O ${result[index]['country']} teve um aumento de ${result[index]['cases'] - result[index - 1]['cases']} de casos`)
+          for (let index = 1; index < result.length; index++) {
+            if (result[index]['iso2'] === result[index - 1]['iso2']) {
+              if (result[index]['cases'] > result[index - 1]['cases']) {
+                textToState[index] = { text: `${result[index]['country']}: +${result[index]['cases'] - result[index - 1]['cases']} cases `, iso2: result[index]['iso2'] }
+              }
+
+              if (result[index]['recovered'] > result[index - 1]['recovered']) {
+                if (textToState[index] === undefined) {
+                  textToState[index] = { text: `${result[index]['country']}: +${result[index]['recovered'] - result[index - 1]['recovered']} recovered `, iso2: result[index]['iso2'] }
+                } else {
+                  textToState[index]['text'] = textToState[index]['text'] + `+${result[index]['recovered'] - result[index - 1]['recovered']} recovered `
+                }
+              }
+
+              if (result[index]['deaths'] > result[index - 1]['deaths']) {
+                if (textToState[index] === undefined) {
+                  textToState[index] = { text: `${result[index]['country']}: +${result[index]['deaths'] - result[index - 1]['deaths']} deaths `, iso2: result[index]['iso2'] }
+                } else {
+                  textToState[index]['text'] = textToState[index]['text'] + `+${result[index]['deaths'] - result[index - 1]['deaths']} deaths `
+                }
+              }
+
+
+              function timeDifference(current, previous) {
+
+                var msPerMinute = 60 * 1000;
+                var msPerHour = msPerMinute * 60;
+                var msPerDay = msPerHour * 24;
+
+                var elapsed = current - previous;
+
+                if (elapsed < msPerMinute) {
+                  return Math.round(elapsed / 1000) + ' seconds ago';
                 }
 
-                if (result[index]['recovered'] > result[index - 1]['recovered']) {
-                  if (textToState[index] === undefined) {
-                    textToState[index] = { text: `${result[index]['country']}: +${result[index]['recovered'] - result[index - 1]['recovered']} recovered `, iso2: result[index]['iso2'] }
-                  } else {
-                    textToState[index]['text'] = textToState[index]['text'] + `+${result[index]['recovered'] - result[index - 1]['recovered']} recovered `
-                  }
-                  // console.log(`O ${result[index]['country']} teve um aumento de ${result[index]['recovered'] - result[index - 1]['recovered']} de recuperados`)
+                else if (elapsed < msPerHour) {
+                  return Math.round(elapsed / msPerMinute) + ' minutes ago';
                 }
 
-                if (result[index]['deaths'] > result[index - 1]['deaths']) {
-                  if (textToState[index] === undefined) {
-                    textToState[index] = { text: `${result[index]['country']}: +${result[index]['deaths'] - result[index - 1]['deaths']} deaths `, iso2: result[index]['iso2'] }
-                  } else {
-                    textToState[index]['text'] = textToState[index]['text'] + `+${result[index]['deaths'] - result[index - 1]['deaths']} deaths `
-                  }
-                  // console.log(`O ${result[index]['country']} teve um aumento de ${result[index]['deaths'] - result[index - 1]['deaths']} de mortes`)
+                else if (elapsed < msPerDay) {
+                  return Math.round(elapsed / msPerHour) + ' hours ago';
                 }
+              }
+
+              if (textToState[index] !== undefined) {
+                textToState[index]['text'] = `${textToState[index]['text']} ${new Date(Date.now()).toLocaleString()}`;
               }
             }
           }
 
-          textToState = textToState.push(textReturn)
-          console.log(textToState)
-          setTextReturn(textToState)
-          console.log(textReturn)
+          const parsedText = textToState.filter(textState => textState !== undefined);
+
+          setTextReturn([...parsedText, ...textReturn]);
+
         }
       }
       compareObjects();
@@ -97,9 +122,9 @@ export default function RecentChange({ stateAtual, stateNovo }) {
 
   return (
     <>
-      <h2>Population / Tests</h2>
+      <h2>Recent changes</h2>
       {/* {console.log(textReturn)} */}
-      {/* {textReturn.map(change => (
+      {textReturn.map(change => (
         <div key={change.text + change.iso2}>
           <img
             src={`https://cdn.u21.io/flags/4x3/${change.iso2.toLowerCase()}.svg`}
@@ -107,7 +132,7 @@ export default function RecentChange({ stateAtual, stateNovo }) {
           />
           <p>{change.text}</p>
         </div>
-      ))} */}
+      ))}
     </>
   );
 }

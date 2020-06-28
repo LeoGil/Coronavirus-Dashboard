@@ -1,7 +1,48 @@
 import React, { useEffect } from 'react';
 import * as Chart from 'chart.js';
 
+
+
 export default function TimeLine({ timeline, timelineDataLoaded }) {
+  // let draw = Chart.controllers.line.prototype.draw;
+  // Chart.controllers.line.prototype.draw = function () {
+  //   draw.apply(this, arguments);
+  //   let ctx = this.chart.chart.ctx;
+  //   let _stroke = ctx.stroke;
+  //   ctx.stroke = function () {
+  //     ctx.save();
+  //     ctx.shadowColor = '#4b4b4b8e';
+  //     ctx.shadowBlur = 20;
+  //     ctx.shadowOffsetX = 1;
+  //     ctx.shadowOffsetY = 2;
+  //     _stroke.apply(this, arguments);
+  //     ctx.restore();
+  //   }
+  // };
+  Chart.defaults.LineWithLine = Chart.defaults.line;
+  Chart.controllers.LineWithLine = Chart.controllers.line.extend({
+    draw: function (ease) {
+      if (this.chart.tooltip._active && this.chart.tooltip._active.length) {
+        var activePoint = this.chart.tooltip._active[0],
+          ctx = this.chart.ctx,
+          x = activePoint.tooltipPosition().x,
+          topY = this.chart.scales['y-axis-0'].top,
+          bottomY = this.chart.scales['y-axis-0'].bottom;
+
+        // draw line
+        ctx.save();
+        ctx.beginPath();
+        ctx.moveTo(x, topY);
+        ctx.lineTo(x, bottomY);
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = '#fe3860';
+        // ctx.shadowBlur = 1;
+        ctx.stroke();
+        ctx.restore();
+      }
+      Chart.controllers.line.prototype.draw.call(this, ease);
+    }
+  });
 
   // Mount graph cases
   useEffect(() => {
@@ -24,16 +65,17 @@ export default function TimeLine({ timeline, timelineDataLoaded }) {
       Object.keys(timeline.recovered).forEach(key => {
         timelinedataRecovered.push(timeline.recovered[key]);
       });
-      
+
       Object.keys(timeline.cases).forEach(key => {
-        timelinedataActive.push(timeline.cases[key] - (timeline.deaths[key] + timeline.recovered[key]));
+        timelinedataActive.push(
+          timeline.cases[key] -
+          (timeline.deaths[key] + timeline.recovered[key]),
+        );
       });
 
-      const cav = document
-        .getElementById('cav_cases')
-        .getContext('2d');
+      const cav = document.getElementById('cav_cases').getContext('2d');
       new Chart(cav, {
-        type: 'line',
+        type: 'LineWithLine',
         options: {
           tooltips: {
             mode: 'index',
@@ -159,11 +201,7 @@ export default function TimeLine({ timeline, timelineDataLoaded }) {
   return (
     <>
       <h2>Timeline cases and deaths</h2>
-      <canvas
-        className="mt-4"
-        height="164px"
-        id={'cav_cases'}
-      />
+      <canvas className="mt-4" height="164px" id="cav_cases" />
     </>
   );
 }
