@@ -1,9 +1,7 @@
-@import '../../include-media';
+import styled from 'styled-components';
+import { colors } from '../../AppStyles';
 
-$background: var(--bg-active);
-$hover-border: var(--color-tests);
-
-.pais-details-article {
+const CountryDetailsCardStyles = styled.article`
   display: flex;
   flex-direction: column;
   margin: 1rem 0;
@@ -14,7 +12,7 @@ $hover-border: var(--color-tests);
     display: flex;
     font-size: x-large;
     align-items: center;
-    @include media('<=phone'){
+    @media all and (max-width: 499px) {
       justify-content: center;
     }
     img {
@@ -29,28 +27,29 @@ $hover-border: var(--color-tests);
   .cases {
     display: flex;
     flex-wrap: wrap;
-    @include media('>phone'){
-      background: $background;
-      @include card-border-radius;
+    @media all and (min-width: 500px) {
+      background: ${colors.bgActive};
+      border-radius: 0.5rem;
     }
     div {
-      @include media('<=phone'){
-        background: $background;
-        @include card-border-radius;
+      @media all and (max-width: 499px) {
+        background: ${colors.bgActive};
+        border-radius: 0.5rem;
       }
-      margin: .5rem;
-      padding: .5rem;
+      margin: 0.5rem;
+      padding: 0.5rem;
       flex: 1 1 auto;
       display: flex;
       flex-direction: column;
       text-align: center;
       .country-data-numbers {
         font-size: 2.5rem;
-        @include media("<=phone") {
+        @media all and (max-width: 499px) {
           font-size: 1.7rem;
         }
         font-weight: 800;
       }
     }
   }
-}
+`;
+export default CountryDetailsCardStyles;

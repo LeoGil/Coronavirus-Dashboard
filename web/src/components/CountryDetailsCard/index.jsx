@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles.css';
+import CountryDetailsCardStyles from './styles';
 
 const nf = new Intl.NumberFormat();
 
@@ -8,7 +8,7 @@ export default function CountryDetailsCard({ country }) {
   country.iso2 = country.country === 'Diamond Princess' ? 'US' : country.iso2;
 
   return (
-    <article className="pais-details-article">
+    <CountryDetailsCardStyles>
       <figure className="flag">
         <img
           src={`https://cdn.u21.io/flags/4x3/${country.iso2.toLowerCase()}.svg`}
@@ -68,6 +68,6 @@ export default function CountryDetailsCard({ country }) {
           </span>
         </div>
       </section>
-    </article>
+    </CountryDetailsCardStyles>
   );
 }

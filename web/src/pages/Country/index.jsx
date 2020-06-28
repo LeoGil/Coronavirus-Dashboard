@@ -8,7 +8,7 @@ import TimeLine from '../../components/TimeLine';
 import PieCases from '../../components/PieActiveDeathRecovered';
 import PieTests from '../../components/PieTests';
 
-import './style.css';
+import CountryStyles from './styles';
 
 export default function Country() {
   const { country_code: countryCode } = useParams();
@@ -47,7 +47,7 @@ export default function Country() {
       <Loading type="bars" color="#eee" />
     </div>
   ) : (
-    <div className="container-fluid">
+    <CountryStyles className="container-fluid">
       <div className="row">
         <div className="col-12">
           <CountryData country={country} />
@@ -81,6 +81,6 @@ export default function Country() {
           </div>
         </div>
       </div>
-    </div>
+    </CountryStyles>
   );
 }

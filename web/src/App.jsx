@@ -1,12 +1,14 @@
 import React from 'react';
 import Routes from './routes';
 
-import './styles.css';
+import AppStyles from './AppStyles';
 import 'bootstrap/dist/css/bootstrap.css';
 
 const App = () => (
   <div className="App">
-    <Routes />
+    <AppStyles>
+      <Routes />
+    </AppStyles>
   </div>
 );
 

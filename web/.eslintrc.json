@@ -25,6 +25,8 @@
     "prettier"
   ],
   "rules": {
+    "no-plusplus": "off",
+    "jsx-a11y/control-has-associated-label": "off",
     "no-shadow": "off",
     "no-new": "off",
     "react/jsx-one-expression-per-line": "off",
