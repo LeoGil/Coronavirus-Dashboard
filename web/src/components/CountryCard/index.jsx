@@ -14,7 +14,7 @@ export default function CountryCard({ country }) {
   const deathPct = Math.ceil((country.deaths * 100) / country.cases);
 
   return (
-    <CountryCardStyles className="col-lg-4">
+    <CountryCardStyles className="col-lg-4 col-md-6">
       <Link to={`${rootpath}${country.iso2}`} className="unstyled-link">
         <article className="pais-article">
           <figure className="flag">
