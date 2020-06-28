@@ -10,13 +10,18 @@ export const ChartsStyle = styled.div`
   flex-wrap: wrap;
 
   section {
-    flex: 1 47%;
+    flex: 1;
 
     margin: 1rem;
-    max-width: 50%;
+    /* max-width: 50%; */
 
     box-shadow: 0.2rem 1rem 0.65rem rgba(0, 0, 0, 0.342);
   }
+  
+  .break {
+      flex-basis: 100%;
+      height: 0;
+    }
 
   .recent-changes {
     height: inherit;

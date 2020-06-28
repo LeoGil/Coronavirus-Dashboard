@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './styles.css';
+import HeaderStyles from './styles';
 import rootpath from '../../services/getRootPath';
 
 import logo from '../../assets/logo.png';
 
 const Header = () => (
-  <div id="main-header">
+  <HeaderStyles>
     <Link to={rootpath} className="title-brand">
       <img src={logo} alt="Covid Dashboard" className="logo" />
       DASHBOARD
@@ -18,7 +18,7 @@ const Header = () => (
       </Link>
     </nav>
     {/* <a class="btn btn-outline-primary" href="#">Sign up</a> */}
-  </div>
+  </HeaderStyles>
 );
 
 export default Header;

@@ -1,13 +1,13 @@
 import React from 'react';
 
-import './styles.css';
+import GlobalCardStyles from './styles';
 
 export default function GlobalData({ globaldata }) {
   const nf = new Intl.NumberFormat();
 
   return (
-    <>
-      <h1 className="text-center title-components">Global Data</h1>
+    <GlobalCardStyles>
+      <h1 className="title-components">Global Data</h1>
       <article className="global-article">
         <section className="cases">
           <div className="global-data-title top-color-1">
@@ -71,6 +71,6 @@ export default function GlobalData({ globaldata }) {
                     <button className='btn btn-danger' onClick={this.createNotification('error')}>Error</button>
                 </section> */}
       </article>
-    </>
+    </GlobalCardStyles>
   );
 }

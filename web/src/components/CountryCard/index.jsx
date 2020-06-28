@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './styles.css';
+import CountryCardStyles from './styles';
 import rootpath from '../../services/getRootPath';
 
 const nf = new Intl.NumberFormat();
@@ -9,12 +9,12 @@ export default function CountryCard({ country }) {
   country.iso2 = country.country === 'MS Zaandam' ? 'US' : country.iso2;
   country.iso2 = country.country === 'Diamond Princess' ? 'US' : country.iso2;
 
-  const active_pct = Math.round((country.active * 100) / country.cases);
-  const recovered_pct = Math.round((country.recovered * 100) / country.cases);
-  const death_pct = Math.ceil((country.deaths * 100) / country.cases);
+  const activePct = Math.round((country.active * 100) / country.cases);
+  const recoveredPct = Math.round((country.recovered * 100) / country.cases);
+  const deathPct = Math.ceil((country.deaths * 100) / country.cases);
 
   return (
-    <div className="col-lg-4">
+    <CountryCardStyles className="col-lg-4">
       <Link to={`${rootpath}${country.iso2}`} className="unstyled-link">
         <article className="pais-article">
           <figure className="flag">
@@ -30,24 +30,24 @@ export default function CountryCard({ country }) {
             <div
               className="progress-bar bg-active"
               role="progressbar"
-              style={{ width: `${active_pct}%` }}
-              aria-valuenow={active_pct}
+              style={{ width: `${activePct}%` }}
+              aria-valuenow={activePct}
               aria-valuemin="0"
               aria-valuemax="100"
             />
             <div
               className="progress-bar bg-recovered"
               role="progressbar"
-              style={{ width: `${recovered_pct}%` }}
-              aria-valuenow={recovered_pct}
+              style={{ width: `${recoveredPct}%` }}
+              aria-valuenow={recoveredPct}
               aria-valuemin="0"
               aria-valuemax="100"
             />
             <div
               className="progress-bar bg-death"
               role="progressbar"
-              style={{ width: `${death_pct}%` }}
-              aria-valuenow={death_pct}
+              style={{ width: `${deathPct}%` }}
+              aria-valuenow={deathPct}
               aria-valuemin="0"
               aria-valuemax="100"
             />
@@ -89,6 +89,6 @@ export default function CountryCard({ country }) {
           </section>
         </article>
       </Link>
-    </div>
+    </CountryCardStyles>
   );
 }

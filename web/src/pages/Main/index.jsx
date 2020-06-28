@@ -104,12 +104,13 @@ export default function Main() {
           <section className="chart-div">
             <TimeLineCountries countries={countries} />
           </section>
+          <section className="break"></section>
           <section className="chart-div">
             <PieCases data={globalData} timelineDataLoaded={pieLoaded} />
           </section>
           <section className="chart-div recent-changes">
-            {/* {(oldCountries[0] !== undefined && console.log(`Old: ${oldCountries[0]['cases']} novo: ${countries[0]['cases']}`))} */}
-            <RecentChange stateAtual={oldCountries} stateNovo={countries} />
+            {/* {(oldCountries[0] !== undefined && console.log(`Old: ${oldCountries[0]['cases']} novo: ${countries[0]['cases']}`))}
+            <RecentChange stateAtual={oldCountries} stateNovo={countries} /> */}
           </section>
         </ChartsStyle>
 

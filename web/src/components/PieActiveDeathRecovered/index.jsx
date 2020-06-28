@@ -37,7 +37,7 @@ export default function PieCases({
   return (
     <>
       <h2>{country} active, deaths and recovered</h2>
-      <canvas className="mt-4" id="pie_cases" />
+      <canvas className="mt-4" height="110rem" id="pie_cases" />
     </>
   );
 }

@@ -114,7 +114,7 @@ export default function TimeLineCountries({ countries }) {
   return (
     <>
       <h2>Timeline cases from top 5 countries</h2>
-      <canvas className="mt-4" height="164px" id="cav_cases_top_countries" />
+      <canvas className="mt-4" height="170rem" id="cav_cases_top_countries" />
     </>
   );
 }

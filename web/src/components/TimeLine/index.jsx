@@ -201,7 +201,7 @@ export default function TimeLine({ timeline, timelineDataLoaded }) {
   return (
     <>
       <h2>Timeline cases and deaths</h2>
-      <canvas className="mt-4" height="164px" id="cav_cases" />
+      <canvas className="mt-4" height="170rem" id="cav_cases" />
     </>
   );
 }
