@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { NotificationContainer } from 'react-notifications';
 // NotificationManager
 import 'react-notifications/lib/notifications.css';
@@ -19,16 +19,16 @@ import { ChartsStyle, GlobalDataHeader } from './styles';
 
 export default function Main() {
   const [countries, setCountries] = useState([]);
-  const [oldCountries, setOldCountries] = useState([]);
+  // const [oldCountries, setOldCountries] = useState([]);
   const [globalData, setGlobalData] = useState([]);
   const [isPageLoaded, setIsPageLoaded] = useState(false);
   const [globalDataLoaded, setGlobalDataLoaded] = useState(false);
   const [lastUpdatedSeconds, setLastUpdatedSeconds] = useState(0);
   const [updatePageCount, setUpdatePageCount] = useState(0);
   const [timelineGlobal, setTimelineGlobal] = useState();
-  const [chartLoaded, setChartLoaded] = useState(false);
   const [pieLoaded, setPieLoaded] = useState(false);
 
+  const oldCountries = useRef();
 
 
   // Get Country Data
@@ -40,20 +40,23 @@ export default function Main() {
 
       response.data = Object.values(response.data);
 
-      setIsPageLoaded(true);
-
-      // if (countries[0] !== undefined) {
-      //   setOldCountries(countries)
-      // }
+      if (countries[0] !== undefined) {
+        Object.keys(response.data).forEach(key => {
+          if (response.data[key]['updated'] < countries[key]['updated']) {
+            response.data[key] = countries[key]
+          }
+        });
+      }
 
       setCountries(response.data)
-      setChartLoaded(false);
+      setIsPageLoaded(true);
+      // setChartLoaded(false);
     };
 
     const loadGlobalData = async () => {
       const response = await api.get(`/global`);
       setGlobalData(response.data);
-      setChartLoaded(false);
+      // setChartLoaded(false);
       setPieLoaded(true);
     };
     loadCountryData();
@@ -66,7 +69,9 @@ export default function Main() {
     if (isPageLoaded) {
       interval = setInterval(() => {
         setLastUpdatedSeconds(lastUpdatedSeconds => lastUpdatedSeconds + 1);
-        if (lastUpdatedSeconds % 10 === 0 && lastUpdatedSeconds !== 0) {
+        if (lastUpdatedSeconds % 30 === 0 && lastUpdatedSeconds !== 0) {
+          // setOldCountries(countries)
+          oldCountries.current = countries;
           setUpdatePageCount(updatePageCount => updatePageCount + 1);
           setLastUpdatedSeconds(0);
         }
@@ -74,13 +79,15 @@ export default function Main() {
     }
 
     return () => clearInterval(interval);
-  }, [isPageLoaded, lastUpdatedSeconds]);
+  }, [isPageLoaded, lastUpdatedSeconds, countries]);
+
+  const prevCountries = oldCountries.current;
 
   useEffect(() => {
     api.get(`/global_timeline`).then(response => {
       setTimelineGlobal(response.data);
       setGlobalDataLoaded(true)
-      setChartLoaded(true);
+      // setChartLoaded(true);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -103,13 +110,13 @@ export default function Main() {
           <section className="chart-div">
             <TimeLineCountries countries={countries} />
           </section>
-          <section className="break"></section>
+          <section className="break" style={{ margin: 0 }}></section>
           <section className="chart-div">
             <PieCases data={globalData} timelineDataLoaded={pieLoaded} />
           </section>
           <section className="chart-div recent-changes">
-            {/* {(oldCountries[0] !== undefined && console.log(`Old: ${oldCountries[0]['cases']} novo: ${countries[0]['cases']}`))}
-            <RecentChange stateAtual={oldCountries} stateNovo={countries} /> */}
+            {/* {(oldCountries[0] !== undefined && console.log(`Old: ${oldCountries[0]['cases']} novo: ${countries[0]['cases']}`))} */}
+            <RecentChange stateAtual={prevCountries} stateNovo={countries} />
           </section>
         </ChartsStyle>
 

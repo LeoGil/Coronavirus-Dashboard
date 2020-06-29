@@ -24,8 +24,8 @@ export const ChartsStyle = styled.div`
     }
 
   .recent-changes {
-    height: inherit;
-    overflow-y: scroll;
+    position: relative; 
+    flex: 1;
   }
 
   @media all and (max-width: 499px) {

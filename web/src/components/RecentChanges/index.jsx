@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 
-export default function RecentChange(stateAtual, stateNovo) {
+import RecentStyle from './styles'
+
+export default function RecentChange({ stateAtual, stateNovo }) {
   const [textReturn, setTextReturn] = useState([]);
   let textToState = []
 
-
+  // console.log(stateAtual[0], stateNovo[0])
 
   // Mount recent changes
   useEffect(() => {
@@ -12,19 +14,10 @@ export default function RecentChange(stateAtual, stateNovo) {
     // console.log(stateAtual, stateNovo)
     // const [executou, setExecutou] = useState(false);
 
-    // console.log(stateAtual)
-    if (stateAtual[0] !== undefined) {
+    if (stateAtual !== undefined) {
       function compareObjects() {
         let countriesAtual = stateAtual
         let countriesNovo = stateNovo
-
-        // console.log(`Atual1: ${countriesAtual[0]['cases']}`)
-        // console.log(`Novo1: ${countriesNovo[0]['cases']}`)
-
-        // countriesAtual[0]['cases'] = countriesAtual[0]['cases'] - 1
-
-        // console.log(`Atual2: ${countriesAtual[0]['cases']}`)
-        // console.log(`Novo2: ${countriesNovo[0]['cases']}`)
 
         function comparer(otherArray) {
           return function (current) {
@@ -36,10 +29,10 @@ export default function RecentChange(stateAtual, stateNovo) {
           }
         }
 
-        var onlyInA = countriesAtual.filter(comparer(countriesNovo));
-        var onlyInB = countriesNovo.filter(comparer(countriesAtual))
+        let onlyInA = countriesAtual.filter(comparer(countriesNovo));
+        let onlyInB = countriesNovo.filter(comparer(countriesAtual))
 
-        var result = onlyInA.concat(onlyInB);
+        let result = onlyInA.concat(onlyInB);
 
 
         //Verifica se teve alguma modificação
@@ -79,30 +72,8 @@ export default function RecentChange(stateAtual, stateNovo) {
                 }
               }
 
-
-              function timeDifference(current, previous) {
-
-                var msPerMinute = 60 * 1000;
-                var msPerHour = msPerMinute * 60;
-                var msPerDay = msPerHour * 24;
-
-                var elapsed = current - previous;
-
-                if (elapsed < msPerMinute) {
-                  return Math.round(elapsed / 1000) + ' seconds ago';
-                }
-
-                else if (elapsed < msPerHour) {
-                  return Math.round(elapsed / msPerMinute) + ' minutes ago';
-                }
-
-                else if (elapsed < msPerDay) {
-                  return Math.round(elapsed / msPerHour) + ' hours ago';
-                }
-              }
-
               if (textToState[index] !== undefined) {
-                textToState[index]['text'] = `${textToState[index]['text']} ${new Date(Date.now()).toLocaleString()}`;
+                textToState[index]['text'] = `${textToState[index]['text']} (${new Date(Date.now()).toLocaleString()})`;
               }
             }
           }
@@ -121,18 +92,26 @@ export default function RecentChange(stateAtual, stateNovo) {
   }, [stateAtual, stateNovo]);
 
   return (
-    <>
+    <RecentStyle>
       <h2>Recent changes</h2>
       {/* {console.log(textReturn)} */}
-      {textReturn.map(change => (
-        <div key={change.text + change.iso2}>
-          <img
-            src={`https://cdn.u21.io/flags/4x3/${change.iso2.toLowerCase()}.svg`}
-            alt={`flag ${change.text}`}
-          />
-          <p>{change.text}</p>
-        </div>
-      ))}
-    </>
+      <div className="change-content">
+        {textReturn.map(change => (
+          <div key={change.text + change.iso2}>
+
+            <figure className="flag">
+              <img
+                src={`https://cdn.u21.io/flags/4x3/${change.iso2.toLowerCase()}.svg`}
+                alt={`flag ${change.text}`}
+              />
+              <figcaption className="text-bold font-smaller">
+                <p>{change.text}</p>
+              </figcaption>
+            </figure>
+
+          </div>
+        ))}
+      </div>
+    </RecentStyle>
   );
 }
