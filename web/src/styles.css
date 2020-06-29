@@ -1,114 +1,29 @@
-* {
-    margin: 0;
-    padding: 0;
-    outline: 0;
-    box-sizing: border-box;
-}
-
 /* width */
-::-webkit-scrollbar {
+  ::-webkit-scrollbar {
     width: 10px;
   }
   
   /* Track */
   ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px grey; 
+    box-shadow: inset 0 0 5px #2c3442; 
     border-radius: 10px;
   }
    
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: #ccc; 
+    background: var(--bg-header); 
     border-radius: 10px;
   }
   
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: #eee; 
+    background: var(--bg-active); 
   }
 
 body {
-    margin-bottom: 1rem;
-    font-family: 'Open Sans', -apple-system, Helvetica, sans-serif !important;
-    font-weight: 600;
     background: var(--background)!important;
-    color: var(--main-text) !important;
-    overflow-x: hidden!important;
 }
 
-a {
-    color: var(--main-text) !important;
-    text-decoration: none !important;
-}
-
-.loading {
-    height: calc(100vh - 76px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.notification {
-    box-shadow: none!important;
-}
-
-.title-components {
-    text-align: center;
-    font-weight: 800!important;
-    font-size: 55px;
-}
-
-.color-cases {
-    color: var(--color-cases);
-}
-
-.color-death {
-    color: var(--color-death);
-}
-
-.color-recovered {
-    color: var(--color-recovered);
-}
-
-.color-active {
-    color: var(--color-active);
-}
-
-.color-new-case {
-    color: var(--color-new-cases);
-}
-
-.color-new-death{
-    color: var(--color-new-deaths);
-}
-
-.color-new-recoveries{
-    color: var(--color-new-recoveries);
-}
-
-.color-tests{
-    color: var(--color-tests);
-}
-
-.color-critical{
-    color: var(--color-critical);
-}
-
-.color-affected{
-    color: var(--color-affected);
-}
-
-.bg-active {
-    background-color: var(--color-active)!important;
-}
-
-.bg-recovered {
-    background-color: var(--color-recovered)!important;
-}
-
-.bg-death {
-    background-color: var(--color-death)!important;
-}
 
 :root {
     --background: #161e2c;
@@ -116,28 +31,4 @@ a {
     --bg-header: #222c45;
     
     --bg-active: #29344a;
-    
-    --main-text: #eee;
-
-    --color-cases: #0ee9cb;
-    
-    --color-death: #f35353;
-    
-    --color-recovered: #347fd5;
-    
-    --color-active: #ffc137;
-    
-    --color-new-cases: #ff8a37;
-    
-    --color-new-deaths: #af1c1c;
-    
-    --color-new-recoveries: #2a8e3c;
-
-    --color-tests: #6bfb31;
-
-    --color-hover: #225db5;
-    
-    --color-critical: #dc3b1f;
-    
-    --color-affected: #da8213;
 }
