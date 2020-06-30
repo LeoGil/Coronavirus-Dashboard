@@ -1,9 +1,5 @@
 import styled from 'styled-components';
-
-const colors = {
-  background: '#161e2c',
-  bgActive: '#29344a'
-}
+import { colors } from '../../GlobalStyles';
 
 export const ChartsStyle = styled.div`
   display: flex;
@@ -17,21 +13,20 @@ export const ChartsStyle = styled.div`
 
     box-shadow: 0.2rem 1rem 0.65rem rgba(0, 0, 0, 0.342);
   }
-  
+
   .break {
-      flex-basis: 100%;
-      height: 0;
-    }
+    flex-basis: 100%;
+    height: 0;
+  }
 
   .recent-changes {
-    position: relative; 
+    position: relative;
     flex: 1;
   }
 
   @media all and (max-width: 499px) {
     display: none !important;
   }
-
 `;
 
 export const GlobalDataHeader = styled.main`

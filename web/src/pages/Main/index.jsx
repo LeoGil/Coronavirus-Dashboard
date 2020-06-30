@@ -15,8 +15,6 @@ import PieCases from '../../components/PieActiveDeathRecovered';
 
 import { ChartsStyle, GlobalDataHeader } from './styles';
 
-
-
 export default function Main() {
   const [countries, setCountries] = useState([]);
   // const [oldCountries, setOldCountries] = useState([]);
@@ -30,11 +28,8 @@ export default function Main() {
 
   const oldCountries = useRef();
 
-
   // Get Country Data
   useEffect(() => {
-
-
     const loadCountryData = async () => {
       const response = await api.get(`/countries`);
 
@@ -42,13 +37,13 @@ export default function Main() {
 
       if (countries[0] !== undefined) {
         Object.keys(response.data).forEach(key => {
-          if (response.data[key]['updated'] < countries[key]['updated']) {
-            response.data[key] = countries[key]
+          if (response.data[key].updated < countries[key].updated) {
+            response.data[key] = countries[key];
           }
         });
       }
 
-      setCountries(response.data)
+      setCountries(response.data);
       setIsPageLoaded(true);
       // setChartLoaded(false);
     };
@@ -86,7 +81,7 @@ export default function Main() {
   useEffect(() => {
     api.get(`/global_timeline`).then(response => {
       setTimelineGlobal(response.data);
-      setGlobalDataLoaded(true)
+      setGlobalDataLoaded(true);
       // setChartLoaded(true);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -97,47 +92,44 @@ export default function Main() {
       <Loading type="bars" color="#eee" />
     </div>
   ) : (
-      <div className="container-fluid">
-        <NotificationContainer />
+    <div className="container-fluid">
+      <NotificationContainer />
 
-        <ChartsStyle>
-          <section className="chart-div">
-            <TimeLine
-              timeline={timelineGlobal}
-              timelineDataLoaded={globalDataLoaded}
-            />
-          </section>
-          <section className="chart-div">
-            <TimeLineCountries countries={countries} />
-          </section>
-          <section className="break" style={{ margin: 0 }}></section>
-          <section className="chart-div">
-            <PieCases data={globalData} timelineDataLoaded={pieLoaded} />
-          </section>
-          <section className="chart-div recent-changes">
-            {/* {(oldCountries[0] !== undefined && console.log(`Old: ${oldCountries[0]['cases']} novo: ${countries[0]['cases']}`))} */}
-            <RecentChange stateAtual={prevCountries} stateNovo={countries} />
-          </section>
-        </ChartsStyle>
+      <ChartsStyle>
+        <section className="chart-div">
+          <TimeLine
+            timeline={timelineGlobal}
+            timelineDataLoaded={globalDataLoaded}
+          />
+        </section>
+        <section className="chart-div">
+          <TimeLineCountries countries={countries} />
+        </section>
+        <section className="break" style={{ margin: 0 }} />
+        <section className="chart-div">
+          <PieCases data={globalData} timelineDataLoaded={pieLoaded} />
+        </section>
+        <section className="chart-div recent-changes">
+          {/* {(oldCountries[0] !== undefined && console.log(`Old: ${oldCountries[0]['cases']} novo: ${countries[0]['cases']}`))} */}
+          <RecentChange stateAtual={prevCountries} stateNovo={countries} />
+        </section>
+      </ChartsStyle>
 
-        <GlobalDataHeader>
-          <div className="row">
-            <div className="col-xl-3 col-lg-12 global-data">
-              <GlobalCard globaldata={globalData} />
-            </div>
-            <div className="col-xl-9 col-lg-12 countries-data">
-              <h1 className="col-12 title-components">
-                Countries Data
-              </h1>
-              <div className="countries-panel">
-
-                {countries.map(dataMap => (
-                  <CountryCard key={dataMap.country} country={dataMap} />
-                ))}
-              </div>
+      <GlobalDataHeader>
+        <div className="row">
+          <div className="col-xl-3 col-lg-12 global-data">
+            <GlobalCard globaldata={globalData} />
+          </div>
+          <div className="col-xl-9 col-lg-12 countries-data">
+            <h1 className="col-12 title-components">Countries Data</h1>
+            <div className="countries-panel">
+              {countries.map(dataMap => (
+                <CountryCard key={dataMap.country} country={dataMap} />
+              ))}
             </div>
           </div>
-        </GlobalDataHeader>
-      </div >
-    );
+        </div>
+      </GlobalDataHeader>
+    </div>
+  );
 }

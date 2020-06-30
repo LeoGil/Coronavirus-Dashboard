@@ -60,7 +60,6 @@ export default createGlobalStyle`
   }
 
   .title-components {
-    font-family: 'Ubuntu', 'Open Sans', -apple-system, Helvetica, sans-serif !important;
     text-align: center;
     font-weight: 800 !important;
     font-size: 55px;

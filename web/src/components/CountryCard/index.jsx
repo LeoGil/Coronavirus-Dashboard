@@ -16,8 +16,8 @@ export default function CountryCard({ country }) {
   return (
     <CountryCardStyles className="col-lg-4 col-md-6">
       <Link to={`${rootpath}${country.iso2}`} className="unstyled-link">
-        <article className="pais-article">
-          <figure className="flag">
+        <article>
+          <figure>
             <img
               src={`https://cdn.u21.io/flags/4x3/${country.iso2.toLowerCase()}.svg`}
               alt={`flag ${country.country}`}
@@ -52,7 +52,7 @@ export default function CountryCard({ country }) {
               aria-valuemax="100"
             />
           </div>
-          <section className="cases">
+          <section>
             <div>
               Cases
               <span className="color-cases">{nf.format(country.cases)}</span>

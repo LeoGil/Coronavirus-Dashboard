@@ -61,7 +61,6 @@ const GlobalCardStyles = styled.div`
         &:hover {
           filter: brightness(1.2);
           transition: all 0.2s;
-          position: relative;
           border: 3px solid ${colors.hoverBorder};
         }
         box-shadow: 0.2rem 1rem 0.65rem rgba(0, 0, 0, 0.342);

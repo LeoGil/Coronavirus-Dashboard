@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
-import RecentStyle from './styles'
+import RecentStyle from './styles';
 
 export default function RecentChange({ stateAtual, stateNovo }) {
   const [textReturn, setTextReturn] = useState([]);
-  let textToState = []
+  const textToState = [];
 
   // console.log(stateAtual[0], stateNovo[0])
 
@@ -16,26 +16,29 @@ export default function RecentChange({ stateAtual, stateNovo }) {
 
     if (stateAtual !== undefined) {
       function compareObjects() {
-        let countriesAtual = stateAtual
-        let countriesNovo = stateNovo
+        const countriesAtual = stateAtual;
+        const countriesNovo = stateNovo;
 
         function comparer(otherArray) {
           return function (current) {
-            return otherArray.filter(function (other) {
-              return other.cases === current.cases &&
-                other.recovered === current.recovered &&
-                other.deaths === current.deaths
-            }).length === 0;
-          }
+            return (
+              otherArray.filter(function (other) {
+                return (
+                  other.cases === current.cases &&
+                  other.recovered === current.recovered &&
+                  other.deaths === current.deaths
+                );
+              }).length === 0
+            );
+          };
         }
 
-        let onlyInA = countriesAtual.filter(comparer(countriesNovo));
-        let onlyInB = countriesNovo.filter(comparer(countriesAtual))
+        const onlyInA = countriesAtual.filter(comparer(countriesNovo));
+        const onlyInB = countriesNovo.filter(comparer(countriesAtual));
 
         let result = onlyInA.concat(onlyInB);
 
-
-        //Verifica se teve alguma modificação
+        // Verifica se teve alguma modificação
         if (Object.keys(result).length !== 0 && result.constructor === Array) {
           function compare(a, b) {
             if (a.iso2 < b.iso2) {
@@ -47,46 +50,66 @@ export default function RecentChange({ stateAtual, stateNovo }) {
             return 0;
           }
 
-          result = result.sort(compare)
-
+          result = result.sort(compare);
 
           for (let index = 1; index < result.length; index++) {
-            if (result[index]['iso2'] === result[index - 1]['iso2']) {
-              if (result[index]['cases'] > result[index - 1]['cases']) {
-                textToState[index] = { text: `${result[index]['country']}: +${result[index]['cases'] - result[index - 1]['cases']} cases `, iso2: result[index]['iso2'] }
+            if (result[index].iso2 === result[index - 1].iso2) {
+              if (result[index].cases > result[index - 1].cases) {
+                textToState[index] = {
+                  text: `${result[index].country}: +${
+                    result[index].cases - result[index - 1].cases
+                  } cases `,
+                  iso2: result[index].iso2,
+                };
               }
 
-              if (result[index]['recovered'] > result[index - 1]['recovered']) {
+              if (result[index].recovered > result[index - 1].recovered) {
                 if (textToState[index] === undefined) {
-                  textToState[index] = { text: `${result[index]['country']}: +${result[index]['recovered'] - result[index - 1]['recovered']} recovered `, iso2: result[index]['iso2'] }
+                  textToState[index] = {
+                    text: `${result[index].country}: +${
+                      result[index].recovered - result[index - 1].recovered
+                    } recovered `,
+                    iso2: result[index].iso2,
+                  };
                 } else {
-                  textToState[index]['text'] = textToState[index]['text'] + `+${result[index]['recovered'] - result[index - 1]['recovered']} recovered `
+                  textToState[index].text = `${textToState[index].text}+${
+                    result[index].recovered - result[index - 1].recovered
+                  } recovered `;
                 }
               }
 
-              if (result[index]['deaths'] > result[index - 1]['deaths']) {
+              if (result[index].deaths > result[index - 1].deaths) {
                 if (textToState[index] === undefined) {
-                  textToState[index] = { text: `${result[index]['country']}: +${result[index]['deaths'] - result[index - 1]['deaths']} deaths `, iso2: result[index]['iso2'] }
+                  textToState[index] = {
+                    text: `${result[index].country}: +${
+                      result[index].deaths - result[index - 1].deaths
+                    } deaths `,
+                    iso2: result[index].iso2,
+                  };
                 } else {
-                  textToState[index]['text'] = textToState[index]['text'] + `+${result[index]['deaths'] - result[index - 1]['deaths']} deaths `
+                  textToState[index].text = `${textToState[index].text}+${
+                    result[index].deaths - result[index - 1].deaths
+                  } deaths `;
                 }
               }
 
               if (textToState[index] !== undefined) {
-                textToState[index]['text'] = `${textToState[index]['text']} (${new Date(Date.now()).toLocaleString()})`;
+                textToState[index].text = `${
+                  textToState[index].text
+                } (${new Date(Date.now()).toLocaleString()})`;
               }
             }
           }
 
-          const parsedText = textToState.filter(textState => textState !== undefined);
+          const parsedText = textToState.filter(
+            textState => textState !== undefined,
+          );
 
           setTextReturn([...parsedText, ...textReturn]);
-
         }
       }
       compareObjects();
     }
-
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [stateAtual, stateNovo]);
@@ -98,7 +121,6 @@ export default function RecentChange({ stateAtual, stateNovo }) {
       <div className="change-content">
         {textReturn.map(change => (
           <div key={change.text + change.iso2}>
-
             <figure className="flag">
               <img
                 src={`https://cdn.u21.io/flags/4x3/${change.iso2.toLowerCase()}.svg`}
@@ -108,7 +130,6 @@ export default function RecentChange({ stateAtual, stateNovo }) {
                 <p>{change.text}</p>
               </figcaption>
             </figure>
-
           </div>
         ))}
       </div>
