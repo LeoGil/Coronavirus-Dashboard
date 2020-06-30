@@ -1,27 +1,27 @@
 {
   "files": {
     "main.css": "/Coronavirus-Dashboard/static/css/main.9cae0ef3.chunk.css",
-    "main.js": "/Coronavirus-Dashboard/static/js/main.5210a534.chunk.js",
-    "main.js.map": "/Coronavirus-Dashboard/static/js/main.5210a534.chunk.js.map",
-    "runtime-main.js": "/Coronavirus-Dashboard/static/js/runtime-main.82839203.js",
-    "runtime-main.js.map": "/Coronavirus-Dashboard/static/js/runtime-main.82839203.js.map",
+    "main.js": "/Coronavirus-Dashboard/static/js/main.fa673cd7.chunk.js",
+    "main.js.map": "/Coronavirus-Dashboard/static/js/main.fa673cd7.chunk.js.map",
+    "runtime-main.js": "/Coronavirus-Dashboard/static/js/runtime-main.a096a747.js",
+    "runtime-main.js.map": "/Coronavirus-Dashboard/static/js/runtime-main.a096a747.js.map",
     "static/css/2.32004adb.chunk.css": "/Coronavirus-Dashboard/static/css/2.32004adb.chunk.css",
-    "static/js/2.304889cd.chunk.js": "/Coronavirus-Dashboard/static/js/2.304889cd.chunk.js",
-    "static/js/2.304889cd.chunk.js.map": "/Coronavirus-Dashboard/static/js/2.304889cd.chunk.js.map",
+    "static/js/2.4771cf78.chunk.js": "/Coronavirus-Dashboard/static/js/2.4771cf78.chunk.js",
+    "static/js/2.4771cf78.chunk.js.map": "/Coronavirus-Dashboard/static/js/2.4771cf78.chunk.js.map",
     "index.html": "/Coronavirus-Dashboard/index.html",
-    "precache-manifest.445f311527c51b8b3ea1001630cbfd38.js": "/Coronavirus-Dashboard/precache-manifest.445f311527c51b8b3ea1001630cbfd38.js",
+    "precache-manifest.2f1957a80fb603241c043a60f01a7486.js": "/Coronavirus-Dashboard/precache-manifest.2f1957a80fb603241c043a60f01a7486.js",
     "service-worker.js": "/Coronavirus-Dashboard/service-worker.js",
     "static/css/2.32004adb.chunk.css.map": "/Coronavirus-Dashboard/static/css/2.32004adb.chunk.css.map",
     "static/css/main.9cae0ef3.chunk.css.map": "/Coronavirus-Dashboard/static/css/main.9cae0ef3.chunk.css.map",
-    "static/js/2.304889cd.chunk.js.LICENSE.txt": "/Coronavirus-Dashboard/static/js/2.304889cd.chunk.js.LICENSE.txt",
+    "static/js/2.4771cf78.chunk.js.LICENSE.txt": "/Coronavirus-Dashboard/static/js/2.4771cf78.chunk.js.LICENSE.txt",
     "static/media/logo.png": "/Coronavirus-Dashboard/static/media/logo.fa1e2a0b.png",
     "static/media/notifications.css": "/Coronavirus-Dashboard/static/media/notification.c0d3c94c.eot"
   },
   "entrypoints": [
-    "static/js/runtime-main.82839203.js",
+    "static/js/runtime-main.a096a747.js",
     "static/css/2.32004adb.chunk.css",
-    "static/js/2.304889cd.chunk.js",
+    "static/js/2.4771cf78.chunk.js",
     "static/css/main.9cae0ef3.chunk.css",
-    "static/js/main.5210a534.chunk.js"
+    "static/js/main.fa673cd7.chunk.js"
   ]
 }
