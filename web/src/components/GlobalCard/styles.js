@@ -1,7 +1,7 @@
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable guard-for-in */
 import styled, { css } from 'styled-components';
-import { colors } from '../../AppStyles';
+import { colors } from '../../GlobalStyles';
 
 const topBorderColors = {
   'top-color-1': colors.colorNewCases,

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors } from '../../AppStyles';
+import { colors } from '../../GlobalStyles';
 
 const CountryDetailsCardStyles = styled.article`
   display: flex;

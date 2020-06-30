@@ -1,15 +1,17 @@
 import React from 'react';
 import Routes from './routes';
+import { BrowserRouter  } from 'react-router-dom';
 
-import AppStyles from './AppStyles';
+import GlobalStyles from './GlobalStyles';
 import 'bootstrap/dist/css/bootstrap.css';
 import './styles.css'
 
 const App = () => (
   <div className="App">
-    <AppStyles>
+    <BrowserRouter>
       <Routes />
-    </AppStyles>
+    </BrowserRouter>
+    <GlobalStyles />
   </div>
 );
 

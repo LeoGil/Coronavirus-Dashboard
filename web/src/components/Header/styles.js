@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors } from '../../AppStyles';
+import { colors } from '../../GlobalStyles';
 
 const HeaderStyles = styled.header`
   padding: 0.5rem;

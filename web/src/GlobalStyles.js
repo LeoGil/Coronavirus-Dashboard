@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
 export const colors = {
   background: '#161e2c',
@@ -32,9 +32,8 @@ export const colors = {
   colorAffected: '#da8213',
 };
 
-const AppStyles = styled.div`
-  .container-fluid {
-    padding: 1rem;
+export default createGlobalStyle`
+  body {
     font-family: 'Open Sans', -apple-system, Helvetica, sans-serif !important;
     font-weight: 600;
     background: ${colors.background} !important;
@@ -126,4 +125,3 @@ const AppStyles = styled.div`
     background-color: ${colors.colorDeath} !important;
   }
 `;
-export default AppStyles;
