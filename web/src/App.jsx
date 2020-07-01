@@ -1,10 +1,10 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import Routes from './routes';
-import { BrowserRouter  } from 'react-router-dom';
 
 import GlobalStyles from './GlobalStyles';
 import 'bootstrap/dist/css/bootstrap.css';
-import './styles.css'
+import './styles.css';
 
 const App = () => (
   <div className="App">

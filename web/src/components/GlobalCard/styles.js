@@ -38,7 +38,6 @@ const GlobalCardStyles = styled.div`
         flex-direction: column;
       }
       div {
-        min-width: 21rem;
         flex: 1 1 auto;
         display: flex;
         flex-direction: column;
@@ -46,14 +45,16 @@ const GlobalCardStyles = styled.div`
       }
 
       .global-data-title {
-        border: 3px solid ${colors.bgActive};
-        ${createTopBorders()}
         margin: 1rem;
         @media all and (max-width: 499px) {
           margin: 0.5rem 0.3rem;
         }
+        border: 3px solid ${colors.bgActive};
+
+        ${createTopBorders()}
+
+        background: ${colors.bgActive};
         border-radius: 0.5rem;
-        background-color: ${colors.bgActive};
         font-size: 1.5rem;
         @media all and (max-width: 499px) {
           font-size: 1rem;
@@ -61,7 +62,6 @@ const GlobalCardStyles = styled.div`
         &:hover {
           filter: brightness(1.2);
           transition: all 0.2s;
-          border: 3px solid ${colors.hoverBorder};
         }
         box-shadow: 0.2rem 1rem 0.65rem rgba(0, 0, 0, 0.342);
       }

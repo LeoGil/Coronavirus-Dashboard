@@ -20,12 +20,18 @@ export const ChartsStyle = styled.div`
 
 export const GlobalDataHeader = styled.main`
   @media all and (min-width: 499px) {
+    margin-top: 1rem;
     display: flex;
+    flex-wrap: wrap;
+    @media all and (max-width: 1500px) {
+      flex-direction: column;
+    }
 
     .global-data {
-      flex: 1 25%;
+      flex: 0 25%;
     }
     .countries-data {
+      flex: 1;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;

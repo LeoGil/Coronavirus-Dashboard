@@ -111,19 +111,17 @@ export default function Main() {
       </ChartsStyle>
 
       <GlobalDataHeader>
-        <div className="row">
-          <div className="col-xl-3 col-lg-12 global-data">
-            <GlobalCard globaldata={globalData} />
+        <section className="global-data">
+          <GlobalCard globaldata={globalData} />
+        </section>
+        <section className="countries-data">
+          <h1 className="col-12 title-components">Countries Data</h1>
+          <div className="countries-panel">
+            {countries.map(dataMap => (
+              <CountryCard key={dataMap.country} country={dataMap} />
+            ))}
           </div>
-          <div className="col-xl-9 col-lg-12 countries-data">
-            <h1 className="col-12 title-components">Countries Data</h1>
-            <div className="countries-panel">
-              {countries.map(dataMap => (
-                <CountryCard key={dataMap.country} country={dataMap} />
-              ))}
-            </div>
-          </div>
-        </div>
+        </section>
       </GlobalDataHeader>
     </div>
   );
