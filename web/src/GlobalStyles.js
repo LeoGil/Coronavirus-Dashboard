@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { shade, lighten } from 'polished';
 
 export const colors = {
   background: '#161e2c',
@@ -38,6 +39,31 @@ export default createGlobalStyle`
     padding: 0;
     outline: 0;
     box-sizing: border-box;
+    /* Firefox Scrollbar Width "auto" or "thin"  */
+    scrollbar-width: auto;
+    scrollbar-color:
+      /* scroll thumb */
+      ${lighten(0.06, colors.bgActive)}
+      /* scroll track */
+      ${lighten(0.03, colors.background)};
+  }
+
+  /* Chrome Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+
+    &-thumb {
+      background: ${colors.bgHeader};
+      border-radius: 10px;
+      &:hover{
+        background: ${lighten(0.06, colors.bgActive)};
+      }
+    }
+
+    &-track{
+      box-shadow: inset 0 0 5px ${shade(0.2, colors.bgActive)};
+      border-radius: 10px;
+    }
   }
 
   body {
@@ -79,6 +105,7 @@ export default createGlobalStyle`
     padding: 20px;
     margin-bottom: 20px;
   }
+
 
   .color-cases {
     color: ${colors.colorCases};

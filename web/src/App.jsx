@@ -4,7 +4,6 @@ import Routes from './routes';
 
 import GlobalStyles from './GlobalStyles';
 import 'bootstrap/dist/css/bootstrap.css';
-import './styles.css';
 
 const App = () => (
   <div className="App">
