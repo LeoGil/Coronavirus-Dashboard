@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import * as Chart from 'chart.js';
-import api from '../../services/api';
+import api from '../../../services/api';
 
 export default function TimeLineCountries({ countries }) {
   const [timelineCountries, setTimelineCountries] = useState();

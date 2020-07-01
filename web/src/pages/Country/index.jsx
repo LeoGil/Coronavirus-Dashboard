@@ -4,10 +4,10 @@ import Loading from 'react-loading';
 import api from '../../services/api';
 
 import CountryData from '../../components/CountryDetailsCard';
-import TimeLine from '../../components/TimeLine';
-import TimeLineDaily from '../../components/TimeLineDaily';
-import PieCases from '../../components/PieActiveDeathRecovered';
-import PieTests from '../../components/PieTests';
+import TimeLine from '../../components/charts/TimeLine';
+import TimeLineDaily from '../../components/charts/TimeLineDaily';
+import PieCases from '../../components/charts/PieActiveDeathRecovered';
+import PieTests from '../../components/charts/PieTests';
 
 import CountryStyles from './styles';
 

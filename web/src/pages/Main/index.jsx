@@ -8,10 +8,10 @@ import api from '../../services/api';
 
 import GlobalCard from '../../components/GlobalCard';
 import CountryCard from '../../components/CountryCard';
-import TimeLine from '../../components/TimeLine';
-import TimeLineCountries from '../../components/TimeLineCountries';
-import RecentChange from '../../components/RecentChanges';
-import PieCases from '../../components/PieActiveDeathRecovered';
+import TimeLine from '../../components/charts/TimeLine';
+import TimeLineCountries from '../../components/charts/TimeLineCountries';
+import RecentChange from '../../components/charts/RecentChanges';
+import PieCases from '../../components/charts/PieActiveDeathRecovered';
 
 import { ChartsStyle, GlobalDataHeader } from './styles';
 
