@@ -3,10 +3,22 @@ import React, { useEffect, useState } from 'react';
 import RecentStyle from './styles';
 
 export default function RecentChange({ stateAtual, stateNovo }) {
-  const [textReturn, setTextReturn] = useState([]);
+  const [textReturn, setTextReturn] = useState(() => {
+    const storagedChanges = sessionStorage.getItem(
+      '@Coronavirus-Dashboard:recentChanges',
+    );
+    return storagedChanges ? JSON.parse(storagedChanges) : [];
+  });
   const textToState = [];
 
-  // console.log(stateAtual[0], stateNovo[0])
+  // Session Storage
+  useEffect(() => {
+    sessionStorage.setItem(
+      '@Coronavirus-Dashboard:recentChanges',
+      JSON.stringify(textReturn),
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [textReturn]);
 
   // Mount recent changes
   useEffect(() => {

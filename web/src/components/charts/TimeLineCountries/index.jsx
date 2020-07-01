@@ -26,6 +26,7 @@ export default function TimeLineCountries({ countries }) {
 
       loadTopCountriesTimeLine();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [countries, chartLoaded]);
 
   // Mount graph cases
