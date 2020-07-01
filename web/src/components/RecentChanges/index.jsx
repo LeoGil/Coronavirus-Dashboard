@@ -15,14 +15,14 @@ export default function RecentChange({ stateAtual, stateNovo }) {
     // const [executou, setExecutou] = useState(false);
 
     if (stateAtual !== undefined) {
-      function compareObjects() {
+      const compareObjects = () => {
         const countriesAtual = stateAtual;
         const countriesNovo = stateNovo;
 
         function comparer(otherArray) {
-          return function (current) {
+          return current => {
             return (
-              otherArray.filter(function (other) {
+              otherArray.filter(other => {
                 return (
                   other.cases === current.cases &&
                   other.recovered === current.recovered &&
@@ -40,7 +40,7 @@ export default function RecentChange({ stateAtual, stateNovo }) {
 
         // Verifica se teve alguma modificação
         if (Object.keys(result).length !== 0 && result.constructor === Array) {
-          function compare(a, b) {
+          const compare = (a, b) => {
             if (a.iso2 < b.iso2) {
               return -1;
             }
@@ -48,7 +48,7 @@ export default function RecentChange({ stateAtual, stateNovo }) {
               return 1;
             }
             return 0;
-          }
+          };
 
           result = result.sort(compare);
 
@@ -107,7 +107,7 @@ export default function RecentChange({ stateAtual, stateNovo }) {
 
           setTextReturn([...parsedText, ...textReturn]);
         }
-      }
+      };
       compareObjects();
     }
 
@@ -121,7 +121,7 @@ export default function RecentChange({ stateAtual, stateNovo }) {
       <div className="change-content">
         {textReturn.map(change => (
           <div key={change.text + change.iso2}>
-            <figure className="flag">
+            <figure>
               <img
                 src={`https://cdn.u21.io/flags/4x3/${change.iso2.toLowerCase()}.svg`}
                 alt={`flag ${change.text}`}

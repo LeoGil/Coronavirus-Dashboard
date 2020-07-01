@@ -33,7 +33,15 @@ export const colors = {
 };
 
 export default createGlobalStyle`
+ *{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+  }
+
   body {
+    -webkit-font-smoothing: antialiased;
     font-family: 'Open Sans', -apple-system, Helvetica, sans-serif !important;
     font-weight: 600;
     background: ${colors.background} !important;

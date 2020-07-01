@@ -30,32 +30,27 @@ export default function Main() {
 
   // Get Country Data
   useEffect(() => {
-    const loadCountryData = async () => {
-      const response = await api.get(`/countries`);
+    async function loadData() {
+      const [responseCountries, responseGlobal] = await Promise.all([
+        api.get(`/countries`),
+        api.get(`/global`),
+      ]);
 
-      response.data = Object.values(response.data);
-
+      const ContriesObject = Object.values(responseCountries.data);
       if (countries[0] !== undefined) {
-        Object.keys(response.data).forEach(key => {
-          if (response.data[key].updated < countries[key].updated) {
-            response.data[key] = countries[key];
+        Object.keys(ContriesObject).forEach(key => {
+          if (ContriesObject[key].updated < countries[key].updated) {
+            ContriesObject[key] = countries[key];
           }
         });
       }
 
-      setCountries(response.data);
-      setIsPageLoaded(true);
-      // setChartLoaded(false);
-    };
-
-    const loadGlobalData = async () => {
-      const response = await api.get(`/global`);
-      setGlobalData(response.data);
-      // setChartLoaded(false);
+      setCountries(ContriesObject);
+      setGlobalData(responseGlobal.data);
       setPieLoaded(true);
-    };
-    loadCountryData();
-    loadGlobalData();
+      setIsPageLoaded(true);
+    }
+    loadData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [updatePageCount]);
 
@@ -92,7 +87,7 @@ export default function Main() {
       <Loading type="bars" color="#eee" />
     </div>
   ) : (
-    <div className="container-fluid">
+    <div className="container-fluid py-3">
       <NotificationContainer />
 
       <ChartsStyle>
@@ -105,11 +100,11 @@ export default function Main() {
         <section className="chart-div">
           <TimeLineCountries countries={countries} />
         </section>
-        <section className="break" style={{ margin: 0 }} />
+        {/* <section className="break" style={{ margin: 0 }} /> */}
         <section className="chart-div">
           <PieCases data={globalData} timelineDataLoaded={pieLoaded} />
         </section>
-        <section className="chart-div recent-changes">
+        <section className="chart-div">
           {/* {(oldCountries[0] !== undefined && console.log(`Old: ${oldCountries[0]['cases']} novo: ${countries[0]['cases']}`))} */}
           <RecentChange stateAtual={prevCountries} stateNovo={countries} />
         </section>

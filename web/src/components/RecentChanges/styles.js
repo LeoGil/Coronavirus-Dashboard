@@ -1,9 +1,5 @@
 import styled from 'styled-components';
-
-// const colors = {
-//     background: '#161e2c',
-//     bgActive: '#29344a'
-// }
+import { colors } from '../../GlobalStyles';
 
 const RecentStyle = styled.div`
   position: absolute;
@@ -11,23 +7,25 @@ const RecentStyle = styled.div`
   top: 0;
   right: 0;
   bottom: 0;
-  overflow: auto;
+  overflow-y: auto;
 
-  background: #29344a;
+  background: ${colors.bgActive};
   border-radius: 5px;
   padding: 20px;
   margin-bottom: 20px;
 
-  .flag {
-    display: flex;
-    img {
-      height: 40px;
-      border-radius: 20%;
-      box-shadow: 0.31rem 0.29rem 0.65rem rgba(0, 0, 0, 0.342);
-    }
-    figcaption {
-      margin-left: 20px;
-      margin-top: 8px;
+  div {
+    figure {
+      display: flex;
+      img {
+        height: 40px;
+        border-radius: 20%;
+        box-shadow: 0.31rem 0.29rem 0.65rem rgba(0, 0, 0, 0.342);
+      }
+      figcaption {
+        margin-left: 20px;
+        margin-top: 8px;
+      }
     }
   }
 `;

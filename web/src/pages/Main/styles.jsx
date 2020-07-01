@@ -6,22 +6,11 @@ export const ChartsStyle = styled.div`
   flex-wrap: wrap;
 
   section {
-    flex: 1;
-
-    margin: 1rem;
-    /* max-width: 50%; */
+    width: calc(50% - 1rem);
+    margin: 0.5rem;
 
     box-shadow: 0.2rem 1rem 0.65rem rgba(0, 0, 0, 0.342);
-  }
-
-  .break {
-    flex-basis: 100%;
-    height: 0;
-  }
-
-  .recent-changes {
     position: relative;
-    flex: 1;
   }
 
   @media all and (max-width: 499px) {
@@ -30,22 +19,19 @@ export const ChartsStyle = styled.div`
 `;
 
 export const GlobalDataHeader = styled.main`
-  @media all and (min-width:499px){
+  @media all and (min-width: 499px) {
     display: flex;
 
     .global-data {
       flex: 1 25%;
-
-      /* max-width: 25%; */
-      /* height: 100vh; */
     }
-    .countries-data{
+    .countries-data {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
 
-      /* background: ${colors.bgActive}; */
       border-radius: 12px;
+
       .countries-panel {
         border-radius: 12px;
         background: ${colors.background};
