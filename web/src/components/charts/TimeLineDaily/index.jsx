@@ -48,8 +48,6 @@ export default function TimeLine({ timeline, timelineDataLoaded }) {
       const timelinedates = [];
       const timelinedataCases = [];
       const timelinedataDeaths = [];
-      const timelinedataRecovered = [];
-      const timelinedataActive = [];
 
       Object.keys(timeline.cases).forEach(key => {
         timelinedates.push(key);
