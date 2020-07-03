@@ -44,7 +44,6 @@ export default function Main() {
           }
         });
       }
-
       setCountries(ContriesObject);
       setGlobalData(responseGlobal.data);
       setPieLoaded(true);
@@ -69,6 +68,7 @@ export default function Main() {
     }
 
     return () => clearInterval(interval);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isPageLoaded, lastUpdatedSeconds, countries]);
 
   const prevCountries = oldCountries.current;
