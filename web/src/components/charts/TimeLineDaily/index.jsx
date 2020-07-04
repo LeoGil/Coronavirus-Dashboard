@@ -1,22 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import * as Chart from 'chart.js';
 
+import { ThemeContext } from 'styled-components';
+
 export default function TimeLine({ timeline, timelineDataLoaded }) {
-  // let draw = Chart.controllers.line.prototype.draw;
-  // Chart.controllers.line.prototype.draw = function () {
-  //   draw.apply(this, arguments);
-  //   let ctx = this.chart.chart.ctx;
-  //   let _stroke = ctx.stroke;
-  //   ctx.stroke = function () {
-  //     ctx.save();
-  //     ctx.shadowColor = '#4b4b4b8e';
-  //     ctx.shadowBlur = 20;
-  //     ctx.shadowOffsetX = 1;
-  //     ctx.shadowOffsetY = 2;
-  //     _stroke.apply(this, arguments);
-  //     ctx.restore();
-  //   }
-  // };
+  const theme = useContext(ThemeContext);
+
   Chart.defaults.LineWithLine = Chart.defaults.line;
   Chart.controllers.LineWithLine = Chart.controllers.line.extend({
     draw(ease) {
@@ -68,21 +57,21 @@ export default function TimeLine({ timeline, timelineDataLoaded }) {
           },
           legend: {
             labels: {
-              fontColor: 'white',
+              fontColor: theme.mainText,
             },
           },
           scales: {
             yAxes: [
               {
                 ticks: {
-                  fontColor: 'white',
+                  fontColor: theme.mainText,
                 },
               },
             ],
             xAxes: [
               {
                 ticks: {
-                  fontColor: 'white',
+                  fontColor: theme.mainText,
                 },
               },
             ],

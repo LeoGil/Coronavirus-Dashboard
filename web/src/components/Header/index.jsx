@@ -17,10 +17,16 @@ const Header = ({ toggleTheme }) => {
         DASHBOARD
         <div className="blob red" />
       </Link>
-      <button type="button" onClick={toggleTheme}>
-        {theme.mode === 'dark' ? <FiSun /> : <FiMoon />}
-      </button>
-    </HeaderStyles>
+      <div className="header-options">
+        <Link to={`${rootpath}Map`}>
+          <span role="img" aria-label="globe">🌍</span> Map
+        </Link>
+        {/* <button type="button" onClick={toggleTheme}>
+          {theme.mode === 'dark' ? <FiSun /> : <FiMoon />}
+        </button> */}
+      </div>
+
+    </HeaderStyles >
   );
 };
 

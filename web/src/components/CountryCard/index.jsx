@@ -15,7 +15,7 @@ export default function CountryCard({ country }) {
 
   return (
     <CountryCardStyles className="col-lg-4 col-md-6">
-      <Link to={`${rootpath}${country.iso2}`} className="unstyled-link">
+      <Link to={`${rootpath}Country/${country.iso2}`} className="unstyled-link">
         <article>
           <figure>
             <img

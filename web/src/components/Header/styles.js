@@ -16,28 +16,11 @@ const HeaderStyles = styled.header`
   justify-content: space-between;
   align-items: center;
 
-  button {
-    outline: none;
-    border: none;
-    border-radius: 50%;
-    padding: 0.4rem;
-    background: ${({ theme }) => theme.hoverBorder};
-    color: ${({ theme }) => theme.mainText};
-    &:hover,
-    &:focus {
-      filter: brightness(1.2);
-    }
-    &:active {
-      filter: brightness(0.9);
-      transform: scale(0.9);
-    }
-  }
-
   .title-brand {
     align-items: center;
 
     .logo {
-      margin: auto 0.5rem;
+      margin: 0 0.5rem;
       width: 32px;
       height: 32px;
     }
@@ -70,5 +53,35 @@ const HeaderStyles = styled.header`
       }
     }
   }
+
+  .header-options {
+    align-items: center;
+
+    button {
+    margin: 0 .5rem 0 1rem;
+    outline: none;
+    border: none;
+    border-radius: 50%;
+    padding: 0.4rem;
+    background: ${({ theme }) => theme.hoverBorder};
+    color: ${({ theme }) => theme.mainText};
+      &:hover,
+      &:focus {
+        filter: brightness(1.2);
+      }
+      &:active {
+        filter: brightness(0.9);
+        transform: scale(0.9);
+      }
+    }
+
+    a {
+      align-items: center;
+      span {
+        margin: 0 .5rem;
+      }
+    }
+  }
+
 `;
 export default HeaderStyles;

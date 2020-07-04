@@ -1,0 +1,25 @@
+.map-hover-content {
+  display: flex;
+  flex-direction: column;
+  height: 230px;
+  width: 300px;
+  padding: 10px 20px;
+  background-color: #222c45;
+  border: 0;
+}
+
+.map-hover-content > p {
+  display: flex;
+  justify-content: space-between;
+  line-height: 2px;
+  font-size: medium;
+}
+
+.map-country-name {
+  font-size: 20px;
+}
+
+.map-contry-flag {
+  height: 48px;
+  border-radius: 20%;
+}

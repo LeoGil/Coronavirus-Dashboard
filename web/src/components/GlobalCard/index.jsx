@@ -40,36 +40,7 @@ export default function GlobalData({ globaldata }) {
               {nf.format(globaldata.todayRecovered)}
             </span>
           </div>
-          {/* <div className="global-data-title top-color-4">
-            Active cases
-            <span className="global-data-numbers color-active">
-              {nf.format(globaldata.active)}
-            </span>
-            Tests
-            <span className="global-data-numbers color-tests">
-              {nf.format(globaldata.tests)}
-            </span>
-          </div>
-          <div className="global-data-title top-color-5">
-            Countries affected
-            <span className="global-data-numbers color-affected">
-              {nf.format(globaldata.affectedCountries)}
-            </span>
-            Criticals cases
-            <span className="global-data-numbers color-critical">
-              {nf.format(globaldata.critical)}
-            </span>
-          </div> */}
         </section>
-        {/* <section>
-                    <button className='btn btn-info' onClick={this.createNotification('info')}>Info</button>
-                    <hr />
-                    <button className='btn btn-success' onClick={this.createNotification('success')}>Success</button>
-                    <hr />
-                    <button className='btn btn-warning' onClick={this.createNotification('warning')}>Warning</button>
-                    <hr />
-                    <button className='btn btn-danger' onClick={this.createNotification('error')}>Error</button>
-                </section> */}
       </article>
     </GlobalCardStyles>
   );
