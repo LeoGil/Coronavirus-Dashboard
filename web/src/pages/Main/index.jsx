@@ -1,8 +1,9 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useContext } from 'react';
 import { NotificationContainer } from 'react-notifications';
 // NotificationManager
 import 'react-notifications/lib/notifications.css';
 import Loading from 'react-loading';
+import { ThemeContext } from 'styled-components';
 
 import api from '../../services/api';
 
@@ -10,7 +11,7 @@ import GlobalCard from '../../components/GlobalCard';
 import CountryCard from '../../components/CountryCard';
 import TimeLine from '../../components/charts/TimeLine';
 import TimeLineCountries from '../../components/charts/TimeLineCountries';
-import RecentChange from '../../components/charts/RecentChanges';
+import RecentChange from '../../components/RecentChanges';
 import PieCases from '../../components/charts/PieActiveDeathRecovered';
 
 import { ChartsStyle, GlobalDataHeader } from './styles';
@@ -23,6 +24,8 @@ export default function Main() {
   const [updatePageCount, setUpdatePageCount] = useState(0);
   const [timelineGlobal, setTimelineGlobal] = useState([]);
   const [isPageLoaded, setIsPageLoaded] = useState(false);
+
+  const theme = useContext(ThemeContext);
 
   const oldCountries = useRef();
 
@@ -78,7 +81,7 @@ export default function Main() {
 
   return isPageLoaded === false ? (
     <div className="loading">
-      <Loading type="bars" color="#eee" />
+      <Loading type="bars" color={theme.mainText} />
     </div>
   ) : (
       <div className="container-fluid py-3">

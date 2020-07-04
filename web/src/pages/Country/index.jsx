@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import Loading from 'react-loading';
 import api from '../../services/api';
@@ -10,6 +10,7 @@ import PieCases from '../../components/charts/PieActiveDeathRecovered';
 import PieTests from '../../components/charts/PieTests';
 
 import CountryStyles from './styles';
+import { ThemeContext } from 'styled-components';
 
 export default function Country() {
   const { country_code: countryCode } = useParams();
@@ -19,6 +20,8 @@ export default function Country() {
   const [country, setCountry] = useState([]);
   const [countryTimeline, setCountryTimeline] = useState([]);
   const [countryTimelineNew, setCountryTimelineNew] = useState([]);
+
+  const theme = useContext(ThemeContext);
 
   // Get Country Timeline
   useEffect(() => {
@@ -61,7 +64,7 @@ export default function Country() {
 
   return !isPageLoaded ? (
     <div className="loading">
-      <Loading type="bars" color="#eee" />
+      <Loading type="bars" color={theme.mainText} />
     </div>
   ) : (
       <CountryStyles className="container-fluid">

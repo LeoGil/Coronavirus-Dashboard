@@ -1,11 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import * as Chart from 'chart.js';
+
+import { ThemeContext } from 'styled-components';
 
 export default function PieCases({
   data,
   timelineDataLoaded,
   country = 'Global',
 }) {
+  const theme = useContext(ThemeContext);
+
   // Mount pie cases
   useEffect(() => {
     if (timelineDataLoaded) {
@@ -15,7 +19,7 @@ export default function PieCases({
         options: {
           legend: {
             labels: {
-              fontColor: 'white',
+              fontColor: theme.mainText,
             },
           },
         },

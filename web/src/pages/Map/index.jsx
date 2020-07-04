@@ -79,7 +79,7 @@ export default function Map() {
       code = 'CY'
     }
     el.html(
-      `<div class="map-hover-content">
+      `<div class="map-hover-content" style="background-color: #222c45;">
         <div class="content-header mb-4">
           <img
             class='map-contry-flag'
@@ -117,9 +117,9 @@ export default function Map() {
       <Loading type="bars" color={theme.mainText} />
     </div>
   ) : (
-      <div style={{ width: '100%', height: '55rem' }}>
+      <main className='map'>
         <VectorMap
-          backgroundColor="transparent"
+          backgroundColor={theme.bgActive}
           map={mapRef.current}
           containerStyle={{
             width: "100%",
@@ -135,6 +135,6 @@ export default function Map() {
           onRegionTipShow={handleHover}
           containerClassName="map"
         />
-      </div>
+      </main>
     );
 }

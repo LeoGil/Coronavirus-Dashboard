@@ -46,15 +46,15 @@ export const themeModes = {
   light: {
     mode: 'light',
 
-    background: '#77A6B6',
+    background: '#eeefff',
 
-    bgHeader: '#96bbC7',
+    bgHeader: '#8cbde6',
 
-    bgActive: '#9DC3C2',
+    bgActive: '#cee9ff',
 
-    scrollThumb: lighten(0.06, '#9DC3C2'),
+    scrollThumb: lighten(0.06, '#cee9ff'),
 
-    scrollTrack: shade(0.2, '#9DC3C2'),
+    scrollTrack: shade(0.2, '#cee9ff'),
 
     hoverBorder: '#e64e85',
 

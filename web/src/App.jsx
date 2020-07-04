@@ -11,11 +11,11 @@ const App = () => {
     const storagedChanges = localStorage.getItem(
       '@Coronavirus-Dashboard:theme',
     );
-    return storagedChanges ? JSON.parse(storagedChanges) : themeModes.dark;
+    return storagedChanges ? JSON.parse(storagedChanges) : 'dark';
   });
 
   function toggleTheme() {
-    setTheme(theme.mode === 'dark' ? themeModes.light : themeModes.dark);
+    setTheme(theme === 'dark' ? 'light' : 'dark');
   }
 
   // LocalStorage Theme
@@ -25,7 +25,7 @@ const App = () => {
   }, [theme]);
   return (
     <div className="App">
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme === 'dark' ? themeModes.dark : themeModes.light}>
         <BrowserRouter>
           <Routes toggleTheme={toggleTheme} />
         </BrowserRouter>

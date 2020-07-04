@@ -1,7 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import * as Chart from 'chart.js';
 
+import { ThemeContext } from 'styled-components';
+
 export default function PieCases({ data, timelineDataLoaded }) {
+  const theme = useContext(ThemeContext);
+
   // Mount pie tests
   useEffect(() => {
     if (timelineDataLoaded) {
@@ -11,7 +15,7 @@ export default function PieCases({ data, timelineDataLoaded }) {
         options: {
           legend: {
             labels: {
-              fontColor: 'white',
+              fontColor: theme.mainText,
             },
           },
         },

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const CountryCardStyles = styled.div`
   @media all and (max-width: 499px) {
@@ -17,7 +17,7 @@ const CountryCardStyles = styled.div`
 
     transition: all ease-in 0.11s, transform ease-in-out 0.09s;
     &:hover {
-      filter: brightness(1.2);
+      ${({ theme }) => theme.mode === 'light' ? css`filter: brightness(1.05);` : css`filter: brightness(1.2);`};
       transform: translateY(-10px);
       border: 3px solid ${({ theme }) => theme.hoverBorder};
     }

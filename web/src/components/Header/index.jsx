@@ -21,9 +21,9 @@ const Header = ({ toggleTheme }) => {
         <Link to={`${rootpath}Map`}>
           <span role="img" aria-label="globe">🌍</span> Map
         </Link>
-        {/* <button type="button" onClick={toggleTheme}>
+        <button type="button" onClick={toggleTheme}>
           {theme.mode === 'dark' ? <FiSun /> : <FiMoon />}
-        </button> */}
+        </button>
       </div>
 
     </HeaderStyles >

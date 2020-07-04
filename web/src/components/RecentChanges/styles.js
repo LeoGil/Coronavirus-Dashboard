@@ -7,8 +7,6 @@ const RecentStyle = styled.div`
   right: 0;
   bottom: 0;
   overflow-y: auto;
-
-  background: ${({ theme }) => theme.bgActive};
   border-radius: 5px;
   padding: 20px;
   margin-bottom: 20px;

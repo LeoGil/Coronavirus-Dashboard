@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import * as Chart from 'chart.js';
 import api from '../../../services/api';
+
+import { ThemeContext } from 'styled-components';
 
 export default function TimeLineCountries({ countries }) {
   const [timelineCountries, setTimelineCountries] = useState();
   const [chartLoaded, setChartLoaded] = useState(false);
+
+  const theme = useContext(ThemeContext);
 
   useEffect(() => {
     // console.log(countries)
@@ -85,21 +89,21 @@ export default function TimeLineCountries({ countries }) {
           },
           legend: {
             labels: {
-              fontColor: 'white',
+              fontColor: theme.mainText,
             },
           },
           scales: {
             yAxes: [
               {
                 ticks: {
-                  fontColor: 'white',
+                  fontColor: theme.mainText,
                 },
               },
             ],
             xAxes: [
               {
                 ticks: {
-                  fontColor: 'white',
+                  fontColor: theme.mainText,
                 },
               },
             ],
