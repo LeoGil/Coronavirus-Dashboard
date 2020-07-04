@@ -1,17 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import { shade, lighten } from 'polished';
 
-export const colors = {
-  background: '#161e2c',
-
-  bgHeader: '#222c45',
-
-  bgActive: '#29344a',
-
-  hoverBorder: '#6bfb31',
-
-  mainText: '#eee',
-
+const DashboardColors = {
   colorCases: '#0ee9cb',
 
   colorDeath: '#f35353',
@@ -33,6 +23,47 @@ export const colors = {
   colorAffected: '#da8213',
 };
 
+export const themeModes = {
+  dark: {
+    mode: 'dark',
+
+    background: '#161e2c',
+
+    bgHeader: '#222c45',
+
+    bgActive: '#29344a',
+
+    scrollThumb: lighten(0.06, '#29344a'),
+
+    scrollTrack: shade(0.2, '#29344a'),
+
+    hoverBorder: '#c62e65',
+
+    mainText: '#eee',
+
+    ...DashboardColors,
+  },
+  light: {
+    mode: 'light',
+
+    background: '#77A6B6',
+
+    bgHeader: '#96bbC7',
+
+    bgActive: '#9DC3C2',
+
+    scrollThumb: lighten(0.06, '#9DC3C2'),
+
+    scrollTrack: shade(0.2, '#9DC3C2'),
+
+    hoverBorder: '#e64e85',
+
+    mainText: '#222',
+
+    ...DashboardColors,
+  },
+};
+
 export default createGlobalStyle`
  *{
     margin: 0;
@@ -43,9 +74,9 @@ export default createGlobalStyle`
     scrollbar-width: auto;
     scrollbar-color:
       /* scroll thumb */
-      ${lighten(0.06, colors.bgActive)}
+      ${({ theme }) => theme.scrollThumb}
       /* scroll track */
-      ${lighten(0.03, colors.background)};
+      ${({ theme }) => theme.scrollTrack};
   }
 
   /* Chrome Scrollbar */
@@ -53,15 +84,15 @@ export default createGlobalStyle`
     width: 10px;
 
     &-thumb {
-      background: ${colors.bgHeader};
+      background: ${({ theme }) => theme.bgHeader};
       border-radius: 10px;
       &:hover{
-        background: ${lighten(0.06, colors.bgActive)};
+        background: ${({ theme }) => theme.scrollThumb};
       }
     }
 
     &-track{
-      box-shadow: inset 0 0 5px ${shade(0.2, colors.bgActive)};
+      box-shadow: inset 0 0 5px ${({ theme }) => theme.scrollTrack};
       border-radius: 10px;
     }
   }
@@ -70,13 +101,13 @@ export default createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     font-family: 'Open Sans', -apple-system, Helvetica, sans-serif !important;
     font-weight: 600;
-    background: ${colors.background} !important;
-    color: ${colors.mainText} !important;
+    background: ${({ theme }) => theme.background} !important;
+    color: ${({ theme }) => theme.mainText} !important;
     overflow-x: hidden !important;
   }
 
   a {
-    color: ${colors.mainText} !important;
+    color: ${({ theme }) => theme.mainText} !important;
     text-decoration: none !important;
   }
 
@@ -85,8 +116,8 @@ export default createGlobalStyle`
     display: flex;
     justify-content: center;
     align-items: center;
-    background: ${colors.background} !important;
-    color: ${colors.mainText} !important;
+    background: ${({ theme }) => theme.background} !important;
+    color: ${({ theme }) => theme.mainText} !important;
   }
 
   .notification {
@@ -100,7 +131,7 @@ export default createGlobalStyle`
   }
 
   .chart-div {
-    background: ${colors.bgActive};
+    background: ${({ theme }) => theme.bgActive};
     border-radius: 5px;
     padding: 20px;
     margin-bottom: 20px;
@@ -108,54 +139,54 @@ export default createGlobalStyle`
 
 
   .color-cases {
-    color: ${colors.colorCases};
+    color: ${({ theme }) => theme.colorCases};
   }
 
   .color-death {
-    color: ${colors.colorDeath};
+    color: ${({ theme }) => theme.colorDeath};
   }
 
   .color-recovered {
-    color: ${colors.colorRecovered};
+    color: ${({ theme }) => theme.colorRecovered};
   }
 
   .color-active {
-    color: ${colors.colorActive};
+    color: ${({ theme }) => theme.colorActive};
   }
 
   .color-new-case {
-    color: ${colors.colorNewCases};
+    color: ${({ theme }) => theme.colorNewCases};
   }
 
   .color-new-death {
-    color: ${colors.colorNewDeaths};
+    color: ${({ theme }) => theme.colorNewDeaths};
   }
 
   .color-new-recoveries {
-    color: ${colors.colorNewRecoveries};
+    color: ${({ theme }) => theme.colorNewRecoveries};
   }
 
   .color-tests {
-    color: ${colors.colorTests};
+    color: ${({ theme }) => theme.colorTests};
   }
 
   .color-critical {
-    color: ${colors.colorCritical};
+    color: ${({ theme }) => theme.colorCritical};
   }
 
   .color-affected {
-    color: ${colors.colorAffected};
+    color: ${({ theme }) => theme.colorAffected};
   }
 
   .bg-active {
-    background-color: ${colors.colorActive} !important;
+    background-color: ${({ theme }) => theme.colorActive} !important;
   }
 
   .bg-recovered {
-    background-color: ${colors.colorRecovered} !important;
+    background-color: ${({ theme }) => theme.colorRecovered} !important;
   }
 
   .bg-death {
-    background-color: ${colors.colorDeath} !important;
+    background-color: ${({ theme }) => theme.colorDeath} !important;
   }
 `;

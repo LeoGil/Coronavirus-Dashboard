@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { colors } from '../../GlobalStyles';
 
 const CountryDetailsCardStyles = styled.article`
   display: flex;
@@ -28,12 +27,12 @@ const CountryDetailsCardStyles = styled.article`
     display: flex;
     flex-wrap: wrap;
     @media all and (min-width: 500px) {
-      background: ${colors.bgActive};
+      background: ${({ theme }) => theme.bgActive};
       border-radius: 0.5rem;
     }
     div {
       @media all and (max-width: 499px) {
-        background: ${colors.bgActive};
+        background: ${({ theme }) => theme.bgActive};
         border-radius: 0.5rem;
       }
       margin: 0.5rem;

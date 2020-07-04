@@ -1,24 +1,27 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { FiMoon, FiSun } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
+import { ThemeContext } from 'styled-components';
 import HeaderStyles from './styles';
 import rootpath from '../../services/getRootPath';
 
 import logo from '../../assets/logo.png';
 
-const Header = () => (
-  <HeaderStyles>
-    <Link to={rootpath} className="title-brand">
-      <img src={logo} alt="Covid Dashboard" className="logo" />
-      DASHBOARD
-      <div className="blob red" />
-    </Link>
-    <nav className="my-2 my-md-0 mr-md-3">
-      <Link to={rootpath} className="p-2 text-white">
-        Features
+const Header = ({ toggleTheme }) => {
+  const theme = useContext(ThemeContext);
+
+  return (
+    <HeaderStyles>
+      <Link to={rootpath} className="title-brand">
+        <img src={logo} alt="Covid Dashboard" className="logo" />
+        DASHBOARD
+        <div className="blob red" />
       </Link>
-    </nav>
-    {/* <a class="btn btn-outline-primary" href="#">Sign up</a> */}
-  </HeaderStyles>
-);
+      <button type="button" onClick={toggleTheme}>
+        {theme.mode === 'dark' ? <FiSun /> : <FiMoon />}
+      </button>
+    </HeaderStyles>
+  );
+};
 
 export default Header;

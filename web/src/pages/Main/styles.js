@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { colors } from '../../GlobalStyles';
 
 export const ChartsStyle = styled.div`
   display: flex;
@@ -40,7 +39,7 @@ export const GlobalDataHeader = styled.main`
 
       .countries-panel {
         border-radius: 12px;
-        background: ${colors.background};
+        background: ${({ theme }) => theme.background};
 
         display: flex;
         flex-wrap: wrap;

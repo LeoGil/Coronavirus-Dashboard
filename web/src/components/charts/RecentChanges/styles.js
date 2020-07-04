@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { colors } from '../../../GlobalStyles';
 
 const RecentStyle = styled.div`
   position: absolute;
@@ -9,7 +8,7 @@ const RecentStyle = styled.div`
   bottom: 0;
   overflow-y: auto;
 
-  background: ${colors.bgActive};
+  background: ${({ theme }) => theme.bgActive};
   border-radius: 5px;
   padding: 20px;
   margin-bottom: 20px;

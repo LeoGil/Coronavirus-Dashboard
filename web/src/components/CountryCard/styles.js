@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { colors } from '../../GlobalStyles';
 
 const CountryCardStyles = styled.div`
   @media all and (max-width: 499px) {
@@ -11,16 +10,16 @@ const CountryCardStyles = styled.div`
 
     font-size: 18px;
     font-weight: 800;
-    background: ${colors.bgActive};
+    background: ${({ theme }) => theme.bgActive};
     border-radius: 0.5rem;
-    border: 3px solid ${colors.bgActive};
+    border: 3px solid ${({ theme }) => theme.bgActive};
     box-shadow: 0.2rem 1rem 0.65rem rgba(0, 0, 0, 0.342);
 
     transition: all ease-in 0.11s, transform ease-in-out 0.09s;
     &:hover {
       filter: brightness(1.2);
       transform: translateY(-10px);
-      border: 3px solid ${colors.hoverBorder};
+      border: 3px solid ${({ theme }) => theme.hoverBorder};
     }
     figure {
       display: grid;
