@@ -22,10 +22,6 @@ export default function RecentChange({ stateAtual, stateNovo }) {
 
   // Mount recent changes
   useEffect(() => {
-    // ((stateAtual[0] !== undefined && stateNovo[0] !== undefined) && console.log(stateAtual[0], stateNovo[0]))
-    // console.log(stateAtual, stateNovo)
-    // const [executou, setExecutou] = useState(false);
-
     if (stateAtual !== undefined) {
       const compareObjects = () => {
         const countriesAtual = stateAtual;
@@ -129,7 +125,6 @@ export default function RecentChange({ stateAtual, stateNovo }) {
   return (
     <RecentStyle>
       <h2>Recent changes</h2>
-      {/* {console.log(textReturn)} */}
       <div className="change-content">
         {textReturn.map(change => (
           <div key={change.text + change.iso2}>

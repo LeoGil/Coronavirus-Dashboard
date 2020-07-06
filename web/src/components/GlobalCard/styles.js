@@ -28,24 +28,26 @@ const GlobalCardStyles = styled.div`
         }
 
         ${({ theme }) => {
-    const topBorderColors = {
-      'top-color-1': theme.colorNewCases,
-      'top-color-2': theme.colorNewDeaths,
-      'top-color-3': theme.colorNewRecoveries,
-      'top-color-4': theme.colorTests,
-      'top-color-5': theme.colorCritical,
-    };
+          const topBorderColors = {
+            'top-color-1': theme.colorNewCases,
+            'top-color-2': theme.colorNewDeaths,
+            'top-color-3': theme.colorNewRecoveries,
+            'top-color-4': theme.colorTests,
+            'top-color-5': theme.colorCritical,
+          };
 
-    let styles = '';
-    for (const keyClass in topBorderColors) {
-      styles += `
-                          &.${keyClass} {
-                            border-top: 1rem solid ${topBorderColors[keyClass]};
-                          }
-                        `;
-    }
-    return css`${styles}`;
-  }}
+          let styles = '';
+          for (const keyClass in topBorderColors) {
+            styles += `
+                        &.${keyClass} {
+                          border-top: 1rem solid ${topBorderColors[keyClass]};
+                        }
+                      `;
+          }
+          return css`
+            ${styles}
+          `;
+        }}
 
         background: ${({ theme }) => theme.bgActive};
         border-radius: 0.5rem;
@@ -54,7 +56,14 @@ const GlobalCardStyles = styled.div`
           font-size: 1rem;
         }
         &:hover {
-          ${({ theme }) => theme.mode === 'light' ? css`filter: brightness(1.05);` : css`filter: brightness(1.2);`};;
+          ${({ theme }) =>
+            theme.mode === 'light'
+              ? css`
+                  filter: brightness(1.05);
+                `
+              : css`
+                  filter: brightness(1.2);
+                `};;
           transition: all 0.2s;
         }
         box-shadow: 0.2rem 1rem 0.65rem rgba(0, 0, 0, 0.342);

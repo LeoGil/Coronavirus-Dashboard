@@ -1,8 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import * as Chart from 'chart.js';
-import api from '../../../services/api';
-
 import { ThemeContext } from 'styled-components';
+import api from '../../../services/api';
 
 export default function TimeLineCountries({ countries }) {
   const [timelineCountries, setTimelineCountries] = useState();
@@ -11,7 +10,6 @@ export default function TimeLineCountries({ countries }) {
   const theme = useContext(ThemeContext);
 
   useEffect(() => {
-    // console.log(countries)
     if (countries[0] !== undefined && chartLoaded === false) {
       const countriesIso = [];
 

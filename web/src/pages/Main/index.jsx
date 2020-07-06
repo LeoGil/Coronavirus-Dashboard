@@ -84,40 +84,43 @@ export default function Main() {
       <Loading type="bars" color={theme.mainText} />
     </div>
   ) : (
-      <div className="container-fluid py-3">
-        <NotificationContainer />
+    <div className="container-fluid py-3">
+      <NotificationContainer />
 
-        <ChartsStyle>
-          <section className="chart-div">
-            <TimeLine
-              timeline={timelineGlobal}
-              timelineDataLoaded={globalDataLoaded}
-            />
-          </section>
-          <section className="chart-div">
-            <TimeLineCountries countries={countries} />
-          </section>
-          <section className="chart-div">
-            <PieCases data={globalData} timelineDataLoaded={isPageLoaded} />
-          </section>
-          <section className="chart-div">
-            <RecentChange stateAtual={oldCountries.current} stateNovo={countries} />
-          </section>
-        </ChartsStyle>
+      <ChartsStyle>
+        <section className="chart-div">
+          <TimeLine
+            timeline={timelineGlobal}
+            timelineDataLoaded={globalDataLoaded}
+          />
+        </section>
+        <section className="chart-div">
+          <TimeLineCountries countries={countries} />
+        </section>
+        <section className="chart-div">
+          <PieCases data={globalData} timelineDataLoaded={isPageLoaded} />
+        </section>
+        <section className="chart-div">
+          <RecentChange
+            stateAtual={oldCountries.current}
+            stateNovo={countries}
+          />
+        </section>
+      </ChartsStyle>
 
-        <GlobalDataHeader>
-          <section className="global-data">
-            <GlobalCard globaldata={globalData} />
-          </section>
-          <section className="countries-data">
-            <h1 className="col-12 title-components">Countries Data</h1>
-            <div className="countries-panel">
-              {countries.map(dataMap => (
-                <CountryCard key={dataMap.country} country={dataMap} />
-              ))}
-            </div>
-          </section>
-        </GlobalDataHeader>
-      </div>
-    );
+      <GlobalDataHeader>
+        <section className="global-data">
+          <GlobalCard globaldata={globalData} />
+        </section>
+        <section className="countries-data">
+          <h1 className="col-12 title-components">Countries Data</h1>
+          <div className="countries-panel">
+            {countries.map(dataMap => (
+              <CountryCard key={dataMap.country} country={dataMap} />
+            ))}
+          </div>
+        </section>
+      </GlobalDataHeader>
+    </div>
+  );
 }

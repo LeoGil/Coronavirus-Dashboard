@@ -25,7 +25,9 @@ const App = () => {
   }, [theme]);
   return (
     <div className="App">
-      <ThemeProvider theme={theme === 'dark' ? themeModes.dark : themeModes.light}>
+      <ThemeProvider
+        theme={theme === 'dark' ? themeModes.dark : themeModes.light}
+      >
         <BrowserRouter>
           <Routes toggleTheme={toggleTheme} />
         </BrowserRouter>

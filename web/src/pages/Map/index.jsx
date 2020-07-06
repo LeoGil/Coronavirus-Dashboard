@@ -1,14 +1,13 @@
 import React, { useState, useEffect, useContext, useRef } from 'react';
 import Loading from 'react-loading';
-import { VectorMap } from "react-jvectormap";
+import { VectorMap } from 'react-jvectormap';
+import { ThemeContext } from 'styled-components';
 
 import api from '../../services/api';
 
-import '../../assets/maps/map.css'
+import '../../assets/maps/map.css';
 
 import './styles.css';
-
-import { ThemeContext } from 'styled-components';
 
 export default function Map() {
   const theme = useContext(ThemeContext);
@@ -18,7 +17,7 @@ export default function Map() {
   mapRef.current = 'world_mill';
 
   const [countriesCases, setCountriesCases] = useState([]);
-  const [countryData, setCountryData] = useState([])
+  const [countryData, setCountryData] = useState([]);
   const [isPageLoaded, setIsPageLoaded] = useState(false);
 
   // Get Country Data
@@ -27,45 +26,45 @@ export default function Map() {
       const response = await api.get(`/countries`);
 
       const CountriesObject = Object.values(response.data);
-      const countriesCasesFormat = []
-      const countryDataFormat = []
+      const countriesCasesFormat = [];
+      const countryDataFormat = [];
 
       Object.keys(CountriesObject).forEach(key => {
-        if (CountriesObject[key]['iso2'] !== null) {
-          countriesCasesFormat[CountriesObject[key]['iso2']] = CountriesObject[key]['active']
-          countryDataFormat[CountriesObject[key]['iso2']] = {
-            cases: nf.format(CountriesObject[key]['cases']),
-            deaths: nf.format(CountriesObject[key]['deaths']),
-            recovered: nf.format(CountriesObject[key]['recovered']),
-            active: nf.format(CountriesObject[key]['active']),
-            critical: nf.format(CountriesObject[key]['critical']),
-          }
+        if (CountriesObject[key].iso2 !== null) {
+          countriesCasesFormat[CountriesObject[key].iso2] =
+            CountriesObject[key].active;
+          countryDataFormat[CountriesObject[key].iso2] = {
+            cases: nf.format(CountriesObject[key].cases),
+            deaths: nf.format(CountriesObject[key].deaths),
+            recovered: nf.format(CountriesObject[key].recovered),
+            active: nf.format(CountriesObject[key].active),
+            critical: nf.format(CountriesObject[key].critical),
+          };
 
-          if (CountriesObject[key]['iso2'] === 'SO') {
-            countriesCasesFormat['XS'] = CountriesObject[key]['active']
-            countryDataFormat['XS'] = {
-              cases: nf.format(CountriesObject[key]['cases']),
-              deaths: nf.format(CountriesObject[key]['deaths']),
-              recovered: nf.format(CountriesObject[key]['recovered']),
-              active: nf.format(CountriesObject[key]['active']),
-              critical: nf.format(CountriesObject[key]['critical']),
-            }
-          } else if (CountriesObject[key]['iso2'] === 'CY') {
-            countriesCasesFormat['XC'] = CountriesObject[key]['active']
-            countryDataFormat['XC'] = {
-              cases: nf.format(CountriesObject[key]['cases']),
-              deaths: nf.format(CountriesObject[key]['deaths']),
-              recovered: nf.format(CountriesObject[key]['recovered']),
-              active: nf.format(CountriesObject[key]['active']),
-              critical: nf.format(CountriesObject[key]['critical']),
-            }
+          if (CountriesObject[key].iso2 === 'SO') {
+            countriesCasesFormat.XS = CountriesObject[key].active;
+            countryDataFormat.XS = {
+              cases: nf.format(CountriesObject[key].cases),
+              deaths: nf.format(CountriesObject[key].deaths),
+              recovered: nf.format(CountriesObject[key].recovered),
+              active: nf.format(CountriesObject[key].active),
+              critical: nf.format(CountriesObject[key].critical),
+            };
+          } else if (CountriesObject[key].iso2 === 'CY') {
+            countriesCasesFormat.XC = CountriesObject[key].active;
+            countryDataFormat.XC = {
+              cases: nf.format(CountriesObject[key].cases),
+              deaths: nf.format(CountriesObject[key].deaths),
+              recovered: nf.format(CountriesObject[key].recovered),
+              active: nf.format(CountriesObject[key].active),
+              critical: nf.format(CountriesObject[key].critical),
+            };
           }
         }
       });
 
-
-      setCountriesCases(countriesCasesFormat)
-      setCountryData(countryDataFormat)
+      setCountriesCases(countriesCasesFormat);
+      setCountryData(countryDataFormat);
       setIsPageLoaded(true);
     }
     loadData();
@@ -74,12 +73,15 @@ export default function Map() {
 
   const handleHover = (e, el, code) => {
     if (code === 'XS') {
-      code = 'SO'
+      code = 'SO';
     } else if (code === 'XC') {
-      code = 'CY'
+      code = 'CY';
     }
     el.html(
-      `<div class="map-hover-content" style="background-color: #222c45;">
+      `<div
+        class="map-hover-content"
+        style="background-color: ${theme.background}; color: ${theme.mainText}"
+       >
         <div class="content-header mb-4">
           <img
             class='map-contry-flag'
@@ -90,51 +92,74 @@ export default function Map() {
         </div>
         <p>
            <label>Cases: </label>
-           <span class="color-cases">${countryData[code] === undefined ? "unknown" : countryData[code].cases}</span>
+           <span class="color-cases">${
+             countryData[code] === undefined
+               ? 'unknown'
+               : countryData[code].cases
+           }</span>
         </p>
         <p>
           <label>Deaths: </label>
-          <span class="color-death">${countryData[code] === undefined ? "unknown" : countryData[code].deaths}</span>
+          <span class="color-death">${
+            countryData[code] === undefined
+              ? 'unknown'
+              : countryData[code].deaths
+          }</span>
         </p>
         <p>
           <label>Recovered: </label>
-          <span class="color-recovered">${countryData[code] === undefined ? "unknown" : countryData[code].recovered}</span>
+          <span class="color-recovered">${
+            countryData[code] === undefined
+              ? 'unknown'
+              : countryData[code].recovered
+          }</span>
         </p>
         <p>
           <label>Active: </label>
-          <span class="color-active">${countryData[code] === undefined ? "unknown" : countryData[code].active}</span>
+          <span class="color-active">${
+            countryData[code] === undefined
+              ? 'unknown'
+              : countryData[code].active
+          }</span>
         </p>
         <p>
           <label>Critical: </label>
-          <span class="color-critical">${countryData[code] === undefined ? "unknown" : countryData[code].critical}</span>
+          <span class="color-critical">${
+            countryData[code] === undefined
+              ? 'unknown'
+              : countryData[code].critical
+          }</span>
         </p>
       </div >
-    `);
-  }
+    `,
+    );
+  };
 
   return isPageLoaded === false ? (
     <div className="loading">
       <Loading type="bars" color={theme.mainText} />
     </div>
   ) : (
-      <main className='map'>
-        <VectorMap
-          backgroundColor={theme.bgActive}
-          map={mapRef.current}
-          containerStyle={{
-            width: "100%",
-            height: "100%"
-          }}
-          series={{
-            regions: [{
+    <main className="map">
+      <VectorMap
+        backgroundColor={theme.bgActive}
+        map={mapRef.current}
+        containerStyle={{
+          width: '100%',
+          height: '100%',
+        }}
+        series={{
+          regions: [
+            {
               values: countriesCases,
-              scale: ['#a5a5a5', theme.colorCritical],
-              normalizeFunction: 'polynomial'
-            }]
-          }}
-          onRegionTipShow={handleHover}
-          containerClassName="map"
-        />
-      </main>
-    );
+              scale: ['#aeb5bb', theme.colorCritical],
+              normalizeFunction: 'polynomial',
+            },
+          ],
+        }}
+        onRegionTipShow={handleHover}
+        containerClassName="map"
+      />
+    </main>
+  );
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import Loading from 'react-loading';
+import { ThemeContext } from 'styled-components';
 import api from '../../services/api';
 
 import CountryData from '../../components/CountryDetailsCard';
@@ -10,7 +11,6 @@ import PieCases from '../../components/charts/PieActiveDeathRecovered';
 import PieTests from '../../components/charts/PieTests';
 
 import CountryStyles from './styles';
-import { ThemeContext } from 'styled-components';
 
 export default function Country() {
   const { country_code: countryCode } = useParams();
@@ -67,46 +67,46 @@ export default function Country() {
       <Loading type="bars" color={theme.mainText} />
     </div>
   ) : (
-      <CountryStyles className="container-fluid">
-        <div className="row">
-          <div className="col-12">
-            <CountryData country={country} />
-          </div>
-          <div className="col-lg-6 col-md-12">
-            <section className=" chart-div">
-              <TimeLine
-                timeline={countryTimeline}
-                timelineDataLoaded={isTimeLineDataLoaded}
-              />
-            </section>
-          </div>
-          <div className="col-lg-6 col-md-12">
-            <section className=" chart-div">
-              <TimeLineDaily
-                timeline={countryTimelineNew}
-                timelineDataLoaded={isTimeLineNewDataLoaded}
-              />
-            </section>
-          </div>
-          <div className="col-lg-6 col-md-12">
-            <section className="chart-div">
-              <PieCases
-                data={country}
-                timelineDataLoaded={isTimeLineDataLoaded}
-                country={country.country}
-                pageLoaded={isPageLoaded}
-              />
-            </section>
-          </div>
-          <div className="col-lg-6 col-md-12">
-            <section className="chart-div">
-              <PieTests
-                data={country}
-                timelineDataLoaded={isTimeLineDataLoaded}
-              />
-            </section>
-          </div>
+    <CountryStyles className="container-fluid">
+      <div className="row">
+        <div className="col-12">
+          <CountryData country={country} />
         </div>
-      </CountryStyles>
-    );
+        <div className="col-lg-6 col-md-12">
+          <section className=" chart-div">
+            <TimeLine
+              timeline={countryTimeline}
+              timelineDataLoaded={isTimeLineDataLoaded}
+            />
+          </section>
+        </div>
+        <div className="col-lg-6 col-md-12">
+          <section className=" chart-div">
+            <TimeLineDaily
+              timeline={countryTimelineNew}
+              timelineDataLoaded={isTimeLineNewDataLoaded}
+            />
+          </section>
+        </div>
+        <div className="col-lg-6 col-md-12">
+          <section className="chart-div">
+            <PieCases
+              data={country}
+              timelineDataLoaded={isTimeLineDataLoaded}
+              country={country.country}
+              pageLoaded={isPageLoaded}
+            />
+          </section>
+        </div>
+        <div className="col-lg-6 col-md-12">
+          <section className="chart-div">
+            <PieTests
+              data={country}
+              timelineDataLoaded={isTimeLineDataLoaded}
+            />
+          </section>
+        </div>
+      </div>
+    </CountryStyles>
+  );
 }

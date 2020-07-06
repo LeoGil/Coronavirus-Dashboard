@@ -33,32 +33,40 @@ export const themeModes = {
 
     bgActive: '#29344a',
 
-    scrollThumb: lighten(0.06, '#29344a'),
-
-    scrollTrack: shade(0.2, '#29344a'),
-
     hoverBorder: '#c62e65',
 
     mainText: '#eee',
+
+    get scrollThumb() {
+      return lighten(0.06, this.bgActive);
+    },
+
+    get scrollTrack() {
+      return shade(0.2, this.bgActive);
+    },
 
     ...DashboardColors,
   },
   light: {
     mode: 'light',
 
-    background: '#eeefff',
+    background: '#e5eafd',
 
-    bgHeader: '#8cbde6',
+    bgHeader: '#38486f',
 
-    bgActive: '#cee9ff',
+    bgActive: '#f9f8fd',
 
-    scrollThumb: lighten(0.06, '#cee9ff'),
+    hoverBorder: '#Ff22Ff',
 
-    scrollTrack: shade(0.2, '#cee9ff'),
+    mainText: '#111',
 
-    hoverBorder: '#e64e85',
+    get scrollThumb() {
+      return lighten(0.06, this.bgActive);
+    },
 
-    mainText: '#222',
+    get scrollTrack() {
+      return shade(0.2, this.bgActive);
+    },
 
     ...DashboardColors,
   },
@@ -71,7 +79,7 @@ export default createGlobalStyle`
     outline: 0;
     box-sizing: border-box;
     /* Firefox Scrollbar Width "auto" or "thin"  */
-    scrollbar-width: auto;
+    scrollbar-width: thin;
     scrollbar-color:
       /* scroll thumb */
       ${({ theme }) => theme.scrollThumb}
@@ -102,12 +110,12 @@ export default createGlobalStyle`
     font-family: 'Open Sans', -apple-system, Helvetica, sans-serif !important;
     font-weight: 600;
     background: ${({ theme }) => theme.background} !important;
-    color: ${({ theme }) => theme.mainText} !important;
+    color: ${({ theme }) => theme.mainText};
     overflow-x: hidden !important;
   }
 
-  a {
-    color: ${({ theme }) => theme.mainText} !important;
+  a, a:hover {
+    color: ${({ theme }) => theme.mainText};
     text-decoration: none !important;
   }
 

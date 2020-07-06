@@ -7,7 +7,6 @@ const HeaderStyles = styled.header`
   background: ${({ theme }) => theme.bgHeader};
   font-size: 18px;
   font-weight: bold;
-  color: ${({ theme }) => theme.mainText};
   display: flex;
   * {
     display: flex;
@@ -18,6 +17,7 @@ const HeaderStyles = styled.header`
 
   .title-brand {
     align-items: center;
+    color: #fff;
 
     .logo {
       margin: 0 0.5rem;
@@ -58,13 +58,13 @@ const HeaderStyles = styled.header`
     align-items: center;
 
     button {
-    margin: 0 .5rem 0 1rem;
-    outline: none;
-    border: none;
-    border-radius: 50%;
-    padding: 0.4rem;
-    background: ${({ theme }) => theme.hoverBorder};
-    color: ${({ theme }) => theme.mainText};
+      margin: 0 0.5rem 0 1rem;
+      outline: none;
+      border: none;
+      border-radius: 50%;
+      padding: 0.4rem;
+      background: ${({ theme }) => theme.hoverBorder};
+      color: ${({ theme }) => theme.mainText};
       &:hover,
       &:focus {
         filter: brightness(1.2);
@@ -76,12 +76,12 @@ const HeaderStyles = styled.header`
     }
 
     a {
+      color: #fff;
       align-items: center;
       span {
-        margin: 0 .5rem;
+        margin: 0 0.5rem;
       }
     }
   }
-
 `;
 export default HeaderStyles;

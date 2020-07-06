@@ -16,7 +16,11 @@ export default function Routes({ toggleTheme }) {
         component={() => <Header toggleTheme={toggleTheme} />}
       />
       <Route exact path={rootpath} component={Main} />
-      <Route exact path={`${rootpath}Country/:country_code`} component={Country} />
+      <Route
+        exact
+        path={`${rootpath}Country/:country_code`}
+        component={Country}
+      />
       <Route exact path={`${rootpath}Map`} component={Map} />
     </BrowserRouter>
   );
