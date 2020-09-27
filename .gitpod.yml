@@ -1,0 +1,3 @@
+tasks:
+  - init: cd api, yarn, cd ../web, yarn, cd ..
+    command: cd api, yarn start
